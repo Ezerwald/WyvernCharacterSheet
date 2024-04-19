@@ -1,4 +1,6 @@
 from character import Character
+
+
 class SavingThrow:
     def __init__(self, ability_type: int, proficiency=False):
         self.__ability_type = ability_type

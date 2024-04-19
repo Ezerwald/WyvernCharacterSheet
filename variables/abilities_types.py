@@ -8,6 +8,3 @@ class AbilityType(Enum):
     INTELLIGENCE = 4
     WISDOM = 5
     CHARISMA = 6
-
-
-print(AbilityType.STRENGTH.value)
