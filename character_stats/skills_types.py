@@ -1,0 +1,21 @@
+from enum import Enum
+
+
+class SkillType(Enum):
+    ACROBATICS = 1
+    ANIMAL_HANDLING = 2
+    ARCANA = 3
+    ATHLETICS = 4
+    DECEPTION = 5
+    HISTORY = 6
+    INSIGHT = 7
+    INTIMIDATION = 8
+    INVESTIGATION = 9
+    MEDICINE = 10
+    NATURE = 11
+    PERCEPTION = 12
+    PERFORMANCE = 13
+    RELIGION = 14
+    SLEIGHT_OF_HAND = 15
+    STEALTH = 16
+    SURVIVAL = 17
