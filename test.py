@@ -92,3 +92,7 @@ class StatBlock(Enum):
     C = auto()
 
 print(StatBlock.A.value, StatBlock.B.value, StatBlock.C.value)
+
+from .saving_throws import SavingThrow
+from .skills import Skill
+from .skills_types import SkillType

@@ -5,4 +5,3 @@ from .armor_class_calculation_strategies import (ArmorClassCalculationStrategy,
                                                  BarbarianArmorClassCalculationStrategy,
                                                  MonkArmorClassCalculationStrategy)
 from .armor_class import ArmorClass
-from .shield import Shield

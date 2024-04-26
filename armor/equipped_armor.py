@@ -1,4 +1,4 @@
-from armor.armors import Armor
+from .armors import Armor
 
 
 class EquippedArmor:

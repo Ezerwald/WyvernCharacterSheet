@@ -1,15 +1,15 @@
 from abc import ABC, abstractmethod
 from character_stats import AbilityType
-from constants import NO_ARMOR_AC
+from constants.constants import NO_ARMOR_AC
 from armor import Armor, calculate_dexterity_bonus
-from .shield import Shield
+from shield.shield import Shield
 
 
 class ArmorClassCalculationStrategy(ABC):
     """Abstract base class for armor class calculation strategies."""
 
     @abstractmethod
-    def calculate(self, shield: int, armor: Armor, abilities: dict) -> int:
+    def calculate(self, shield: Shield, armor: Armor, abilities: dict) -> int:
         """Calculate and return the armor class value."""
 
 
@@ -18,7 +18,7 @@ class DefaultArmorClassCalculationStrategy(ArmorClassCalculationStrategy):
 
     def calculate(self, shield: Shield, armor: Armor, abilities: dict) -> int:
         """Calculate and return the armor class value."""
-        dexterity_modifier = abilities[AbilityType.DEXTERITY.value].modifier
+        dexterity_modifier = abilities[AbilityType.DEXTERITY].modifier
         if armor is None:
             armor_class_value = NO_ARMOR_AC + dexterity_modifier
         else:

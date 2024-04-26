@@ -1,5 +1,5 @@
 from uuid import uuid4
-from armor.armor_types import ArmorType
+from .armor_types import ArmorType
 
 
 class Armor:

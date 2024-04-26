@@ -1,6 +1,6 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
-from armor import Armor
+from .armors import Armor
 
 
 class ArmorCollection:

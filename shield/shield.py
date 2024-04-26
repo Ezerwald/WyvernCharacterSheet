@@ -1,4 +1,4 @@
-from constants import DEFAULT_SHIELD_BONUS_TO_AC
+from constants.constants import DEFAULT_SHIELD_BONUS_TO_AC
 
 
 class Shield:

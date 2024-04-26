@@ -1,5 +1,6 @@
 from typing import Any
 from armor import Armor
+from shield.shield import Shield
 
 
 class ArmorClassCalculator:
@@ -13,6 +14,6 @@ class ArmorClassCalculator:
         """Set a new strategy for calculating armor class."""
         self.__strategy = strategy
 
-    def calculate_armor_class(self, shield: bool, armor: Armor, abilities: dict) -> int:
+    def calculate_armor_class(self, shield: Shield, armor: Armor, abilities: dict) -> int:
         """Calculate armor class based on the current strategy."""
         return self.__strategy.calculate(shield, armor, abilities)

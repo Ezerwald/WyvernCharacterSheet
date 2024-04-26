@@ -1,6 +1,7 @@
-from armor import Armor
-from armor import ArmorCollection, ArmorType
-from constants import MAX_MODIFIER_VALUE
+from .armors import Armor
+from .armor_collection import ArmorCollection
+from .armor_types import ArmorType
+from constants.constants import MAX_MODIFIER_VALUE
 
 basic_armor_collection = ArmorCollection()
 
