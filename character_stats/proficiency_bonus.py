@@ -1,4 +1,4 @@
-from constants import PROFICIENCY_BONUS
+from constants.constants import PROFICIENCY_BONUS
 
 
 class ProfBonus:
@@ -7,8 +7,6 @@ class ProfBonus:
 
     @property
     def value(self):
-        value = self.calc_prof_bonus(self.__character.level.value)
+        """Gets proficiency bonus value"""
+        value = PROFICIENCY_BONUS[self.__character.level.value]
         return value
-
-    def calc_prof_bonus(self, current_level: int):
-        return PROFICIENCY_BONUS[current_level]
