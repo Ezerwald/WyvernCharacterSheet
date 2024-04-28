@@ -15,6 +15,7 @@ class SkillType(Enum):
     NATURE = auto()
     PERCEPTION = auto()
     PERFORMANCE = auto()
+    PERSUASION = auto()
     RELIGION = auto()
     SLEIGHT_OF_HAND = auto()
     STEALTH = auto()
