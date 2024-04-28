@@ -1,7 +1,7 @@
 from enum import Enum, auto
 
 
-class GameClass(Enum):
+class GameClassTypes(Enum):
     BARBARIAN = auto()
     BARD = auto()
     CLERIC = auto()

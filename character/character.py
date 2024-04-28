@@ -2,7 +2,7 @@ from typing import Dict
 
 from abstract_character import AbstractCharacter
 from shield import Shield
-from character_stats import Ability, Level, ProfBonus, GameClass, AbilityType
+from character_stats import Ability, Level, ProfBonus, AbilityType
 from saving_throws import SavingThrow
 from skills import Skill
 from skills_types import SkillType
@@ -12,6 +12,7 @@ from armor_class import ArmorClass
 from constants import MIN_LEVEL
 from utils import SKILLS_TO_ABILITIES
 from health import DeathSaves
+from game_classes import GameClass
 
 
 class Character(AbstractCharacter):

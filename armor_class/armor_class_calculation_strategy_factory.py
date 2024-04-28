@@ -14,7 +14,7 @@ class ArmorClassCalculationStrategyFactory:
     def choose_armor_class_calculation_strategy(game_class: GameClass, armor: Armor, shield: Shield) -> ArmorClassCalculationStrategy:
         """Choose the appropriate armor class calculation strategy based on the game class."""
         if not isinstance(game_class, GameClass):
-            raise ValueError("Invalid input: '__game_class' must be an instance of GameClass enum")
+            raise ValueError("Invalid input: '__game_class' must be an instance of GameClassTypes enum")
 
         if game_class == GameClass.BARBARIAN and armor is None:
             return BarbarianArmorClassCalculationStrategy()
