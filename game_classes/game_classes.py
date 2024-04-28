@@ -1,5 +1,5 @@
 from typing import List
-from game_classes_types import GameClassType
+from .game_classes_types import GameClassType
 from character_stats import AbilityType
 from skills_types import SkillType
 
