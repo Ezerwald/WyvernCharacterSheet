@@ -3,7 +3,7 @@ from typing import Dict
 
 
 class AbstractCharacter(ABC):
-    """Abstract base class for character."""
+    """Abstract base class for __character."""
 
     def __init__(self):
         self.__current_game_class = None
@@ -17,6 +17,8 @@ class AbstractCharacter(ABC):
         self.__armor_class = None
         self.__initiative = None
         self.__death_saves = None
+        self.__hit_points = None
+        self.__hit_dices_pool = None
 
     @abstractmethod
     def current_game_class(self):
@@ -71,4 +73,14 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def death_saves(self):
         """Get the death saves object."""
+        pass
+
+    @abstractmethod
+    def hit_points(self):
+        """Get the hit points object."""
+        pass
+
+    @abstractmethod
+    def hit_dices_pool(self):
+        """Get the hit dices pool."""
         pass
