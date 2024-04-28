@@ -12,7 +12,7 @@ from armor_class import ArmorClass
 from constants import MIN_LEVEL
 from utils import SKILLS_TO_ABILITIES
 from health import DeathSaves
-from game_classes import GameClass
+from game_classes import CurrentGameClass
 
 
 class Character(AbstractCharacter):
@@ -21,11 +21,11 @@ class Character(AbstractCharacter):
     __saving_throws: Dict[AbilityType, SavingThrow]
     __skills: Dict[SkillType, Skill]
 
-    def __init__(self, abilities_scores: Dict[AbilityType, int], game_class: int, level: int = MIN_LEVEL,
+    def __init__(self, abilities_scores: Dict[AbilityType, int], game_class: GameClassType, level: int = MIN_LEVEL,
                  equipped_armor: Armor = None):
         """Initialize a Character instance."""
         super().__init__()
-        self.__game_class = GameClass(game_class)
+        self.__game_class = CurrentGameClass(self, )
         self.__level = Level(self, level)
         self.__prof_bonus = ProfBonus(self)
         self.__abilities = {ability: Ability(ability, abilities_scores[ability])
@@ -41,7 +41,7 @@ class Character(AbstractCharacter):
         self.__death_saves = DeathSaves(self)
 
     @property
-    def game_class(self) -> GameClass:
+    def game_class(self) -> CurrentGameClass:
         """Get the game class."""
         return self.__game_class
 
@@ -103,7 +103,7 @@ swanchick = Character({
     AbilityType.INTELLIGENCE: 11,
     AbilityType.WISDOM: 20,
     AbilityType.CHARISMA: 16
-}, GameClass.BARBARIAN.value, 1, basic_armor_collection.get_armor_by_name("Hide"))
+}, CurrentGameClass.BARBARIAN.value, 1, basic_armor_collection.get_armor_by_name("Hide"))
 
 print("Your STR mod: ", swanchick.abilities[AbilityType.STRENGTH].modifier)
 print(f"Your proficiency bonus on level {swanchick.level.value} is: ", swanchick.prof_bonus.value)
