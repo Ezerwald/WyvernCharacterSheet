@@ -1,9 +1,11 @@
 from constants.constants import MIN_ABILITY_VALUE, MAX_ABILITY_VALUE
 from .abilities_types import AbilityType
+from abstract_character import AbstractCharacter
 
 
 class Ability:
-    def __init__(self, ability_type: AbilityType, score: int):
+    def __init__(self, character: AbstractCharacter, ability_type: AbilityType, score: int):
+        self.__character = character
         self.__ability_type = ability_type
         self.__score = score
 

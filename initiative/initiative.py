@@ -8,5 +8,6 @@ class Initiative:
 
     @property
     def value(self) -> int:
-        value = self.__character.__abilities[AbilityType.DEXTERITY].modifier
+        """Get initiative value"""
+        value = self.__character.abilities[AbilityType.DEXTERITY].modifier
         return value

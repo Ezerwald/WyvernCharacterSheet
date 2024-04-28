@@ -23,11 +23,11 @@ class Character(AbstractCharacter):
                  equipped_armor: Armor = None):
         """Initialize a Character instance."""
         super().__init__()
-        self.__current_game_class = CurrentGameClass(self,
-                                                     basic_game_classes_collection.get_game_class_by_type(game_class_type))
+        self.__current_game_class = CurrentGameClass(self, basic_game_classes_collection.
+                                                     get_game_class_by_type(game_class_type))
         self.__level = Level(self, level)
         self.__prof_bonus = ProfBonus(self)
-        self.__abilities = {ability: Ability(ability, abilities_scores[ability]) for ability in AbilityType}
+        self.__abilities = {ability: Ability(self, ability, abilities_scores[ability]) for ability in AbilityType}
         self.__saving_throws = {ability: SavingThrow(self, ability) for ability in AbilityType}
         self.__skills = {skill: Skill(skill, self.abilities[SKILLS_TO_ABILITIES[skill]].modifier) for skill in
                          SKILLS_TO_ABILITIES}
