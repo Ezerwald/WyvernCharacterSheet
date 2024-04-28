@@ -12,7 +12,7 @@ from armor import Armor, EquippedArmor, basic_armor_collection
 from armor_class import ArmorClass
 from constants import MIN_LEVEL
 from utils import SKILLS_TO_ABILITIES
-from health import DeathSaves, HitPoints, HitDicesPool
+from health import DeathSaves, HitPoints, HitDicesPool, TemporaryHitPoints
 from game_classes import CurrentGameClass, basic_game_classes_collection, GameClassType
 
 
@@ -38,6 +38,7 @@ class Character(AbstractCharacter):
         self.__death_saves = DeathSaves(self)
         self.__hit_points = HitPoints(self)
         self.__hit_dices_pool = HitDicesPool(self)
+        self.__temporary_hit_points = TemporaryHitPoints(self)
 
     @property
     def current_game_class(self) -> CurrentGameClass:
@@ -103,6 +104,11 @@ class Character(AbstractCharacter):
     def hit_dices_pool(self) -> HitDicesPool:
         """Get the hit dices pool."""
         return self.__hit_dices_pool
+
+    @property
+    def temporary_hit_points(self) -> TemporaryHitPoints:
+        """Get the temporary hit points."""
+        return self.__temporary_hit_points
 
 
 # Execution

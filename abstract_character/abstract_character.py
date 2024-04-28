@@ -19,6 +19,7 @@ class AbstractCharacter(ABC):
         self.__death_saves = None
         self.__hit_points = None
         self.__hit_dices_pool = None
+        self.__temporary_hit_points = None
 
     @abstractmethod
     def current_game_class(self):
@@ -83,4 +84,9 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def hit_dices_pool(self):
         """Get the hit dices pool."""
+        pass
+
+    @abstractmethod
+    def temporary_hit_points(self):
+        """Get the temporary hit points object."""
         pass
