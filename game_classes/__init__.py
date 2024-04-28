@@ -1,2 +1,3 @@
-from .game_class import GameClass
-from .game_classes_types import GameClassTypes
+from .current_game_class import CurrentGameClass
+from .game_classes_types import GameClassType
+from .game_classes import GameClass
