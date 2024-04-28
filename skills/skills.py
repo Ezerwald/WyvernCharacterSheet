@@ -15,3 +15,11 @@ class Skill:
         if self.__proficiency:
             value += self.__character.__prof_bonus.value
         return value
+
+    @property
+    def proficiency(self):
+        return self.__proficiency
+
+    @proficiency.setter
+    def proficiency(self, value):
+        self.__proficiency = value

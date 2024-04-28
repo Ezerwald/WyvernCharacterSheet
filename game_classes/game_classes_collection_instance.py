@@ -35,7 +35,7 @@ bard = GameClass(
     8,
     [AbilityType.DEXTERITY, AbilityType.CHARISMA],
     """Armor: Light armor
-Weapons: Simple weapons, hand crossbows, longswords, rapiers, shortswords
+Weapons: Simple weapons, hand crossbows, long swords, rapiers, short swords
 Tools: Three musical instruments of your choice""",
     3,
     [
@@ -77,7 +77,7 @@ druid = GameClass(
     8,
     [AbilityType.INTELLIGENCE, AbilityType.WISDOM],
     """Armor: Light armor, medium armor, shields (druids will not wear armor or use shields made of metal)
-Weapons: Clubs, daggers, darts, javelins, maces, quarterstaffs, scimitars, sickles, slings, spears
+Weapons: Clubs, daggers, darts, javelins, maces, quarter staffs, scimitars, sickles, slings, spears
 Tools: Herbalism kit""",
     2,
     [
@@ -114,7 +114,7 @@ monk = GameClass(
     8,
     [AbilityType.DEXTERITY, AbilityType.WISDOM],
     """Armor: None
-Weapons: Simple weapons, shortswords""",
+Weapons: Simple weapons, short swords""",
     2,
     [
         SkillType.ACROBATICS, SkillType.ATHLETICS,
@@ -166,7 +166,7 @@ rogue = GameClass(
     8,
     [AbilityType.DEXTERITY, AbilityType.INTELLIGENCE],
     """Armor: Light armor
-Weapons: Simple weapons, hand crossbows, longswords, rapiers, shortswords""",
+Weapons: Simple weapons, hand crossbows, long swords, rapiers, short swords""",
     4,
     [
         SkillType.ACROBATICS, SkillType.ATHLETICS,
@@ -186,7 +186,7 @@ sorcerer = GameClass(
     6,
     [AbilityType.CONSTITUTION, AbilityType.CHARISMA],
     """Armor: None
-Weapons: Daggers, darts, slings, quarterstaffs, light crossbows""",
+Weapons: Daggers, darts, slings, quarter staffs, light crossbows""",
     2,
     [
         SkillType.ARCANA, SkillType.DECEPTION,
@@ -221,7 +221,7 @@ wizard = GameClass(
     6,
     [AbilityType.INTELLIGENCE, AbilityType.WISDOM],
     """Armor: None
-Weapons: Daggers, darts, slings, quarterstaffs, light crossbows""",
+Weapons: Daggers, darts, slings, quarter staffs, light crossbows""",
     2,
     [
         SkillType.ARCANA, SkillType.HISTORY,
@@ -230,4 +230,3 @@ Weapons: Daggers, darts, slings, quarterstaffs, light crossbows""",
     ]
 )
 basic_game_classes_collection.add_game_class(wizard)
-

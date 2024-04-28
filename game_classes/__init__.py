@@ -1,3 +1,5 @@
 from .current_game_class import CurrentGameClass
 from .game_classes_types import GameClassType
 from .game_classes import GameClass
+from .game_classes_collection import GameClassCollection
+from .game_classes_collection_instance import basic_game_classes_collection

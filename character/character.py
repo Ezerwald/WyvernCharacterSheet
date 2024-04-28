@@ -12,28 +12,24 @@ from armor_class import ArmorClass
 from constants import MIN_LEVEL
 from utils import SKILLS_TO_ABILITIES
 from health import DeathSaves
-from game_classes import CurrentGameClass
+from game_classes import CurrentGameClass, basic_game_classes_collection, GameClassType
 
 
 class Character(AbstractCharacter):
-    """Represents a __character."""
-    __abilities: Dict[AbilityType, Ability]
-    __saving_throws: Dict[AbilityType, SavingThrow]
-    __skills: Dict[SkillType, Skill]
+    """Represents a character."""
 
-    def __init__(self, abilities_scores: Dict[AbilityType, int], game_class: GameClassType, level: int = MIN_LEVEL,
+    def __init__(self, abilities_scores: Dict[AbilityType, int], game_class_type: GameClassType, level: int = MIN_LEVEL,
                  equipped_armor: Armor = None):
         """Initialize a Character instance."""
         super().__init__()
-        self.__game_class = CurrentGameClass(self, )
+        self.__current_game_class = CurrentGameClass(self,
+                                                     basic_game_classes_collection.get_game_class_by_type(game_class_type))
         self.__level = Level(self, level)
         self.__prof_bonus = ProfBonus(self)
-        self.__abilities = {ability: Ability(ability, abilities_scores[ability])
-                            for ability in AbilityType}
-        self.__saving_throws = {ability: SavingThrow(self, ability)
-                                for ability in AbilityType}
-        self.__skills = {skill: Skill(skill, self.abilities[SKILLS_TO_ABILITIES[skill]].modifier)
-                         for skill in SKILLS_TO_ABILITIES}
+        self.__abilities = {ability: Ability(ability, abilities_scores[ability]) for ability in AbilityType}
+        self.__saving_throws = {ability: SavingThrow(self, ability) for ability in AbilityType}
+        self.__skills = {skill: Skill(skill, self.abilities[SKILLS_TO_ABILITIES[skill]].modifier) for skill in
+                         SKILLS_TO_ABILITIES}
         self.__shield = Shield(self)
         self.__equipped_armor = EquippedArmor(self, equipped_armor)
         self.__armor_class = ArmorClass(self)
@@ -41,13 +37,13 @@ class Character(AbstractCharacter):
         self.__death_saves = DeathSaves(self)
 
     @property
-    def game_class(self) -> CurrentGameClass:
+    def current_game_class(self) -> CurrentGameClass:
         """Get the game class."""
-        return self.__game_class
+        return self.__current_game_class
 
     @property
     def level(self) -> Level:
-        """Get the __level."""
+        """Get the level."""
         return self.__level
 
     @property
@@ -57,7 +53,7 @@ class Character(AbstractCharacter):
 
     @property
     def abilities(self) -> Dict[AbilityType, Ability]:
-        """Get the __abilities."""
+        """Get the abilities."""
         return self.__abilities
 
     @property
@@ -82,7 +78,7 @@ class Character(AbstractCharacter):
 
     @property
     def shield(self) -> Shield:
-        """Get the __shield object."""
+        """Get the shield object."""
         return self.__shield
 
     @property
@@ -92,6 +88,7 @@ class Character(AbstractCharacter):
 
     @property
     def death_saves(self) -> DeathSaves:
+        """Get the death saves."""
         return self.__death_saves
 
 
@@ -103,10 +100,23 @@ swanchick = Character({
     AbilityType.INTELLIGENCE: 11,
     AbilityType.WISDOM: 20,
     AbilityType.CHARISMA: 16
-}, CurrentGameClass.BARBARIAN.value, 1, basic_armor_collection.get_armor_by_name("Hide"))
+}, GameClassType.BARBARIAN, 1, basic_armor_collection.get_armor_by_name("Hide"))
 
-print("Your STR mod: ", swanchick.abilities[AbilityType.STRENGTH].modifier)
-print(f"Your proficiency bonus on level {swanchick.level.value} is: ", swanchick.prof_bonus.value)
+print("Your STR mod:", swanchick.abilities[AbilityType.STRENGTH].modifier)
+print(f"Your proficiency bonus at level {swanchick.level.value} is:", swanchick.prof_bonus.value)
 swanchick.saving_throws[AbilityType.STRENGTH].proficiency = True
 print("Your STR saving throw is:", swanchick.saving_throws[AbilityType.STRENGTH].value)
 print("Your Armor Class is:", swanchick.armor_class.value)
+print(basic_game_classes_collection.get_all_game_classes())
+
+gey_338 = Character({
+    AbilityType.STRENGTH: 20,
+    AbilityType.DEXTERITY: 20,
+    AbilityType.CONSTITUTION: 20,
+    AbilityType.INTELLIGENCE: 19,
+    AbilityType.WISDOM: 19,
+    AbilityType.CHARISMA: 18
+}, GameClassType.BARBARIAN, 15, basic_armor_collection.get_armor_by_name("Chain mail"))
+
+print(gey_338.current_game_class.value.proficiencies)
+gey_338.skills[SkillType.ANIMAL_HANDLING]

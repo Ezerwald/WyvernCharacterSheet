@@ -13,7 +13,8 @@ class ArmorClass:
         self.__character = character
         self.__armor_class_calculator = ArmorClassCalculator(
             ArmorClassCalculationStrategyFactory.choose_armor_class_calculation_strategy(
-                self.__character.game_class, self.__character.equipped_armor.armor, self.__character.shield
+                self.__character.current_game_class.value, self.__character.equipped_armor.armor,
+                self.__character.shield
             )
         )
 
