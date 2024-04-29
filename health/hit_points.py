@@ -16,7 +16,7 @@ class HitPoints:
     def current_hit_points(self, value):
         """Set current hit points."""
         if value < 0:
-            return
+            raise ValueError("Current hit points cannot be negative.")
         self.__current_hit_points = min(value, self.__max_hit_points)
 
     @property
@@ -28,11 +28,9 @@ class HitPoints:
     def max_hit_points(self, value):
         """Set max hit points."""
         if value < 0:
-            return
+            raise ValueError("Max hit points cannot be negative.")
         self.__max_hit_points = value
         if value < self.__current_hit_points:
-            # If new max hit points are less than current hit points,
-            # adjust current hit points to match new max
             self.__current_hit_points = value
 
     def calc_max_hit_points(self):
