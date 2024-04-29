@@ -17,5 +17,6 @@ class Level:
             self.__level = new_level
             # update prof bonus
             # update hit points
+            # update hit dices amount
         else:
             raise ValueError("Invalid Level")
