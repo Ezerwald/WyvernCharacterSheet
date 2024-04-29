@@ -20,6 +20,7 @@ class AbstractCharacter(ABC):
         self.__hit_points = None
         self.__hit_dices_pool = None
         self.__temporary_hit_points = None
+        self.__race = None
 
     @abstractmethod
     def current_game_class(self):
@@ -89,4 +90,9 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def temporary_hit_points(self):
         """Get the temporary hit points object."""
+        pass
+
+    @abstractmethod
+    def race(self):
+        """Get the race."""
         pass

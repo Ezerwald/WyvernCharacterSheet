@@ -2,6 +2,7 @@ from typing import Dict
 
 from abstract_character import AbstractCharacter
 from health.hit_dices_pool import HitDicesPool
+from race.races import Race
 from shield import Shield
 from character_stats import Ability, Level, ProfBonus, AbilityType
 from saving_throws import SavingThrow
@@ -14,13 +15,14 @@ from constants import MIN_LEVEL
 from utils import SKILLS_TO_ABILITIES
 from health import DeathSaves, HitPoints, HitDicesPool, TemporaryHitPoints
 from game_classes import CurrentGameClass, basic_game_classes_collection, GameClassType
+from race import basic_races_collection
 
 
 class Character(AbstractCharacter):
     """Represents a __character."""
 
-    def __init__(self, abilities_scores: Dict[AbilityType, int], game_class_type: GameClassType, level: int = MIN_LEVEL,
-                 equipped_armor: Armor = None):
+    def __init__(self, abilities_scores: Dict[AbilityType, int], game_class_type: GameClassType, race_name: str,
+                 level: int = MIN_LEVEL, equipped_armor: Armor = None):
         """Initialize a Character instance."""
         super().__init__()
         self.__current_game_class = CurrentGameClass(self, basic_game_classes_collection.
@@ -39,6 +41,7 @@ class Character(AbstractCharacter):
         self.__hit_points = HitPoints(self)
         self.__hit_dices_pool = HitDicesPool(self)
         self.__temporary_hit_points = TemporaryHitPoints(self)
+        self.__race = basic_races_collection.get_race(race_name)
 
     @property
     def current_game_class(self) -> CurrentGameClass:
@@ -110,6 +113,11 @@ class Character(AbstractCharacter):
         """Get the temporary hit points."""
         return self.__temporary_hit_points
 
+    @property
+    def race(self):
+        """Get race"""
+        return self.__race
+
 
 # Execution
 swanchick = Character({
@@ -119,7 +127,7 @@ swanchick = Character({
     AbilityType.INTELLIGENCE: 11,
     AbilityType.WISDOM: 20,
     AbilityType.CHARISMA: 16
-}, GameClassType.BARBARIAN, 1, basic_armor_collection.get_armor_by_name("Hide"))
+}, GameClassType.BARBARIAN, "Hill Dwarf", 1, basic_armor_collection.get_armor_by_name("Hide"))
 
 print("Your STR mod:", swanchick.abilities[AbilityType.STRENGTH].modifier)
 print(f"Your proficiency bonus at level {swanchick.level.value} is:", swanchick.prof_bonus.value)
@@ -135,7 +143,7 @@ gey_338 = Character({
     AbilityType.INTELLIGENCE: 19,
     AbilityType.WISDOM: 19,
     AbilityType.CHARISMA: 18
-}, GameClassType.BARBARIAN, 15, basic_armor_collection.get_armor_by_name("Chain mail"))
+}, GameClassType.BARBARIAN, "Human", 15, basic_armor_collection.get_armor_by_name("Chain mail"))
 
 print(gey_338.current_game_class.value.proficiencies)
 gey_338.skills[SkillType.ANIMAL_HANDLING]
