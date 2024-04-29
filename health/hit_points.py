@@ -17,14 +17,12 @@ class HitPoints:
         """Set current hit points."""
         if value < 0:
             return
-        elif value <= self.__max_hit_points:
-            self.__current_hit_points = value
-        else:
-            self.__current_hit_points = self.__max_hit_points
+        self.__current_hit_points = min(value, self.__max_hit_points)
 
     @property
     def max_hit_points(self):
         """Get max hit points."""
+        self.__max_hit_points = self.calc_max_hit_points()
         return self.__max_hit_points
 
     @max_hit_points.setter
@@ -32,11 +30,11 @@ class HitPoints:
         """Set max hit points."""
         if value < 0:
             return
-        elif value < self.__current_hit_points:
+        self.__max_hit_points = value
+        if value < self.__current_hit_points:
             # If new max hit points are less than current hit points,
             # adjust current hit points to match new max
             self.__current_hit_points = value
-        self.__max_hit_points = value
 
     def calc_max_hit_points(self):
         """Calculate max hit points depending on current level and class."""
@@ -44,5 +42,3 @@ class HitPoints:
         level = self.__character.level.value
         hit_points = hit_dice + (level - 1) * (hit_dice // 2 + hit_dice % 2)
         return hit_points
-
-
