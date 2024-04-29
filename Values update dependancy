@@ -1,0 +1,8 @@
+#Values that should be updated if some other value changes
+
+level -> prof_bonus, hit_points, hit_dices_pool
+abilities[AbilityType.DEXTERITY] -> initiative
+abilities[AbilityType.WISDOM] -> passive_perception
+skills[SkillType.PERCEPTION].proficiency -> passive perception
+
+#All values that can be directly changed should update
