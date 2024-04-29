@@ -22,7 +22,6 @@ class HitPoints:
     @property
     def max_hit_points(self):
         """Get max hit points."""
-        self.__max_hit_points = self.calc_max_hit_points()
         return self.__max_hit_points
 
     @max_hit_points.setter
