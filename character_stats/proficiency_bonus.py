@@ -8,5 +8,4 @@ class ProfBonus:
     @property
     def value(self):
         """Gets proficiency bonus value"""
-        value = PROFICIENCY_BONUS[self.__character.level.value]
-        return value
+        return PROFICIENCY_BONUS[self.__character.level.value]

@@ -21,6 +21,8 @@ class AbstractCharacter(ABC):
         self.__hit_dices_pool = None
         self.__temporary_hit_points = None
         self.__race = None
+        self.__passive_perception = None
+        self.__attacks_list = None
 
     @abstractmethod
     def current_game_class(self):
@@ -95,4 +97,14 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def race(self):
         """Get the race."""
+        pass
+
+    @abstractmethod
+    def passive_perception(self):
+        """Get passive perception."""
+        pass
+
+    @abstractmethod
+    def attacks_list(self):
+        """Get the attacks list."""
         pass

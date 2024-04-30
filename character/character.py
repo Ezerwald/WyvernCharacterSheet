@@ -1,8 +1,6 @@
 from typing import Dict
 
 from abstract_character import AbstractCharacter
-from health.hit_dices_pool import HitDicesPool
-from race.races import Race
 from shield import Shield
 from character_stats import Ability, Level, ProfBonus, AbilityType
 from saving_throws import SavingThrow
@@ -12,10 +10,12 @@ from initiative import Initiative
 from armor import Armor, EquippedArmor, basic_armor_collection
 from armor_class import ArmorClass
 from constants import MIN_LEVEL
-from utils import SKILLS_TO_ABILITIES
+from utils import SKILLS_TO_ABILITIES, show_all_stats
 from health import DeathSaves, HitPoints, HitDicesPool, TemporaryHitPoints
 from game_classes import CurrentGameClass, basic_game_classes_collection, GameClassType
 from race import basic_races_collection
+from character_stats import PassivePerception
+from attacks import AttacksList
 
 
 class Character(AbstractCharacter):
@@ -42,6 +42,8 @@ class Character(AbstractCharacter):
         self.__hit_dices_pool = HitDicesPool(self)
         self.__temporary_hit_points = TemporaryHitPoints(self)
         self.__race = basic_races_collection.get_race(race_name)
+        self.__passive_perception = PassivePerception(self)
+        self.__attacks_list = AttacksList(self)
 
     @property
     def current_game_class(self) -> CurrentGameClass:
@@ -118,6 +120,16 @@ class Character(AbstractCharacter):
         """Get race"""
         return self.__race
 
+    @property
+    def passive_perception(self) -> PassivePerception:
+        """Get passive perception."""
+        return self.__passive_perception
+
+    @property
+    def attacks_list(self):
+        """Get attacks list"""
+        return self.__attacks_list
+
 
 # Execution
 swanchick = Character({
@@ -146,4 +158,8 @@ gey_338 = Character({
 }, GameClassType.BARBARIAN, "Human", 15, basic_armor_collection.get_armor_by_name("Chain mail"))
 
 print(gey_338.current_game_class.value.proficiencies)
-gey_338.skills[SkillType.ANIMAL_HANDLING]
+gey_338.attacks_list.add_attack("Long sword", AbilityType.DEXTERITY, True, "1d10")
+
+attack1 = gey_338.attacks_list.get_attack("Long sword")
+print(f"Formula of damage of {attack1.name}: {attack1.damage_formula}")
+show_all_stats(gey_338)
