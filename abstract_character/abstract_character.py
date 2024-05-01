@@ -23,6 +23,7 @@ class AbstractCharacter(ABC):
         self.__race = None
         self.__passive_perception = None
         self.__attacks_list = None
+        self.__features = None
 
     @abstractmethod
     def current_game_class(self):
@@ -107,4 +108,9 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def attacks_list(self):
         """Get the attacks list."""
+        pass
+
+    @abstractmethod
+    def features(self):
+        """Get the features."""
         pass

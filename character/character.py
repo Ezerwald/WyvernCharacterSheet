@@ -16,10 +16,11 @@ from game_classes import CurrentGameClass, basic_game_classes_collection, GameCl
 from race import basic_races_collection
 from character_stats import PassivePerception
 from attacks import AttacksList
+from character_features import CharacterFeatures
 
 
 class Character(AbstractCharacter):
-    """Represents a __character."""
+    """Represents a character."""
 
     def __init__(self, abilities_scores: Dict[AbilityType, int], game_class_type: GameClassType, race_name: str,
                  level: int = MIN_LEVEL, equipped_armor: Armor = None):
@@ -44,6 +45,7 @@ class Character(AbstractCharacter):
         self.__race = basic_races_collection.get_race(race_name)
         self.__passive_perception = PassivePerception(self)
         self.__attacks_list = AttacksList(self)
+        self.__features = CharacterFeatures(self)
 
     @property
     def current_game_class(self) -> CurrentGameClass:
@@ -130,6 +132,11 @@ class Character(AbstractCharacter):
         """Get attacks list"""
         return self.__attacks_list
 
+    @property
+    def features(self):
+        """Get character's features."""
+        return self.__features
+
 
 # Execution
 swanchick = Character({
@@ -157,9 +164,9 @@ gey_338 = Character({
     AbilityType.CHARISMA: 18
 }, GameClassType.BARBARIAN, "Human", 15, basic_armor_collection.get_armor_by_name("Chain mail"))
 
-print(gey_338.current_game_class.value.proficiencies)
 gey_338.attacks_list.add_attack("Long sword", AbilityType.DEXTERITY, True, "1d10")
 
 attack1 = gey_338.attacks_list.get_attack("Long sword")
 print(f"Formula of damage of {attack1.name}: {attack1.damage_formula}")
 show_all_stats(gey_338)
+print(gey_338.features.all_features)
