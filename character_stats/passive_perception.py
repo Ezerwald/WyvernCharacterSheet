@@ -11,4 +11,3 @@ class PassivePerception:
         """Get the passive perception value."""
         perception_skill = self.__character.skills[SkillType.PERCEPTION]
         return 10 + perception_skill.value
-

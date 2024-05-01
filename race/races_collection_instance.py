@@ -101,3 +101,6 @@ half_orc_features = ("Languages: Common, Orcish\n"
                      "Ability Score Increase: Your Strength score increases by 2, and your Constitution score "
                      "increases by 1.")
 basic_races_collection.add_race(Race("Half-Orc", half_orc_ability_bonuses, 30, half_orc_features))
+
+# Half-elf
+half_elf_ability_bonuses = {AbilityType.CHARISMA: 2}

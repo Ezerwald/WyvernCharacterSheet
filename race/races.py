@@ -25,5 +25,5 @@ class Race:
 
     @property
     def features(self) -> str:
-        """Get race features"""
+        """Get race description"""
         return self.__features

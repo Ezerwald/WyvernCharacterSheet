@@ -2,9 +2,9 @@ from enum import Enum, auto
 
 
 class AbilityType(Enum):
-    STRENGTH = auto()
-    DEXTERITY = auto()
-    CONSTITUTION = auto()
-    INTELLIGENCE = auto()
-    WISDOM = auto()
-    CHARISMA = auto()
+    STRENGTH = "STR"
+    DEXTERITY = "DEX"
+    CONSTITUTION = "CON"
+    INTELLIGENCE = "INT"
+    WISDOM = "WIS"
+    CHARISMA = "CHA"
