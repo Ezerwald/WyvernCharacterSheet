@@ -1,0 +1,134 @@
+body{
+    background-color: saddlebrown;
+    color: #39220f;
+    text-align: center;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: saddlebrown;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 0;
+}
+
+header section{
+    border: 3px double grey;
+    border-radius: 10px;
+    background-color: white;
+    height: 90px;
+    margin: auto;
+    padding: 3px;
+}
+
+.title{
+    width: 15%;
+    color: saddlebrown;
+    font-family: Copperplate, Papyrus, fantasy;
+}
+.title h1 {
+    font-size: 200%;
+    margin: 0;
+}
+
+.title h2 {
+    font-size: 150%;
+    margin: 0;
+}
+
+.character-name{
+    width: 15%;
+}
+
+.general-info{
+    width: 40%
+}
+
+.states{
+    width: 15%
+}
+
+.options{
+    width: 10%
+}
+
+
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin:0
+}
+
+.flex-container section{
+    display: flex;
+    flex-direction: column;
+    height: 83vh;
+    margin-right: 6px;
+    padding: 3px;
+}
+
+.flex-container section section{
+    width: 100%;
+    border: 3px double grey;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 1px;
+    padding: 3px;
+}
+
+.section-1{
+    width: 15%;
+}
+
+.section-2{
+    width: 7%;
+}
+
+.section-3{
+    width: 15%;
+}
+
+.section-4{
+    width: 25%;
+}
+
+.section-5{
+    width: 40%;
+}
+
+.block-header{
+    font-size: 120%;
+    border-bottom: 1px solid grey;
+}
+
+.block-rolls{
+
+}
+
+.block-abilities{
+
+}
+
+.block-skills{
+
+}
+
+.block-health{
+
+}
+
+.block-inventory{
+    height: 40vh;
+}
+
+.block-features{
+    height: 40vh;
+}
+
+
+
