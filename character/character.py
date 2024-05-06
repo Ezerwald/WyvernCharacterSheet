@@ -138,6 +138,10 @@ class Character(AbstractCharacter):
         """Get character's features."""
         return self.__features
 
+    def speed(self):
+        """Get the movement speed."""
+        return self.__speed
+
 
 # Execution
 swanchick = Character({
