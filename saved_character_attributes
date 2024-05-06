@@ -1,0 +1,22 @@
+character_name: text
+current_game_class: text
+level: text
+background: text
+player_name: text
+race: text
+alignment: text
+experience_points: int
+abilities_scores: set of 6 integers
+saving_throws_proficiencies: list of words
+skills_proficiencies: list of words
+equipped_armor: word
+current_hit_points: int
+max_hit_points: int
+temporary_hit_points: int
+hit_dice: word
+hit_dices_left: int
+successful_death_saves: int (0 to 3)
+failed_death_saves: int (0 to 3)
+attacks: list( list(attack_name: str, main_ability: str, proficiency: bool, basic_damage: str)
+Inventory: str
+Features: str
