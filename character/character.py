@@ -2,7 +2,7 @@ from typing import Dict
 
 from abstract_character import AbstractCharacter
 from shield import Shield
-from character_stats import Ability, Level, ProfBonus, AbilityType
+from character_stats import Ability, Level, ProfBonus, AbilityType, Speed
 from saving_throws import SavingThrow
 from skills import Skill
 from skills_types import SkillType
@@ -34,6 +34,7 @@ class Character(AbstractCharacter):
         self.__saving_throws = {ability: SavingThrow(self, ability) for ability in AbilityType}
         self.__skills = {skill: Skill(skill, self.abilities[SKILLS_TO_ABILITIES[skill]].modifier) for skill in
                          SKILLS_TO_ABILITIES}
+        self.__race = basic_races_collection.get_race(race_name)
         self.__shield = Shield(self)
         self.__equipped_armor = EquippedArmor(self, equipped_armor)
         self.__armor_class = ArmorClass(self)
@@ -42,10 +43,10 @@ class Character(AbstractCharacter):
         self.__hit_points = HitPoints(self)
         self.__hit_dices_pool = HitDicesPool(self)
         self.__temporary_hit_points = TemporaryHitPoints(self)
-        self.__race = basic_races_collection.get_race(race_name)
         self.__passive_perception = PassivePerception(self)
         self.__attacks_list = AttacksList(self)
         self.__features = CharacterFeatures(self)
+        self.__speed = Speed(self)
 
     @property
     def current_game_class(self) -> CurrentGameClass:
