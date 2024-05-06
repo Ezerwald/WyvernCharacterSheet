@@ -22,7 +22,7 @@ class GameClass:
 
     @property
     def name(self) -> str:
-        """Get game class name"""
+        """Get game class character_name"""
         return self.__name
 
     @property

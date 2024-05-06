@@ -22,7 +22,7 @@ class Armor:
 
     @property
     def name(self) -> str:
-        """Get the name of the armor."""
+        """Get the character_name of the armor."""
         return self.__name
 
     @property
@@ -47,7 +47,7 @@ class Armor:
 
     def __str__(self) -> str:
         """A string representation of the armor."""
-        return f"Armor(id='{self.id}', name='{self.name}', armor_type='{self.armor_type}', " \
+        return f"Armor(id='{self.id}', character_name='{self.name}', armor_type='{self.armor_type}', " \
                f"basic_armor_class={self.basic_armor_class}, " \
                f"max_dexterity_bonus={self.max_dexterity_bonus}, " \
                f"stealth_disadvantage={self.stealth_disadvantage})"

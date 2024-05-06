@@ -2,21 +2,21 @@ from abstract_character import AbstractCharacter
 
 
 class Biography:
-    def __init__(self, character: AbstractCharacter, name: str = "", background: str = "", alignment: str = ""):
+    def __init__(self, character: AbstractCharacter, character_name: str = "", background: str = "", alignment: str = ""):
         self.__character = character
-        self.name = name
+        self.name = character_name
         self.background = background
         self.alignment = alignment
 
     @property
     def name(self) -> str:
-        """Get the character's name."""
+        """Get the character's character_name."""
         return self.__name
 
     @name.setter
     def name(self, name: str):
-        """Set the character's name."""
-        if name.strip():  # Ensure the name is not empty
+        """Set the character's character_name."""
+        if name.strip():  # Ensure the character_name is not empty
             self.__name = name.strip()
         else:
             raise ValueError("Name cannot be empty.")

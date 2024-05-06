@@ -10,7 +10,7 @@ class Race:
 
     @property
     def name(self) -> str:
-        """Get race name"""
+        """Get race character_name"""
         return self.__name
 
     @property

@@ -1,8 +1,8 @@
-from typing import Dict
+from typing import Dict, List
 
 from abstract_character import AbstractCharacter
 from shield import Shield
-from character_stats import Ability, Level, ProfBonus, AbilityType, Speed
+from character_stats import Ability, Level, ProfBonus, AbilityType, Speed, Biography
 from saving_throws import SavingThrow
 from skills import Skill
 from skills_types import SkillType
@@ -22,8 +22,18 @@ from character_features import CharacterFeatures
 class Character(AbstractCharacter):
     """Represents a character."""
 
-    def __init__(self, abilities_scores: Dict[AbilityType, int], game_class_type: GameClassType, race_name: str,
-                 level: int = MIN_LEVEL, equipped_armor: Armor = None):
+    @property
+    def current_game_class(self) -> CurrentGameClass:
+        """Get the game class."""
+        return self.__current_game_class
+
+    def __init__(self, character_name: str, game_class_type: GameClassType, level: int, background: str,
+                 player_name: str, race_name: str, alignment: str, experience_points: int,
+                 abilities_scores: Dict[AbilityType, int], saving_throws_proficiencies: List[AbilityType],
+                 skills_proficiencies: List[SkillType],
+                 equipped_armor: Armor, current_hit_points: int, max_hit_points: int, temporary_hit_points: int,
+                 hit_dice: str, hit_dices_left, successful_death_saves: int, failed_death_saves: int, attacks_list: List[List[str, str, bool, str]],
+                 inventory: str, features: str):
         """Initialize a Character instance."""
         super().__init__()
         self.__current_game_class = CurrentGameClass(self, basic_game_classes_collection.
@@ -47,11 +57,7 @@ class Character(AbstractCharacter):
         self.__attacks_list = AttacksList(self)
         self.__features = CharacterFeatures(self)
         self.__speed = Speed(self)
-
-    @property
-    def current_game_class(self) -> CurrentGameClass:
-        """Get the game class."""
-        return self.__current_game_class
+        self.__biography = Biography(self, character_name)
 
     @property
     def level(self) -> Level:
@@ -142,36 +148,3 @@ class Character(AbstractCharacter):
         """Get the movement speed."""
         return self.__speed
 
-
-# Execution
-swanchick = Character({
-    AbilityType.STRENGTH: 16,
-    AbilityType.DEXTERITY: 12,
-    AbilityType.CONSTITUTION: 9,
-    AbilityType.INTELLIGENCE: 11,
-    AbilityType.WISDOM: 20,
-    AbilityType.CHARISMA: 16
-}, GameClassType.BARBARIAN, "Hill Dwarf", 1, basic_armor_collection.get_armor_by_name("Hide"))
-
-print("Your STR mod:", swanchick.abilities[AbilityType.STRENGTH].modifier)
-print(f"Your proficiency bonus at level {swanchick.level.value} is:", swanchick.prof_bonus.value)
-swanchick.saving_throws[AbilityType.STRENGTH].proficiency = True
-print("Your STR saving throw is:", swanchick.saving_throws[AbilityType.STRENGTH].value)
-print("Your Armor Class is:", swanchick.armor_class.value)
-print(basic_game_classes_collection.get_all_game_classes())
-
-gey_338 = Character({
-    AbilityType.STRENGTH: 20,
-    AbilityType.DEXTERITY: 20,
-    AbilityType.CONSTITUTION: 20,
-    AbilityType.INTELLIGENCE: 19,
-    AbilityType.WISDOM: 19,
-    AbilityType.CHARISMA: 18
-}, GameClassType.BARBARIAN, "Human", 15, basic_armor_collection.get_armor_by_name("Chain mail"))
-
-gey_338.attacks_list.add_attack("Long sword", AbilityType.DEXTERITY, True, "1d10")
-
-attack1 = gey_338.attacks_list.get_attack("Long sword")
-print(f"Formula of damage of {attack1.name}: {attack1.damage_formula}")
-show_all_stats(gey_338)
-print(gey_338.features.all_features)

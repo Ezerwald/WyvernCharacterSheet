@@ -22,7 +22,7 @@ class GameClassCollection:
         return None
 
     def get_game_class_by_name(self, name: str) -> Optional[GameClass]:
-        """Get game class by its name."""
+        """Get game class by its character_name."""
         for game_class in self.__game_class_collection:
             if game_class.name == name:
                 return game_class

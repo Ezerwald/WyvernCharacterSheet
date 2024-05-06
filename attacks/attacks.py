@@ -14,12 +14,12 @@ class Attack:
 
     @property
     def name(self) -> str:
-        """Get name of the attack."""
+        """Get character_name of the attack."""
         return self._name
 
     @name.setter
     def name(self, name: str) -> None:
-        """Set the name of the attack."""
+        """Set the character_name of the attack."""
         self._name = name
 
     @property

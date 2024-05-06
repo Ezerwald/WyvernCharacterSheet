@@ -25,13 +25,13 @@ class RaceCollection:
             self.add_race(subrace)
 
     def remove_race(self, race_name: str) -> None:
-        """Remove a race from the collection by its name."""
+        """Remove a race from the collection by its character_name."""
         if race_name not in self.__races:
             raise ValueError(f"No race '{race_name}' found in the collection.")
         del self.__races[race_name]
 
     def get_race(self, race_name: str) -> Optional[Race]:
-        """Get a race from the collection by its name."""
+        """Get a race from the collection by its character_name."""
         return self.__races.get(race_name)
 
     def get_all_races(self) -> Dict[str, Race]:
