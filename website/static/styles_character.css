@@ -2,7 +2,10 @@ body{
     background-color: saddlebrown;
     color: #39220f;
     text-align: center;
+    max-width: 100%;
+    max-height: 100%;
     margin: 0;
+    padding: 0;
 }
 
 header{
@@ -18,10 +21,78 @@ header section{
     border: 3px double grey;
     border-radius: 10px;
     background-color: white;
-    height: 90px;
+    height: 80px;
     margin: auto;
     padding: 3px;
 }
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    margin:0;
+    padding: 0;
+}
+
+.flex-container section{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    margin-right: 6px;
+    padding: 3px;
+}
+
+.section-1{
+    width: 15%;
+}
+
+.section-2{
+    width: 7%;
+}
+
+.section-3{
+    width: 15%;
+}
+
+.section-4{
+    width: 25%;
+}
+
+.section-5{
+    width: 33%;
+}
+
+/* Section block template */
+.section-block{
+    width: 100%;
+    border: 3px double grey;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 1px;
+    padding: 3px;
+}
+
+.block-header{
+    border-bottom: 1px solid grey;
+}
+
+.block-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Header section blocks*/
 
 .title{
     width: 15%;
@@ -54,81 +125,86 @@ header section{
     width: 10%
 }
 
-
-
-.flex-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: center;
-    margin:0
-}
-
-.flex-container section{
-    display: flex;
-    flex-direction: column;
-    height: 83vh;
-    margin-right: 6px;
-    padding: 3px;
-}
-
-.flex-container section section{
-    width: 100%;
-    border: 3px double grey;
-    border-radius: 10px;
-    background-color: white;
-    margin-top: 1px;
-    padding: 3px;
-}
-
-.section-1{
-    width: 15%;
-}
-
-.section-2{
-    width: 7%;
-}
-
-.section-3{
-    width: 15%;
-}
-
-.section-4{
-    width: 25%;
-}
-
-.section-5{
-    width: 40%;
-}
-
-.block-header{
-    font-size: 120%;
-    border-bottom: 1px solid grey;
-}
+/* Section 1 blocks*/
 
 .block-rolls{
-
+    height: 100%;
 }
 
+/* Section 2 blocks */
 .block-abilities{
+    height: 100%;
+}
 
+    .ability-field{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 16%;
+        width: 60%;
+    }
+        .ability-score{
+        }
+        .ability-modifier{
+            font-size: 190%;
+            width: 100%;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+        }
+
+
+/* Section 3 blocks */
+
+.block-prof-bonus{
+    height: 5%;
+}
+
+.block-saving-throws{
+    height: 25%;
 }
 
 .block-skills{
-
+    height: 65%;
 }
 
+/* Section 4 blocks */
 .block-health{
 
 }
+    .block-armor-class,
+    .block-initiative,
+    .block-speed{
+        height: 10vh;
+    }
 
+    .block-current-hit-points,
+    .block-temporary-hit-points{
+        height: 10vh;
+    }
+
+    .block-hit-dice,
+    .block-death-saves{
+        height: 10vh
+    }
+
+.block-attack{
+    height: 60%;
+}
+
+.block-passive-perception{
+    height: 8vh;
+}
+
+/* Section 5 blocks */
 .block-inventory{
-    height: 40vh;
+    height: 50%;
 }
 
 .block-features{
-    height: 40vh;
+    height: 50%;
 }
+
 
 
 
