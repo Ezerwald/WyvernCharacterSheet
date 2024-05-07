@@ -25,6 +25,8 @@ class AbstractCharacter(ABC):
         self.__attacks_list = None
         self.__features = None
         self.__speed = None
+        self.__experience_points = None
+        self.__inventory = None
 
     @abstractmethod
     def current_game_class(self):
@@ -119,4 +121,14 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def speed(self):
         """Get the speed."""
+        pass
+
+    @abstractmethod
+    def experience_points(self):
+        """Get experience points"""
+        pass
+
+    @abstractmethod
+    def inventory(self):
+        """Get inventory."""
         pass
