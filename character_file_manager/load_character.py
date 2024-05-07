@@ -15,31 +15,36 @@ cursor = conn.cursor()
 cursor.execute("SELECT * FROM characters WHERE id = 1")
 character_data = cursor.fetchone()
 
+# Get column names
+columns = [description[0] for description in cursor.description]
+
+# Create a dictionary mapping column names to their values
+character_dict = dict(zip(columns, character_data))
+
 # Deserialize complex data structures
-if character_data:
-    character_name = character_data[1]
-    current_game_class = character_data[2]
-    level = character_data[3]
-    background = character_data[4]
-    player_name = character_data[5]
-    race = character_data[6]
-    alignment = character_data[7]
-    experience_points = character_data[8]
-    ability_scores = deserialize(character_data[9])
-    saving_throws_proficiencies = deserialize(character_data[10])
-    skills_proficiencies = deserialize(character_data[11])
-    shield = character_data[12]
-    equipped_armor = character_data[13]
-    current_hit_points = character_data[14]
-    max_hit_points = character_data[15]
-    temporary_hit_points = character_data[16]
-    hit_dice = character_data[17]
-    hit_dices_left = character_data[18]
-    successful_death_saves = character_data[19]
-    failed_death_saves = character_data[20]
-    attacks = deserialize(character_data[21])
-    inventory = character_data[22]
-    features = character_data[23]
+if character_dict:
+    character_name = character_dict['character_name']
+    current_game_class = character_dict['current_game_class']
+    level = character_dict['level']
+    background = character_dict['background']
+    player_name = character_dict['player_name']
+    race = character_dict['race']
+    alignment = character_dict['alignment']
+    experience_points = character_dict['experience_points']
+    ability_scores = deserialize(character_dict['ability_scores'])
+    saving_throws_proficiencies = deserialize(character_dict['saving_throws_proficiencies'])
+    skills_proficiencies = deserialize(character_dict['skills_proficiencies'])
+    shield = character_dict['shield']
+    equipped_armor = character_dict['equipped_armor']
+    current_hit_points = character_dict['current_hit_points']
+    max_hit_points = character_dict['max_hit_points']
+    temporary_hit_points = character_dict['temporary_hit_points']
+    hit_dices_left = character_dict['hit_dices_left']
+    successful_death_saves = character_dict['successful_death_saves']
+    failed_death_saves = character_dict['failed_death_saves']
+    attacks = deserialize(character_dict['attacks'])
+    inventory = character_dict['inventory']
+    features = character_dict['features']
 
     # Now you can work with the deserialized data
     print("Character Name:", character_name)
@@ -58,7 +63,6 @@ if character_data:
     print("Current Hit Points:", current_hit_points)
     print("Maximum Hit Points:", max_hit_points)
     print("Temporary Hit Points:", temporary_hit_points)
-    print("Hit Dice:", hit_dice)
     print("Hit Dices Left:", hit_dices_left)
     print("Successful Death Saves:", successful_death_saves)
     print("Failed Death Saves:", failed_death_saves)

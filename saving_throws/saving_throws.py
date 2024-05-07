@@ -3,7 +3,7 @@ from abstract_character import AbstractCharacter
 
 
 class SavingThrow:
-    def __init__(self, character: AbstractCharacter, ability_type: AbilityType, proficiency=False):
+    def __init__(self, character: AbstractCharacter, ability_type: AbilityType, proficiency: bool=False):
         self.__ability_type = ability_type
         self.__proficiency = proficiency
         self.__character = character

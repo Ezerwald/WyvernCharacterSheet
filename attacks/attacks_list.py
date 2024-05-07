@@ -6,9 +6,9 @@ from abstract_character import AbstractCharacter
 
 
 class AttacksList:
-    def __init__(self, character: AbstractCharacter):
+    def __init__(self, character: AbstractCharacter, attacks_list: List[Attack] = None):
         self.__character = character
-        self.__attacks: List[Attack] = []
+        self.__attacks: List[Attack] = attacks_list
 
     def add_attack(self, name: str, main_ability: AbilityType, proficiency: bool = False, basic_damage: str = "") -> None:
         """Add an attack to the list."""

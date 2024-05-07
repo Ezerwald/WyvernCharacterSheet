@@ -2,9 +2,9 @@ from abstract_character import AbstractCharacter
 
 
 class TemporaryHitPoints:
-    def __init__(self, character: AbstractCharacter):
+    def __init__(self, character: AbstractCharacter, temporary_hit_points: int = 0):
         self.__character = character
-        self.__temporary_hit_points = 0
+        self.__temporary_hit_points = temporary_hit_points
 
     @property
     def value(self):

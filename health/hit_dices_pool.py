@@ -2,16 +2,16 @@ from abstract_character import AbstractCharacter
 
 
 class HitDicesPool:
-    def __init__(self, character: AbstractCharacter):
+    def __init__(self, character: AbstractCharacter, hit_dices_left: int = None):
         self.__character = character
         self.__hit_dice = self.__character.current_game_class.value.hit_dice
         self.__max_hit_dices_amount = self.calc_max_hit_dices_amount()
-        self.__hit_dices_amount = self.__max_hit_dices_amount
+        self.__hit_dices_left = hit_dices_left or self.__max_hit_dices_amount
 
     @property
     def hit_dices_amount(self):
         """Get hit dices amount in pool"""
-        return self.__hit_dices_amount
+        return self.__hit_dices_left
 
     @hit_dices_amount.setter
     def hit_dices_amount(self, amount):
@@ -19,9 +19,9 @@ class HitDicesPool:
         if amount < 0:
             return
         elif amount < self.__max_hit_dices_amount:
-            self.__hit_dices_amount = amount
+            self.__hit_dices_left = amount
         else:
-            self.__hit_dices_amount = self.__max_hit_dices_amount
+            self.__hit_dices_left = self.__max_hit_dices_amount
 
     @property
     def hit_dice(self):

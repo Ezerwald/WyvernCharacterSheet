@@ -2,41 +2,48 @@ from abstract_character import AbstractCharacter
 
 
 class Biography:
-    def __init__(self, character: AbstractCharacter, character_name: str = "", background: str = "", alignment: str = ""):
+    def __init__(self, character: AbstractCharacter, character_name: str = "", background: str = "",
+                 alignment: str = "", player_name: str = ""):
+        self.__player_name = player_name
         self.__character = character
-        self.name = character_name
-        self.background = background
-        self.alignment = alignment
+        self.__character_name = character_name
+        self.__background = background
+        self.__alignment = alignment
 
     @property
-    def name(self) -> str:
-        """Get the character's character_name."""
+    def __character_name(self) -> str:
+        """Get the character's name."""
         return self.__name
 
-    @name.setter
-    def name(self, name: str):
-        """Set the character's character_name."""
+    @__character_name.setter
+    def __character_name(self, name: str):
+        """Set the character's name."""
         if name.strip():  # Ensure the character_name is not empty
             self.__name = name.strip()
         else:
             raise ValueError("Name cannot be empty.")
 
     @property
-    def background(self) -> str:
+    def __background(self) -> str:
         """Get the character's background."""
         return self.__background
 
-    @background.setter
-    def background(self, background: str):
+    @__background.setter
+    def __background(self, background: str):
         """Set the character's background."""
         self.__background = background.strip()
 
     @property
-    def alignment(self) -> str:
+    def __alignment(self) -> str:
         """Get the character's alignment."""
         return self.__alignment
 
-    @alignment.setter
-    def alignment(self, alignment: str):
+    @__alignment.setter
+    def __alignment(self, alignment: str):
         """Set the character's alignment."""
         self.__alignment = alignment.strip()
+
+    @property
+    def player_name(self):
+        return
+

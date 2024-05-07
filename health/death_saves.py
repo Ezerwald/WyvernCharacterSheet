@@ -2,10 +2,10 @@ from abstract_character import AbstractCharacter
 
 
 class DeathSaves:
-    def __init__(self, character: AbstractCharacter):
+    def __init__(self, character: AbstractCharacter, successful_saves: int = 0, failed_saves: int = 0):
         self.character = character
-        self.__successful_saves = 0
-        self.__failed_saves = 0
+        self.__successful_saves = successful_saves
+        self.__failed_saves = failed_saves
 
     @property
     def successful_saves(self):

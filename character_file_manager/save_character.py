@@ -53,7 +53,6 @@ character_data = {
     'current_hit_points': 50,
     'max_hit_points': 60,
     'temporary_hit_points': 0,
-    'hit_dice': 'd10',
     'hit_dices_left': 5,
     'successful_death_saves': 0,
     'failed_death_saves': 0,
@@ -69,7 +68,7 @@ cursor.execute('''INSERT INTO characters (
                     character_name, current_game_class, level, background, player_name, race, alignment,
                     experience_points, ability_scores, saving_throws_proficiencies, skills_proficiencies, shield,
                     equipped_armor, current_hit_points, max_hit_points, temporary_hit_points,
-                    hit_dice, hit_dices_left, successful_death_saves, failed_death_saves,
+                    hit_dices_left, successful_death_saves, failed_death_saves,
                     attacks, inventory, features
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                (
@@ -80,7 +79,7 @@ cursor.execute('''INSERT INTO characters (
                    json.dumps(character_data['skills_proficiencies']), character_data['shield'],
                    character_data['equipped_armor'],
                    character_data['current_hit_points'], character_data['max_hit_points'], character_data['temporary_hit_points'],
-                   character_data['hit_dice'], character_data['hit_dices_left'],
+                   character_data['hit_dices_left'],
                    character_data['successful_death_saves'], character_data['failed_death_saves'],
                    json.dumps(character_data['attacks']), character_data['inventory'], character_data['features']
                ))

@@ -2,10 +2,10 @@ from abstract_character import AbstractCharacter
 
 
 class HitPoints:
-    def __init__(self, character: AbstractCharacter):
+    def __init__(self, character: AbstractCharacter, current_hit_points: int = None, max_hit_points: int = None):
         self.__character = character
-        self.__max_hit_points = self.calc_max_hit_points()
-        self.__current_hit_points = self.__max_hit_points
+        self.__max_hit_points = max_hit_points or self.calc_max_hit_points()
+        self.__current_hit_points = current_hit_points or self.__max_hit_points
 
     @property
     def current_hit_points(self):
@@ -15,6 +15,8 @@ class HitPoints:
     @current_hit_points.setter
     def current_hit_points(self, value):
         """Set current hit points."""
+        if value is None:
+            raise ValueError("Current hit points cannot be None.")
         if value < 0:
             raise ValueError("Current hit points cannot be negative.")
         self.__current_hit_points = min(value, self.__max_hit_points)
@@ -27,10 +29,12 @@ class HitPoints:
     @max_hit_points.setter
     def max_hit_points(self, value):
         """Set max hit points."""
+        if value is None:
+            raise ValueError("Max hit points cannot be None.")
         if value < 0:
             raise ValueError("Max hit points cannot be negative.")
         self.__max_hit_points = value
-        if value < self.__current_hit_points:
+        if self.__current_hit_points > value:
             self.__current_hit_points = value
 
     def calc_max_hit_points(self):

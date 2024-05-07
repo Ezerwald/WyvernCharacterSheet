@@ -7,7 +7,7 @@ class CharacterFeatures:
         self.__character: AbstractCharacter = character
         self.__all_features = (f"   {self.__character.race.name} race features:\n" +
                                f"{self.__character.race.features} \n" +
-                               f"   {self.__character.current_game_class.value.name} class features:\n" +
+                               f"   {self.__character.current_game_class.value.__character_name} class features:\n" +
                                f"{self.__character.current_game_class.value.proficiencies}")
 
     @property

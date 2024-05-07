@@ -4,7 +4,7 @@ from utils import SKILLS_TO_ABILITIES
 
 
 class Skill:
-    def __init__(self, character: AbstractCharacter, skill_type: SkillType, proficiency=False):
+    def __init__(self, character: AbstractCharacter, skill_type: SkillType, proficiency: bool=False):
         self.__skill_type = skill_type
         self.__character = character
         self.__proficiency = proficiency

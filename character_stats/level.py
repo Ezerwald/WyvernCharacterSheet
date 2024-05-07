@@ -3,7 +3,7 @@ from abstract_character import AbstractCharacter
 
 
 class Level:
-    def __init__(self, character: AbstractCharacter, level):
+    def __init__(self, character: AbstractCharacter, level: int = MIN_LEVEL):
         self.__character = character
         self.__level = level
 
