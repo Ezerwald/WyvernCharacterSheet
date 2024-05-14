@@ -8,9 +8,11 @@ class CurrentGameClass:
         self.__game_class = game_class
 
     @property
-    def value(self):
+    def value(self) -> GameClass:
+        """Get the current character game class"""
         return self.__game_class
 
     @value.setter
     def value(self, new_value):
+        """Set the current character game class"""
         self.__game_class = new_value

@@ -4,8 +4,8 @@ from abstract_character import AbstractCharacter
 class HitPoints:
     def __init__(self, character: AbstractCharacter, current_hit_points: int = None, max_hit_points: int = None):
         self.__character = character
-        self.__max_hit_points = max_hit_points or self.calc_max_hit_points()
-        self.__current_hit_points = current_hit_points or self.__max_hit_points
+        self.__max_hit_points: int = max_hit_points or self.calc_max_hit_points()
+        self.__current_hit_points: int = current_hit_points or self.__max_hit_points
 
     @property
     def current_hit_points(self):

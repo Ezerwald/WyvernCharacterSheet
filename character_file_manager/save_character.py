@@ -10,7 +10,7 @@ cursor = conn.cursor()
 # Create a table to store character data
 cursor.execute('''CREATE TABLE IF NOT EXISTS characters (
                     id INTEGER PRIMARY KEY,
-                    character_name TEXT,
+                    name TEXT,
                     current_game_class TEXT,
                     level INTEGER,
                     background TEXT,
@@ -37,7 +37,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS characters (
 
 # Sample character data
 character_data = {
-    'character_name': 'Character Name',
+    'name': 'Character Name',
     'current_game_class': 'Fighter',
     'level': 5,
     'background': 'Noble',
@@ -65,14 +65,14 @@ character_data = {
 
 # Insert character data into the database
 cursor.execute('''INSERT INTO characters (
-                    character_name, current_game_class, level, background, player_name, race, alignment,
+                    name, current_game_class, level, background, player_name, race, alignment,
                     experience_points, ability_scores, saving_throws_proficiencies, skills_proficiencies, shield,
                     equipped_armor, current_hit_points, max_hit_points, temporary_hit_points,
                     hit_dices_left, successful_death_saves, failed_death_saves,
                     attacks, inventory, features
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                (
-                   character_data['character_name'], character_data['current_game_class'], character_data['level'],
+                   character_data['name'], character_data['current_game_class'], character_data['level'],
                    character_data['background'], character_data['player_name'], character_data['race'], character_data['alignment'],
                    character_data['experience_points'], json.dumps(character_data['ability_scores']),
                    json.dumps(character_data['saving_throws_proficiencies']),

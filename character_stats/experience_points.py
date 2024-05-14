@@ -7,12 +7,12 @@ class ExperiencePoints:
 
 
     @property
-    def experience_points(self):
+    def value(self):
         """Get current experience points."""
         return self.__experience_points
 
-    @experience_points.setter
-    def experience_points(self, experience_points: int):
+    @value.setter
+    def value(self, experience_points: int):
         if experience_points > 0:
             self.__experience_points = experience_points
         else:

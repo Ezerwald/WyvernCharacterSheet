@@ -4,16 +4,16 @@ from utils import SKILLS_TO_ABILITIES
 
 
 class Skill:
-    def __init__(self, character: AbstractCharacter, skill_type: SkillType, proficiency: bool=False):
+    def __init__(self, character: AbstractCharacter, skill_type: SkillType, proficiency: bool = False):
         self.__skill_type = skill_type
         self.__character = character
         self.__proficiency = proficiency
 
     @property
     def value(self):
-        value = self.__character.__abilities[SKILLS_TO_ABILITIES[self.__skill_type]].modifier
+        value = self.__character.abilities[SKILLS_TO_ABILITIES[self.__skill_type]].modifier
         if self.__proficiency:
-            value += self.__character.__prof_bonus.value
+            value += self.__character.prof_bonus.value
         return value
 
     @property

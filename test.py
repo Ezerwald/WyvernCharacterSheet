@@ -1,98 +1,45 @@
+from attacks import Attack
+from character import Character
+from character import CharacterSingleton
+from character_stats import AbilityType
+from game_classes import GameClassType
+from skills_types import SkillType
+
+character_singleton = CharacterSingleton()
+
+character_data = (
+    "Aragorn",
+    GameClassType.FIGHTER,
+    5,
+    "Noble",
+    "Human",
+    "Neutral Good",
+    5000,
+    {
+        AbilityType.STRENGTH: 18,
+        AbilityType.DEXTERITY: 16,
+        AbilityType.CONSTITUTION: 14,
+        AbilityType.INTELLIGENCE: 12,
+        AbilityType.WISDOM: 10,
+        AbilityType.CHARISMA: 8
+    },
+    [AbilityType.STRENGTH, AbilityType.DEXTERITY],
+    [SkillType.ACROBATICS, SkillType.SURVIVAL],
+    True,
+    "Plate Armor",
+    45,
+    60,
+    0,
+    2,
+    2,
+    1,
+    [("Longsword", AbilityType.STRENGTH, True, "1d10", 5, 2)],
+    "Longsword, Backpack, Rations",
+    "Favored Enemy: Orcs, Second Wind"
+)
+
+character_singleton.create_character(character_data)
+character = character_singleton.character
+character_singleton.save_character()
 
 
-class CharacterSheet:
-    def __init__(self):
-        # column 1
-        # basic stats
-        self.strength = stat_block.StatBlock()
-        self.dexterity = stat_block.StatBlock()
-        self.constitution = stat_block.StatBlock()
-        self.intelligence = stat_block.StatBlock()
-        self.wisdom = stat_block.StatBlock()
-        self.charisma = stat_block.StatBlock()
-
-        # column 2
-        # inspiration point and __proficiency bonus
-        self.inspiration = False
-        self.prof_bonus = 2
-
-        # saving throws __proficiency
-        self.strength_saving_throw_prof = False
-        self.dexterity_saving_throw_prof = False
-        self.constitution_saving_throw_prof = False
-        self.intelligence_saving_throw_prof = False
-        self.wisdom_saving_throw_prof = False
-        self.charisma_saving_throw_prof = False
-
-        # saving throws values
-        self.strength_saving_throw = self.strength_mod
-        self.dexterity_saving_throw = self.dexterity_mod
-        self.constitution_saving_throw = self.constitution_mod
-        self.intelligence_saving_throw = self.intelligence_mod
-        self.wisdom_saving_throw = self.wisdom_mod
-        self.charisma_saving_throw = self.charisma_mod
-
-        # __skills __proficiency
-        self.acrobatics_prof = False
-        self.animal_handling_prof = False
-        self.arcana_prof = False
-        self.athletics_prof = False
-        self.deception_prof = False
-        self.history_prof = False
-        self.insight_prof = False
-        self.intimidation_prof = False
-        self.investigation_prof = False
-        self.medicine_prof = False
-        self.nature_prof = False
-        self.perception_prof = False
-        self.performance_prof = False
-        self.persuasion_prof = False
-        self.religion_prof = False
-        self.sleight_of_hand_prof = False
-        self.stealth_prof = False
-        self.survival_prof = False
-
-        # skill modifier
-        self.acrobatics = 0
-        self.animal_handling = 0
-        self.arcana = 0
-        self.athletics = 0
-        self.deception = 0
-        self.history = 0
-        self.insight = 0
-        self.intimidation = 0
-        self.investigation = 0
-        self.medicine = 0
-        self.nature = 0
-        self.perception = 0
-        self.performance = 0
-        self.persuasion = 0
-        self.religion = 0
-        self.sleight_of_hand = 0
-        self.stealth = 0
-        self.survival = 0
-
-        # column 3
-        self.armor_class = 8 + self.dexterity_mod
-        self.initiative = self.dexterity_mod
-
-        # defined by race and class
-        self.speed = 0
-        self.hit_points = 0
-        self.temp_hit_points = 0
-        self.hit_dice = {}
-        self.death_saves_success = 0
-        self.death_saves_fail = 0
-        self.passive_perception = 8 + self.perception
-
-from enum import Enum, auto
-class StatBlock(Enum):
-    A = auto()
-    B = auto()
-    C = auto()
-
-print(StatBlock.A.value, StatBlock.B.value, StatBlock.C.value)
-
-from .saving_throws import SavingThrow
-from .skills import Skill
-from .skills_types import SkillType

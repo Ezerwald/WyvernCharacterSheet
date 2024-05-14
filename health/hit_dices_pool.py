@@ -9,12 +9,12 @@ class HitDicesPool:
         self.__hit_dices_left = hit_dices_left or self.__max_hit_dices_amount
 
     @property
-    def hit_dices_amount(self):
+    def hit_dices_left(self):
         """Get hit dices amount in pool"""
         return self.__hit_dices_left
 
-    @hit_dices_amount.setter
-    def hit_dices_amount(self, amount):
+    @hit_dices_left.setter
+    def hit_dices_left(self, amount):
         """Set hit dices amount in pool"""
         if amount < 0:
             return

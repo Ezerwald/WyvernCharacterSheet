@@ -16,19 +16,19 @@ class AttacksList:
         self.__attacks.append(attack)
 
     def remove_attack(self, attack_name: str) -> None:
-        """Remove an attack from the list by character_name."""
+        """Remove an attack from the list by name."""
         for index, attack in enumerate(self.__attacks):
             if attack.name == attack_name:
                 del self.__attacks[index]
                 return
-        raise ValueError(f"No attack with character_name '{attack_name}' found.")
+        raise ValueError(f"No attack with name '{attack_name}' found.")
 
     def get_attack(self, attack_name: str) -> Attack:
-        """Get an attack from the list by character_name."""
+        """Get an attack from the list by name."""
         for attack in self.__attacks:
             if attack.name == attack_name:
                 return attack
-        raise ValueError(f"No attack with character_name '{attack_name}' found.")
+        raise ValueError(f"No attack with name '{attack_name}' found.")
 
     def get_all_attacks(self) -> List[Attack]:
         """Get a copy of all attacks in the list."""
@@ -39,5 +39,5 @@ class AttacksList:
         self.__attacks.clear()
 
     def attack_exists(self, attack_name: str) -> bool:
-        """Check if an attack with the given character_name exists in the list."""
+        """Check if an attack with the given name exists in the list."""
         return any(attack.name == attack_name for attack in self.__attacks)

@@ -1,14 +1,14 @@
 class Inventory:
-    def __init__(self, character, inventory: str = None):
+    def __init__(self, character, items: str = None):
         self.__character = character
-        self.__inventory = inventory
+        self.__items = items
 
     @property
-    def inventory(self):
+    def items(self):
         """Get inventory"""
-        return self.__inventory
+        return self.__items
 
-    @inventory.setter
-    def inventory(self, inventory):
+    @items.setter
+    def items(self, value):
         """Set inventory"""
-        self.__inventory = inventory
+        self.__items = value

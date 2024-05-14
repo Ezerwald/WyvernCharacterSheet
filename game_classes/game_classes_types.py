@@ -1,16 +1,16 @@
-from enum import Enum, auto
+from enum import Enum
 
 
 class GameClassType(Enum):
-    BARBARIAN = auto()
-    BARD = auto()
-    CLERIC = auto()
-    DRUID = auto()
-    FIGHTER = auto()
-    MONK = auto()
-    PALADIN = auto()
-    RANGER = auto()
-    ROGUE = auto()
-    SORCERER = auto()
-    WARLOCK = auto()
-    WIZARD = auto()
+    BARBARIAN = "Barbarian"
+    BARD = "Bard"
+    CLERIC = "Cleric"
+    DRUID = "Druid"
+    FIGHTER = "Fighter"
+    MONK = "Monk"
+    PALADIN = "Paladin"
+    RANGER = "Ranger"
+    ROGUE = "Rogue"
+    SORCERER = "Sorcerer"
+    WARLOCK = "Warlock"
+    WIZARD = "Wizard"

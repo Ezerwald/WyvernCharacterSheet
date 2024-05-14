@@ -6,6 +6,7 @@ class AbstractCharacter(ABC):
     """Abstract base class for __character."""
 
     def __init__(self):
+        self.__biography = None
         self.__current_game_class = None
         self.__level = None
         self.__prof_bonus = None
@@ -27,6 +28,11 @@ class AbstractCharacter(ABC):
         self.__speed = None
         self.__experience_points = None
         self.__inventory = None
+
+    @abstractmethod
+    def biography(self):
+        """Get the biography of character."""
+        pass
 
     @abstractmethod
     def current_game_class(self):
