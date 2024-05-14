@@ -32,7 +32,7 @@ class Character(AbstractCharacter):
                  saving_throws_proficiencies: List[AbilityType],
                  skills_proficiencies: List[SkillType],
                  shield: bool,
-                 equipped_armor: str,
+                 equipped_armor_name: str,
                  current_hit_points: int,
                  max_hit_points: int,
                  temporary_hit_points: int,
@@ -53,7 +53,7 @@ class Character(AbstractCharacter):
         self.__initialize_saving_throws(saving_throws_proficiencies)
         self.__initialize_skills(skills_proficiencies)
         self.__initialize_shield(shield)
-        self.__initialize_equipped_armor(equipped_armor)
+        self.__initialize_equipped_armor(equipped_armor_name)
         self.__initialize_hit_points(current_hit_points, max_hit_points)
         self.__initialize_temporary_hit_points(temporary_hit_points)
         self.__initialize_hit_dices(hit_dices_left)
@@ -105,9 +105,9 @@ class Character(AbstractCharacter):
         """Initialize the character's shield."""
         self.__shield = Shield(self, shield)
 
-    def __initialize_equipped_armor(self, equipped_armor: str):
+    def __initialize_equipped_armor(self, equipped_armor_name: str):
         """Initialize the character's equipped armor."""
-        self.__equipped_armor = EquippedArmor(self,  basic_armor_collection.get_armor_by_name(equipped_armor))
+        self.__equipped_armor = EquippedArmor(self, basic_armor_collection.get_armor_by_name(equipped_armor_name))
 
     def __initialize_hit_points(self, current_hit_points: int, max_hit_points: int):
         """Initialize the character's hit points."""

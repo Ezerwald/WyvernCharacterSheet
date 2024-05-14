@@ -36,7 +36,7 @@ if character_dict:
         'saving_throws_proficiencies': deserialize(character_dict['saving_throws_proficiencies']),
         'skills_proficiencies': deserialize(character_dict['skills_proficiencies']),
         'shield': character_dict['shield'],
-        'equipped_armor': character_dict['equipped_armor'],
+        'equipped_armor_name': character_dict['equipped_armor_name'],
         'current_hit_points': character_dict['current_hit_points'],
         'max_hit_points': character_dict['max_hit_points'],
         'temporary_hit_points': character_dict['temporary_hit_points'],

@@ -26,7 +26,7 @@ character_data = (
     [AbilityType.STRENGTH, AbilityType.DEXTERITY],
     [SkillType.ACROBATICS, SkillType.SURVIVAL],
     True,
-    "Plate Armor",
+    "Plate",
     45,
     60,
     0,

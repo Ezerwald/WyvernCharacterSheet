@@ -1,8 +1,9 @@
 from .armors import Armor
+from abstract_character import AbstractCharacter
 
 
 class EquippedArmor:
-    def __init__(self, character, equipped_armor: Armor):
+    def __init__(self, character: AbstractCharacter, equipped_armor: Armor):
         """Initialize the EquippedArmor instance."""
         self.__character = character
         self.__equipped_armor = equipped_armor

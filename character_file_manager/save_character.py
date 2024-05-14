@@ -22,7 +22,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS characters (
                     saving_throws_proficiencies TEXT,  -- Stored as a serialized string
                     skills_proficiencies TEXT,  -- Stored as a serialized string
                     shield TEXT, 
-                    equipped_armor TEXT,
+                    equipped_armor_name TEXT,
                     current_hit_points INTEGER,
                     max_hit_points INTEGER,
                     temporary_hit_points INTEGER,
@@ -49,7 +49,7 @@ character_data = {
     'saving_throws_proficiencies': ['Strength', 'Dexterity'],
     'skills_proficiencies': ['Athletics', 'Perception'],
     'shield': 'True',
-    'equipped_armor': 'Chain Mail',
+    'equipped_armor_name': 'Chain Mail',
     'current_hit_points': 50,
     'max_hit_points': 60,
     'temporary_hit_points': 0,
@@ -67,7 +67,7 @@ character_data = {
 cursor.execute('''INSERT INTO characters (
                     name, current_game_class, level, background, player_name, race, alignment,
                     experience_points, ability_scores, saving_throws_proficiencies, skills_proficiencies, shield,
-                    equipped_armor, current_hit_points, max_hit_points, temporary_hit_points,
+                    equipped_armor_name, current_hit_points, max_hit_points, temporary_hit_points,
                     hit_dices_left, successful_death_saves, failed_death_saves,
                     attacks, inventory, features
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
@@ -77,7 +77,7 @@ cursor.execute('''INSERT INTO characters (
                    character_data['experience_points'], json.dumps(character_data['ability_scores']),
                    json.dumps(character_data['saving_throws_proficiencies']),
                    json.dumps(character_data['skills_proficiencies']), character_data['shield'],
-                   character_data['equipped_armor'],
+                   character_data['equipped_armor_name'],
                    character_data['current_hit_points'], character_data['max_hit_points'], character_data['temporary_hit_points'],
                    character_data['hit_dices_left'],
                    character_data['successful_death_saves'], character_data['failed_death_saves'],

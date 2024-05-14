@@ -35,6 +35,16 @@ class Attack:
         self.__main_ability = main_ability
 
     @property
+    def proficiency(self) -> bool:
+        """Get proficiency of the attack."""
+        return self.__proficiency
+
+    @proficiency.setter
+    def proficiency(self, proficiency: bool) -> None:
+        """Set proficiency of attack"""
+        self.__proficiency = proficiency
+
+    @property
     def attack_bonus(self) -> int:
         """Calculate and get the attack bonus value."""
         value = self.__character.abilities[self.__main_ability].modifier

@@ -51,36 +51,38 @@ class CharacterSingleton:
 
     def pack_character_data(self, character: AbstractCharacter) -> Dict[CharacterAttribute, any]:
         """Pack character data into a dictionary."""
+        packed_data: Dict[CharacterAttribute, (str or bool or int)]
         packed_data = {
-            CharacterAttribute.NAME: character.biography.name,
-            CharacterAttribute.GAME_CLASS_TYPE: character.current_game_class.value.name,
-            CharacterAttribute.LEVEL: character.level.value,
-            CharacterAttribute.BACKGROUND: character.biography.background,
-            CharacterAttribute.RACE: character.race.name,
-            CharacterAttribute.ALIGNMENT: character.biography.alignment,
-            CharacterAttribute.EXPERIENCE_POINTS: character.experience_points.value,
-            CharacterAttribute.ABILITIES_SCORES: {ability.value: character.abilities[ability].score
-                                                  for ability in AbilityType},
-            CharacterAttribute.SAVING_THROWS_PROFICIENCIES: {ability.value: character.saving_throws[ability].proficiency
-                                                             for ability in AbilityType},
-            CharacterAttribute.SKILLS_PROFICIENCIES: {skill.value: character.skills[skill].proficiency
-                                                      for skill in SkillType},
-            CharacterAttribute.SHIELD: character.shield.equipped,
-            CharacterAttribute.EQUIPPED_ARMOR: character.equipped_armor.armor.name,
-            CharacterAttribute.CURRENT_HIT_POINTS: character.hit_points.current_hit_points.value,
-            CharacterAttribute.MAX_HIT_POINTS: character.hit_points.max_hit_points,
-            CharacterAttribute.TEMPORARY_HIT_POINTS: character.hit_points.temporary_hit_points,
-            CharacterAttribute.HIT_DICES_LEFT: character.hit_dices_pool.hit_dices_left,
-            CharacterAttribute.SUCCESSFUL_DEATH_SAVES: character.death_saves.successful_saves,
-            CharacterAttribute.FAILED_DEATH_SAVES: character.death_saves.failed_saves,
-            CharacterAttribute.ATTACKS_LIST: {attack.name: [attack.main_ability.value,
-                                                            attack.proficiency,
-                                                            attack.basic_damage,
-                                                            attack.extra_attack_bonus,
-                                                            attack.extra_damage_bonus]
-                                              for attack in character.attacks_list.get_all_attacks()},
-            CharacterAttribute.INVENTORY: character.inventory.items,
-            CharacterAttribute.FEATURES: character.features.all_features
+            CharacterAttribute.NAME.value: character.biography.name,
+            CharacterAttribute.GAME_CLASS_TYPE.value: character.current_game_class.value.name,
+            CharacterAttribute.LEVEL.value: character.level.value,
+            CharacterAttribute.BACKGROUND.value: character.biography.background,
+            CharacterAttribute.RACE.value: character.race.name,
+            CharacterAttribute.ALIGNMENT.value: character.biography.alignment,
+            CharacterAttribute.EXPERIENCE_POINTS.value: character.experience_points.value,
+            CharacterAttribute.ABILITIES_SCORES.value: {ability.value: character.abilities[ability].score
+                                                        for ability in AbilityType},
+            CharacterAttribute.SAVING_THROWS_PROFICIENCIES.value: {
+                ability.value: character.saving_throws[ability].proficiency
+                for ability in AbilityType},
+            CharacterAttribute.SKILLS_PROFICIENCIES.value: {skill.value: character.skills[skill].proficiency
+                                                            for skill in SkillType},
+            CharacterAttribute.SHIELD.value: character.shield.equipped,
+            CharacterAttribute.EQUIPPED_ARMOR.value: character.equipped_armor.armor.name,
+            CharacterAttribute.CURRENT_HIT_POINTS.value: character.hit_points.current_hit_points,
+            CharacterAttribute.MAX_HIT_POINTS.value: character.hit_points.max_hit_points,
+            CharacterAttribute.TEMPORARY_HIT_POINTS.value: character.temporary_hit_points.value,
+            CharacterAttribute.HIT_DICES_LEFT.value: character.hit_dices_pool.hit_dices_left,
+            CharacterAttribute.SUCCESSFUL_DEATH_SAVES.value: character.death_saves.successful_saves,
+            CharacterAttribute.FAILED_DEATH_SAVES.value: character.death_saves.failed_saves,
+            CharacterAttribute.ATTACKS_LIST.value: {attack.name: [attack.main_ability.value,
+                                                                  attack.proficiency,
+                                                                  attack.basic_damage,
+                                                                  attack.extra_attack_bonus,
+                                                                  attack.extra_damage_bonus]
+                                                    for attack in character.attacks_list.get_all_attacks()},
+            CharacterAttribute.INVENTORY.value: character.inventory.items,
+            CharacterAttribute.FEATURES.value: character.features.all_features
         }
         return packed_data
 
