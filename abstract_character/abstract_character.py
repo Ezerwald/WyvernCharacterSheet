@@ -28,6 +28,7 @@ class AbstractCharacter(ABC):
         self.__speed = None
         self.__experience_points = None
         self.__inventory = None
+        self.__notes = None
 
     @abstractmethod
     def biography(self):
@@ -137,4 +138,9 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def inventory(self):
         """Get inventory."""
+        pass
+
+    @abstractmethod
+    def notes(self):
+        """Get the notes."""
         pass

@@ -35,7 +35,8 @@ character_data = (
     1,
     [("Longsword", AbilityType.STRENGTH, True, "1d10", 5, 2)],
     "Longsword, Backpack, Rations",
-    "Favored Enemy: Orcs, Second Wind"
+    "Favored Enemy: Orcs, Second Wind",
+    ""
 )
 
 character_singleton.create_character(character_data)

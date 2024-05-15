@@ -1,5 +1,6 @@
 from typing import Dict, List, Tuple
 from abstract_character import AbstractCharacter
+from character_notes import Notes
 from shield import Shield
 from character_stats import (
     Ability, Level, ProfBonus, AbilityType, Speed, Biography, ExperiencePoints, PassivePerception
@@ -11,7 +12,7 @@ from armor import EquippedArmor, basic_armor_collection
 from armor_class import ArmorClass
 from health import DeathSaves, HitPoints, HitDicesPool, TemporaryHitPoints
 from game_classes import CurrentGameClass, basic_game_classes_collection, GameClassType
-from race import basic_races_collection
+from race import basic_races_collection, Race
 from attacks import AttacksList, Attack
 from character_features import CharacterFeatures
 from inventory import Inventory
@@ -22,7 +23,7 @@ class Character(AbstractCharacter):
     """Represents a character in the game."""
 
     def __init__(self, character_name: str,
-                 game_class_type: GameClassType,
+                 game_class_type: str,
                  level: int,
                  background: str,
                  race: str,
@@ -41,7 +42,8 @@ class Character(AbstractCharacter):
                  failed_death_saves: int,
                  attacks_data_list: List[Tuple[str, AbilityType, bool, str, int, int]],
                  inventory: str,
-                 features: str):
+                 features: str,
+                 notes: str):
         """Initialize a Character instance."""
         super().__init__()
         self.__initialize_biography(character_name, background, alignment)
@@ -61,6 +63,7 @@ class Character(AbstractCharacter):
         self.__initialize_attacks(attacks_data_list)
         self.__initialize_inventory(inventory)
         self.__initialize_features(features)
+        self.__initialize_notes(notes)
 
         self.__initialize_derived_attributes()
 
@@ -70,8 +73,9 @@ class Character(AbstractCharacter):
         """Initialize the character's biography."""
         self.__biography = Biography(self, character_name, background, alignment)
 
-    def __initialize_game_class(self, game_class_type: GameClassType):
+    def __initialize_game_class(self, game_class_name: str):
         """Initialize the character's game class."""
+        game_class_type = GameClassType(game_class_name)
         self.__current_game_class = CurrentGameClass(self, basic_game_classes_collection.get_game_class_by_type(
             game_class_type))
 
@@ -137,6 +141,10 @@ class Character(AbstractCharacter):
     def __initialize_features(self, features: str):
         """Initialize the character's features"""
         self.__features = CharacterFeatures(self, features)
+
+    def __initialize_notes(self, notes: str):
+        """Initialize the player's notes"""
+        self.__notes = Notes(self, notes)
 
     def __initialize_derived_attributes(self):
         """Calculate and initialize derived attributes."""
@@ -222,7 +230,7 @@ class Character(AbstractCharacter):
         return self.__temporary_hit_points
 
     @property
-    def race(self):
+    def race(self) -> Race:
         """Get the race of the character."""
         return self.__race
 
@@ -232,26 +240,31 @@ class Character(AbstractCharacter):
         return self.__passive_perception
 
     @property
-    def attacks_list(self):
+    def attacks_list(self) -> AttacksList:
         """Get the attacks list of the character."""
         return self.__attacks_list
 
     @property
-    def features(self):
+    def features(self) -> CharacterFeatures:
         """Get the features of the character."""
         return self.__features
 
     @property
-    def speed(self):
+    def speed(self) -> Speed:
         """Get the movement speed of the character."""
         return self.__speed
 
     @property
-    def experience_points(self):
+    def experience_points(self) -> ExperiencePoints:
         """Get the experience points of the character."""
         return self.__experience_points
 
     @property
-    def inventory(self):
+    def inventory(self) -> Inventory:
         """Get the inventory of the character."""
         return self.__inventory
+
+    @property
+    def notes(self) -> Notes:
+        """Get the notes of the character."""
+        return self.__notes

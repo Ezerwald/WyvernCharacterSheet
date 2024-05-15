@@ -82,7 +82,8 @@ class CharacterSingleton:
                                                                   attack.extra_damage_bonus]
                                                     for attack in character.attacks_list.get_all_attacks()},
             CharacterAttribute.INVENTORY.value: character.inventory.items,
-            CharacterAttribute.FEATURES.value: character.features.all_features
+            CharacterAttribute.FEATURES.value: character.features.all_features,
+            CharacterAttribute.NOTES.value: character.notes.notes
         }
         return packed_data
 

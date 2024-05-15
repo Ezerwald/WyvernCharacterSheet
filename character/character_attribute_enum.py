@@ -24,3 +24,4 @@ class CharacterAttribute(Enum):
     ATTACKS_LIST = 'attacks_data_list'  # List of attacks available to the character
     INVENTORY = 'inventory'  # Inventory carried by the character
     FEATURES = 'features'  # Features possessed by the character
+    NOTES = 'notes'

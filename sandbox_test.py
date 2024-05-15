@@ -1,0 +1,2 @@
+notes: str = ""
+print(notes)
