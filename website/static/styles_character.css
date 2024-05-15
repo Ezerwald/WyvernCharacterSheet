@@ -12,33 +12,22 @@ body{
 
 header{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     background-color: saddlebrown;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    text-align: center;
+    height: 120px;
+    margin: 0;
     padding: 0;
 }
 
-header section{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    margin-right: 3px;
-    padding: 3px;
-
-    border: 3px double grey;
-    border-radius: 10px;
-    background-color: antiquewhite;
-
-    height: 80px;
-}
-
-
-
 /* ---------Header section blocks---------*/
 
-.title{
+.title-section{
     width: 15%;
+}
+
+.title{
     color: saddlebrown;
     font-family: Copperplate, Papyrus, fantasy;
 }
@@ -52,23 +41,37 @@ header section{
     margin: 0;
 }
 
-.character-name{
+.name-section{
     width: 15%;
+
 }
     .character-name-input{
         font-size: 120%;
+        height: 70%;
         text-align: center;
     }
 
-.general-info{
+.general-info-section{
     width: 40%
 }
 
-.states{
+    .character-class,
+    .character-race,
+    .character-level{
+        height: 100%;
+    }
+
+    .character-background,
+    .character-alignment,
+    .character-experience{
+        height: 100%;
+    }
+
+.states-section{
     width: 15%
 }
 
-.options{
+.options-section{
     width: 10%
 }
 
@@ -107,6 +110,7 @@ input[type="text"]{
     width: 100%;
     resize: none;
     font-family: "Book Antiqua";
+    font-weight: bold;
     background-color: transparent;
     border: none;
 }
@@ -123,7 +127,7 @@ input[type="text"]{
     padding: 0;
 }
 
-.flex-container section{
+section{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -165,7 +169,18 @@ input[type="text"]{
 
 .block-header{
     border-bottom: 1px solid grey;
+    font-size: 90%;
+    font-style: italic;
+    color: saddlebrown;
     margin-bottom: 3px;
+}
+
+.block-prefix{
+    flex-direction: row;
+    font-size: 90%;
+    font-style: italic;
+    color: saddlebrown;
+    margin-right: 3px;
 }
 
 .block-body{
@@ -179,8 +194,8 @@ input[type="text"]{
 .row{
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
-    height: 30%;
+    flex-grow: 1;
+    width: 100%;
 }
 
 /* ---------Section 1 blocks---------*/
@@ -241,6 +256,17 @@ input[type="text"]{
     .block-death-saves{
         height: 100%;
     }
+
+    .armor-class-input,
+    .initiative-input,
+    .speed-input,
+    .current-hit-points-input,
+    .temporary-hit-points-input,
+    .hit-dice-input,
+    .death-saves-input {
+        height: 70%;
+    }
+
 
 .block-attack{
     flex-grow: 1.3;
