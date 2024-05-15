@@ -17,21 +17,22 @@ from attacks import AttacksList, Attack
 from character_features import CharacterFeatures
 from inventory import Inventory
 from saving_throws import SavingThrow
+from utils import process_attacks_data
 
 
 class Character(AbstractCharacter):
     """Represents a character in the game."""
 
     def __init__(self, character_name: str,
-                 game_class_type: str,
+                 game_class_name: str,
                  level: int,
                  background: str,
                  race: str,
                  alignment: str,
                  experience_points: int,
-                 abilities_scores: Dict[AbilityType, int],
-                 saving_throws_proficiencies: List[AbilityType],
-                 skills_proficiencies: List[SkillType],
+                 abilities_scores: Dict[str, int],
+                 saving_throws_proficiencies: Dict[str, bool],
+                 skills_proficiencies: Dict[str, bool],
                  shield: bool,
                  equipped_armor_name: str,
                  current_hit_points: int,
@@ -40,14 +41,14 @@ class Character(AbstractCharacter):
                  hit_dices_left: int,
                  successful_death_saves: int,
                  failed_death_saves: int,
-                 attacks_data_list: List[Tuple[str, AbilityType, bool, str, int, int]],
+                 attacks_data_list: List[Tuple[str, str, bool, str, int, int]],
                  inventory: str,
                  features: str,
                  notes: str):
         """Initialize a Character instance."""
         super().__init__()
         self.__initialize_biography(character_name, background, alignment)
-        self.__initialize_game_class(game_class_type)
+        self.__initialize_game_class(game_class_name)
         self.__initialize_level(level)
         self.__initialize_race(race)
         self.__initialize_experience(experience_points)
@@ -75,9 +76,8 @@ class Character(AbstractCharacter):
 
     def __initialize_game_class(self, game_class_name: str):
         """Initialize the character's game class."""
-        game_class_type = GameClassType(game_class_name)
-        self.__current_game_class = CurrentGameClass(self, basic_game_classes_collection.get_game_class_by_type(
-            game_class_type))
+        self.__current_game_class = CurrentGameClass(self, basic_game_classes_collection.
+                                                     get_game_class_by_name(game_class_name))
 
     def __initialize_level(self, level: int):
         """Initialize the character's level."""
@@ -91,18 +91,18 @@ class Character(AbstractCharacter):
         """Initialize the character's experience points."""
         self.__experience_points = ExperiencePoints(self, experience_points)
 
-    def __initialize_abilities(self, abilities_scores: Dict[AbilityType, int]):
+    def __initialize_abilities(self, abilities_scores: Dict[str, int]):
         """Initialize the character's abilities."""
-        self.__abilities = {ability: Ability(self, ability, abilities_scores[ability]) for ability in AbilityType}
+        self.__abilities = {ability: Ability(self, ability, abilities_scores[ability.value]) for ability in AbilityType}
 
-    def __initialize_saving_throws(self, saving_throws_proficiencies: List[AbilityType]):
+    def __initialize_saving_throws(self, saving_throws_proficiencies: Dict[str, bool]):
         """Initialize the character's saving throws."""
-        self.__saving_throws = {ability: SavingThrow(self, ability, (ability in saving_throws_proficiencies)) for
+        self.__saving_throws = {ability: SavingThrow(self, ability, saving_throws_proficiencies[ability.value]) for
                                 ability in AbilityType}
 
-    def __initialize_skills(self, skills_proficiencies: List[SkillType]):
+    def __initialize_skills(self, skills_proficiencies: Dict[str, bool]):
         """Initialize the character's skills."""
-        self.__skills = {skill: Skill(self, skill, (skill in skills_proficiencies))
+        self.__skills = {skill: Skill(self, skill, skills_proficiencies[skill.value])
                          for skill in SkillType}
 
     def __initialize_shield(self, shield: bool):
@@ -129,10 +129,9 @@ class Character(AbstractCharacter):
         """Initialize the character's death saves."""
         self.__death_saves = DeathSaves(self, successful_death_saves, failed_death_saves)
 
-    def __initialize_attacks(self, attacks_data_list: List[Tuple[str, AbilityType, bool, str, int, int]]):
+    def __initialize_attacks(self, attacks_data_list: List[Tuple[str, str, bool, str, int, int]]):
         """Initialize the character's attacks list."""
-        attacks_list = [Attack(self, *attack_data) for attack_data in attacks_data_list]
-        self.__attacks_list = AttacksList(self, attacks_list)
+        self.__attacks_list = AttacksList(self, process_attacks_data(self, attacks_data_list))
 
     def __initialize_inventory(self, inventory: str):
         """Initialize the character's inventory."""
