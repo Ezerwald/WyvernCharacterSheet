@@ -160,7 +160,6 @@ section{
     background-color: antiquewhite;
     border: 3px double grey;
     border-radius: 10px;
-    margin-top: 1px;
     overflow: hidden;
     padding: 3px;
     width: 100%;
@@ -176,7 +175,9 @@ section{
 }
 
 .block-prefix{
+    display:flex;
     flex-direction: row;
+    justify-content: space-around;
     font-size: 90%;
     font-style: italic;
     color: saddlebrown;
@@ -228,6 +229,8 @@ section{
 
 .block-prof-bonus{
     height: 5%;
+    flex-direction: row;
+    align-content: center;
 }
 
 .block-saving-throws{
@@ -274,6 +277,9 @@ section{
 
 .block-passive-perception{
     flex-grow: 0.1;
+    height: 5%;
+    flex-direction: row;
+    align-content: center;
 }
 
 /* ---------Section 5 blocks--------- */
