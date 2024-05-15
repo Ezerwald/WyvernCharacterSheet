@@ -7,14 +7,37 @@
 <body>
     <header>
         <section class="title">
-            <h1> Wyvern </h1>
-            <h2> Character Sheet </h2>
+            <a href = "/">
+                <h1> Wyvern </h1>
+                <h2> Character Sheet </h2>
+            </a>
         </section>
         <section class="character-name">
-            <h1>Character name</h1>
+            <div class="section-block">
+                <div class="block-header"> Name </div>
+                <div class="block-body">
+                    <input type="text" id="characterName" class="character-name-input" placeholder="Enter character name">
+                </div>
+            </div>
         </section>
         <section class="general-info">
-            <h2> Name Class Background <br> Race Alignment Experience</h2>
+            <div class="row">
+                <div class="section-block">
+                    <div class="block-header"> Class </div>
+                    <div class="block-body">
+                        <input type="text" id="characterClass" class="character-class-input" placeholder="Enter class">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="section-block">
+                    <div class="block-header"> Class </div>
+                    <div class="block-body">
+                        <input type="text" id="characterClass" class="character-class-input" placeholder="Enter class">
+                    </div>
+                </div>
+            </div>
+{#            <h2> Name Class Background <br> Race Alignment Experience</h2>#}
         </section>
         <section class="states">
             <h2> States </h2>
@@ -26,13 +49,16 @@
 
     <main class="flex-container">
         <section class="section-1">
-            <div class="section-block block-rolls">
-                <div class="block-header"> Rolls </div>
+            <div class="section-block block-notes">
+                <div class="block-header"> Notes </div>
+                <div class="block-body">
+                    <textarea placeholder="Place for your notes"></textarea>
+                </div>
             </div>
         </section>
 
         <section class="section-2">
-            <div class="section-block block-abilities">
+            <div class="section-block">
                 <div class="block-header"> Abilities </div>
                 <div class="block-body">
                     <div class="section-block ability-field">
@@ -40,54 +66,42 @@
                         <div class="ability-modifier">
                             +3
                         </div>
-                        <div class="ability-score">
-                            16
-                        </div>
+                        <input type="number" id="strengthScore" class="ability-score-input" value = 16>
                     </div>
                     <div class="section-block ability-field">
-                        STR
+                        DEX
                         <div class="ability-modifier">
                             +3
                         </div>
-                        <div class="ability-score">
-                            16
-                        </div>
+                        <input type="number" id="dexterityScore" class="ability-score-input" value = 16>
                     </div>
                     <div class="section-block ability-field">
-                        STR
+                        CON
                         <div class="ability-modifier">
                             +3
                         </div>
-                        <div class="ability-score">
-                            16
-                        </div>
+                        <input type="number" id="constitutionScore" class="ability-score-input" value = 16>
                     </div>
                     <div class="section-block ability-field">
-                        STR
+                        WIS
                         <div class="ability-modifier">
                             +3
                         </div>
-                        <div class="ability-score">
-                            16
-                        </div>
+                        <input type="number" id="wisdomScore" class="ability-score-input" value = 16>
                     </div>
                     <div class="section-block ability-field">
-                        STR
+                        INT
                         <div class="ability-modifier">
                             +3
                         </div>
-                        <div class="ability-score">
-                            16
-                        </div>
+                        <input type="number" id="intelligenceScore" class="ability-score-input" value = 16>
                     </div>
                     <div class="section-block ability-field">
-                        STR
+                        CHA
                         <div class="ability-modifier">
                             +3
                         </div>
-                        <div class="ability-score">
-                            16
-                        </div>
+                        <input type="number" id="charismaScore" class="ability-score-input" value = 16>
                     </div>
                 </div>
             </div>
@@ -146,9 +160,15 @@
         <section class="section-5">
             <div class="section-block block-inventory">
                 <div class="block-header"> Inventory </div>
+                <div class="block-body">
+                    <textarea placeholder="Items in your inventory"></textarea>
+                </div>
             </div>
             <div class="section-block block-features">
                 <div class="block-header"> Features </div>
+                <div class="block-body">
+                    <textarea placeholder="Your character's features"></textarea>
+                </div>
             </div>
         </section>
 
