@@ -97,9 +97,10 @@ input[type="number"] {
     appearance: textfield; /* Other modern browsers */
 
     border: none;
+    background-color: white;
+    border-radius: 5px;
     text-align: center;
     font-family: "Times New Roman";
-    background-color: transparent;
 }
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
@@ -188,7 +189,6 @@ section{
     height: 97%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -209,7 +209,7 @@ section{
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 0.6vh;
     height: 11vh;
     width: 80%;
@@ -228,18 +228,45 @@ section{
 /* ---------Section 3 blocks--------- */
 
 .block-prof-bonus{
-    height: 5%;
+    height: 3%;
     flex-direction: row;
     align-content: center;
 }
 
 .block-saving-throws{
     height: 25%;
+    max-height: 25vh;
 }
+.block-saving-throws .block-body{
+    flex-grow: unset;
+    height: 90%;
+}
+    .saving-throw{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: small;
+        width: 95%;
+    }
 
 .block-skills{
     height: 65%;
+    max-height: 70vh;
 }
+
+.block-skills .block-body{
+    overflow: hidden;
+    justify-content: center;
+}
+    .skill{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: small;
+        width: 95%;
+    }
 
 /* ---------Section 4 blocks--------- */
 .block-health{
@@ -274,6 +301,27 @@ section{
 .block-attack{
     flex-grow: 1.3;
 }
+.block-attack .block-body{
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+    .attack{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        max-height: 5vh;
+    }
+    .attack input[type="number"]{
+        width: 20%;
+    }
+    .attack input[type="text"]{
+        text-align: center;
+        background-color: white;
+        border-radius: 5px;
+        width: 30%
+    }
 
 .block-passive-perception{
     flex-grow: 0.1;

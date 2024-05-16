@@ -32,10 +32,47 @@ MIN_DEXTERITY_BONUS_TO_AC = 10
 
 DEFAULT_SHIELD_BONUS_TO_AC = 2
 
-LIST_OF_ELEMENTS_TO_UPDATE = ["strength-modifier",
+LIST_OF_ELEMENTS_TO_UPDATE = ["strength-score",
+                              "dexterity-score",
+                              "constitution-score",
+                              "intelligence-score",
+                              "wisdom-score",
+                              "charisma-score",
+                                
+                              "strength-modifier",
                               "dexterity-modifier",
                               "constitution-modifier",
                               "intelligence-modifier",
                               "wisdom-modifier",
-                              "charisma-modifier"
+                              "charisma-modifier",
+
+                              "strength-saving-throw-bonus",
+                              "dexterity-saving-throw-bonus",
+                              "constitution-saving-throw-bonus",
+                              "intelligence-saving-throw-bonus",
+                              "wisdom-saving-throw-bonus",
+                              "charisma-saving-throw-bonus",
+
+                              "initiative",
+
+                              "acrobatics-skill-bonus",
+                              "animal-handling-skill-bonus",
+                              "arcana-skill-bonus",
+                              "athletics-skill-bonus",
+                              "deception-skill-bonus",
+                              "history-skill-bonus",
+                              "insight-skill-bonus",
+                              "intimidation-skill-bonus",
+                              "investigation-skill-bonus",
+                              "medicine-skill-bonus",
+                              "nature-skill-bonus",
+                              "perception-skill-bonus",
+                              "performance-skill-bonus",
+                              "persuasion-skill-bonus",
+                              "religion-skill-bonus",
+                              "sleight-of-hand-skill-bonus",
+                              "stealth-skill-bonus",
+                              "survival-skill-bonus"
                               ]
+
+ELEMENTS_UPDATE_DEPENDENCY_DICT = {}

@@ -137,29 +137,57 @@ class CharacterSingleton:
 
     def update_id_to_object_list(self):
         self.__input_id_to_object = {
+            # abilities scores
             'strength-score': (self.character.abilities[AbilityType.STRENGTH], 'score'),
             'dexterity-score': (self.character.abilities[AbilityType.DEXTERITY], 'score'),
             'constitution-score': (self.character.abilities[AbilityType.CONSTITUTION], 'score'),
             'intelligence-score': (self.character.abilities[AbilityType.INTELLIGENCE], 'score'),
             'wisdom-score': (self.character.abilities[AbilityType.WISDOM], 'score'),
             'charisma-score': (self.character.abilities[AbilityType.CHARISMA], 'score'),
-
+            # abilities modifiers
             'strength-modifier': (self.character.abilities[AbilityType.STRENGTH], 'modifier'),
             'dexterity-modifier': (self.character.abilities[AbilityType.DEXTERITY], 'modifier'),
             'constitution-modifier': (self.character.abilities[AbilityType.CONSTITUTION], 'modifier'),
             'intelligence-modifier': (self.character.abilities[AbilityType.INTELLIGENCE], 'modifier'),
             'wisdom-modifier': (self.character.abilities[AbilityType.WISDOM], 'modifier'),
             'charisma-modifier': (self.character.abilities[AbilityType.CHARISMA], 'modifier'),
-
+            # saving throws
+            'strength-saving-throw-bonus': (self.character.saving_throws[AbilityType.STRENGTH], 'value'),
+            'dexterity-saving-throw-bonus': (self.character.saving_throws[AbilityType.DEXTERITY], 'value'),
+            'constitution-saving-throw-bonus': (self.character.saving_throws[AbilityType.CONSTITUTION], 'value'),
+            'intelligence-saving-throw-bonus': (self.character.saving_throws[AbilityType.INTELLIGENCE], 'value'),
+            'wisdom-saving-throw-bonus': (self.character.saving_throws[AbilityType.WISDOM], 'value'),
+            'charisma-saving-throw-bonus': (self.character.saving_throws[AbilityType.CHARISMA], 'value'),
+            # initiative
             'initiative': (self.character.initiative, 'value'),
-            'speed': (self.character.speed, 'value'),
-            'acrobatics-proficiency': (self.character.skills[SkillType.ACROBATICS], 'proficiency')
+            # skills proficiencies
+            'acrobatics-proficiency': (self.character.skills[SkillType.ACROBATICS], 'proficiency'),
+            # skills bonuses
+            'acrobatics-skill-bonus': (self.character.skills[SkillType.ACROBATICS], 'value'),
+            'animal-handling-skill-bonus': (self.character.skills[SkillType.ANIMAL_HANDLING], 'value'),
+            'arcana-skill-bonus': (self.character.skills[SkillType.ARCANA], 'value'),
+            'athletics-skill-bonus': (self.character.skills[SkillType.ATHLETICS], 'value'),
+            'deception-skill-bonus': (self.character.skills[SkillType.DECEPTION], 'value'),
+            'history-skill-bonus': (self.character.skills[SkillType.HISTORY], 'value'),
+            'insight-skill-bonus': (self.character.skills[SkillType.INSIGHT], 'value'),
+            'intimidation-skill-bonus': (self.character.skills[SkillType.INTIMIDATION], 'value'),
+            'investigation-skill-bonus': (self.character.skills[SkillType.INVESTIGATION], 'value'),
+            'medicine-skill-bonus': (self.character.skills[SkillType.MEDICINE], 'value'),
+            'nature-skill-bonus': (self.character.skills[SkillType.NATURE], 'value'),
+            'perception-skill-bonus': (self.character.skills[SkillType.PERCEPTION], 'value'),
+            'performance-skill-bonus': (self.character.skills[SkillType.PERFORMANCE], 'value'),
+            'persuasion-skill-bonus': (self.character.skills[SkillType.PERSUASION], 'value'),
+            'religion-skill-bonus': (self.character.skills[SkillType.RELIGION], 'value'),
+            'sleight-of-hand-skill-bonus': (self.character.skills[SkillType.SLEIGHT_OF_HAND], 'value'),
+            'stealth-skill-bonus': (self.character.skills[SkillType.STEALTH], 'value'),
+            'survival-skill-bonus': (self.character.skills[SkillType.SURVIVAL], 'value')
         }
 
     def set_attribute(self, element_id: str, attribute_value: Any) -> None:
         # Access the object and attribute using the key, then update the attribute value
         object_instance, attribute_name = self.__input_id_to_object[element_id]
         setattr(object_instance, attribute_name, attribute_value)
+        self.save_character("saved_characters/character_saved_data.json")
 
     def get_attribute(self, element_id: str) -> Any:
         # Access the object and attribute using the key, then return the attribute value

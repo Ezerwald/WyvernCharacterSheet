@@ -7,8 +7,8 @@
     "alignment": "Neutral Good",
     "experience_points": 5000,
     "abilities_scores": {
-        "STR": 18,
-        "DEX": 16,
+        "STR": 10,
+        "DEX": 20,
         "CON": 14,
         "INT": 12,
         "WIS": 10,

@@ -15,6 +15,7 @@ SKILLS_TO_ABILITIES = {
     SkillType.MEDICINE: AbilityType.WISDOM,
     SkillType.NATURE: AbilityType.INTELLIGENCE,
     SkillType.PERCEPTION: AbilityType.WISDOM,
+    SkillType.PERSUASION: AbilityType.CHARISMA,
     SkillType.PERFORMANCE: AbilityType.CHARISMA,
     SkillType.RELIGION: AbilityType.INTELLIGENCE,
     SkillType.SLEIGHT_OF_HAND: AbilityType.DEXTERITY,

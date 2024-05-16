@@ -103,44 +103,44 @@
                 <div class="section-block ability-field">
                     STR
                     <div id="strength-modifier" class="ability-modifier">
-                        +3
+                        _
                     </div>
-                    <input type="number" id="strength-score" class="ability-score-input" value="16">
+                    <input type="number" id="strength-score" class="ability-score-input" value="_">
                 </div>
                 <div class="section-block ability-field">
                     DEX
                     <div id="dexterity-modifier" class="ability-modifier">
-                        +3
+                        _
                     </div>
-                    <input type="number" id="dexterity-score" class="ability-score-input" value="16">
+                    <input type="number" id="dexterity-score" class="ability-score-input" value="_">
                 </div>
                 <div class="section-block ability-field">
                     CON
                     <div id="constitution-modifier" class="ability-modifier">
-                        +3
+                        _
                     </div>
-                    <input type="number" id="constitution-score" class="ability-score-input" value="16">
+                    <input type="number" id="constitution-score" class="ability-score-input" value="_">
                 </div>
                 <div class="section-block ability-field">
                     WIS
                     <div id="wisdom-modifier" class="ability-modifier">
-                        +3
+                        _
                     </div>
-                    <input type="number" id="wisdom-score" class="ability-score-input" value="16">
+                    <input type="number" id="wisdom-score" class="ability-score-input" value="_">
                 </div>
                 <div class="section-block ability-field">
                     INT
                     <div id="intelligence-modifier" class="ability-modifier">
-                        +3
+                        _
                     </div>
-                    <input type="number" id="intelligence-score" class="ability-score-input" value="16">
+                    <input type="number" id="intelligence-score" class="ability-score-input" value="_">
                 </div>
                 <div class="section-block ability-field">
                     CHA
                     <div id="charisma-modifier" class="ability-modifier">
-                        +3
+                        _
                     </div>
-                    <input type="number" id="charisma-score" class="ability-score-input" value="16">
+                    <input type="number" id="charisma-score" class="ability-score-input" value="_">
                 </div>
             </div>
         </div>
@@ -152,11 +152,136 @@
         </div>
         <div class="section-block block-saving-throws">
             <div class="block-header"> Saving throws </div>
+            <div class="block-body">
+                <div class="section-block saving-throw">
+                    <input type="checkbox" id="strength-saving-throw-prof" class="saving-throw-prof">
+                    <p id="strength-saving-throw-name"> Strength:  </p>
+                    <p id="strength-saving-throw-bonus"> _ </p>
+                </div>
+                <div class="section-block saving-throw">
+                    <input type="checkbox" id="dexterity-saving-throw-prof" class="saving-throw-prof">
+                    <p id="dexterity-saving-throw-name"> Dexterity:  </p>
+                    <p id="dexterity-saving-throw-bonus"> _ </p>
+                </div>
+                <div class="section-block saving-throw">
+                    <input type="checkbox" id="constitution-saving-throw-prof" class="saving-throw-prof">
+                    <p id="constitution-saving-throw-name"> Constitution:  </p>
+                    <p id="constitution-saving-throw-bonus"> _ </p>
+                </div>
+                <div class="section-block saving-throw">
+                    <input type="checkbox" id="intelligence-saving-throw-prof" class="saving-throw-prof">
+                    <p id="intelligence-saving-throw-name"> Intelligence:  </p>
+                    <p id="intelligence-saving-throw-bonus"> _ </p>
+                </div>
+                <div class="section-block saving-throw">
+                    <input type="checkbox" id="wisdom-saving-throw-prof" class="saving-throw-prof">
+                    <p id="wisdom-saving-throw-name"> Wisdom:  </p>
+                    <p id="wisdom-saving-throw-bonus"> _ </p>
+                </div>
+                <div class="section-block saving-throw">
+                    <input type="checkbox" id="charisma-saving-throw-prof" class="saving-throw-prof">
+                    <p id="charisma-saving-throw-name"> Charisma:  </p>
+                    <p id="charisma-saving-throw-bonus"> _ </p>
+                </div>
+            </div>
         </div>
         <div class="section-block block-skills">
             <div class="block-header"> Skills </div>
+            <div class="block-body">
+                <div class="section-block skill">
+                    <input type="checkbox" id="acrobatics-skill-prof" class="skill-prof">
+                    <p id="acrobatics-skill-name"> Acrobatics:  </p>
+                    <p id="acrobatics-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="animal-handling-skill-prof" class="skill-prof">
+                    <p id="animal-handling-skill-name"> Animal Handling:  </p>
+                    <p id="animal-handling-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="arcana-skill-prof" class="skill-prof">
+                    <p id="arcana-skill-name"> Arcana:  </p>
+                    <p id="arcana-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="athletics-skill-prof" class="skill-prof">
+                    <p id="athletics-skill-name"> Athletics:  </p>
+                    <p id="athletics-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="deception-skill-prof" class="skill-prof">
+                    <p id="deception-skill-name"> Deception:  </p>
+                    <p id="deception-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="history-skill-prof" class="skill-prof">
+                    <p id="history-skill-name"> History:  </p>
+                    <p id="history-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="insight-skill-prof" class="skill-prof">
+                    <p id="insight-skill-name"> Insight:  </p>
+                    <p id="insight-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="intimidation-skill-prof" class="skill-prof">
+                    <p id="intimidation-skill-name"> Intimidation:  </p>
+                    <p id="intimidation-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="investigation-skill-prof" class="skill-prof">
+                    <p id="investigation-skill-name"> Investigation:  </p>
+                    <p id="investigation-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="medicine-skill-prof" class="skill-prof">
+                    <p id="medicine-skill-name"> Medicine:  </p>
+                    <p id="medicine-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="nature-skill-prof" class="skill-prof">
+                    <p id="nature-skill-name"> Nature:  </p>
+                    <p id="nature-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="perception-skill-prof" class="skill-prof">
+                    <p id="perception-skill-name"> Perception:  </p>
+                    <p id="perception-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="performance-skill-prof" class="skill-prof">
+                    <p id="performance-skill-name"> Performance:  </p>
+                    <p id="performance-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="persuasion-skill-prof" class="skill-prof">
+                    <p id="persuasion-skill-name"> Persuasion:  </p>
+                    <p id="persuasion-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="religion-skill-prof" class="skill-prof">
+                    <p id="religion-skill-name"> Religion:  </p>
+                    <p id="religion-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="sleight-of-hand-skill-prof" class="skill-prof">
+                    <p id="sleight-of-hand-skill-name"> Sleight of Hand:  </p>
+                    <p id="sleight-of-hand-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="stealth-skill-prof" class="skill-prof">
+                    <p id="stealth-skill-name"> Stealth:  </p>
+                    <p id="stealth-skill-bonus"> _ </p>
+                </div>
+                <div class="section-block skill">
+                    <input type="checkbox" id="survival-skill-prof" class="skill-prof">
+                    <p id="survival-skill-name"> Survival:  </p>
+                    <p id="survival-skill-bonus"> _ </p>
+                </div>
+            </div>
         </div>
     </section>
+
     <section class="section-4">
         <div class="section-block block-health">
             <div class="block-body">
@@ -212,6 +337,18 @@
         </div>
         <div class="section-block block-attack">
             <div class="block-header">Attacks</div>
+            <div class="block-body">
+                <div class="section-block attack">
+                    <input type="text" id="attack-name" value="Long sword">
+                    <input type="number" id="attack-bonus" value="5">
+                    <input type="text" id="attack-damage" value="1d10+3 ">
+                </div>
+                <div class="section-block attack">
+                    <input type="text" id="attack-name" value="Bow">
+                    <input type="number" id="attack-bonus" value="5">
+                    <input type="text" id="attack-damage" value="1d8+3 ">
+                </div>
+            </div>
         </div>
         <div class="section-block block-passive-perception">
             <div class="block-prefix"><div>Passive perception: </div></div>

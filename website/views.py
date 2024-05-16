@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify
 from character_singleton import CharacterSingleton
 from show_character_info import show_character_info
-from constants import LIST_OF_ELEMENTS_TO_UPDATE
+from utils.get_elements_update_data import get_elements_update_data
 
 # Initialize character singleton and load character data
 character_singleton = CharacterSingleton()
@@ -26,22 +26,32 @@ def character_sheet():
 @views.route('/save_input', methods=['POST'])
 def save_input():
     try:
-        # Extract data from JSON request
+        # saving
         data = request.json
-
-        # Set attribute in character singleton
         character_singleton.set_attribute(data['type'], data['value'])
 
-        # Show updated character info
+        # logging
         show_character_info()
         print("Saved data:", data)
 
-        # Prepare data to send back as JSON response
-        dict_of_elements_to_update = {element: character_singleton.get_attribute(element)
-                                      for element in LIST_OF_ELEMENTS_TO_UPDATE}
+        # response
+        return jsonify(get_elements_update_data()), 200
 
-        # Return JSON response
-        return jsonify(dict_of_elements_to_update), 200
+    except Exception as e:
+        # Handle exceptions
+        print("Error:", e)
+        raise e
+
+
+@views.route('/get_character_data')
+def get_character_data():
+    try:
+        # logging
+        print("Character loaded successfully")
+        show_character_info()
+
+        # response
+        return jsonify(get_elements_update_data()), 200
 
     except Exception as e:
         # Handle exceptions
