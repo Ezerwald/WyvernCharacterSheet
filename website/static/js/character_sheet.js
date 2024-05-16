@@ -59,7 +59,14 @@ function updateDivsWithValues(data) {
             const newValue = data[elementId];
             const element = document.getElementById(elementId);
             if (element) {
-                element.innerText = newValue;
+                // Check if the element is an input
+                if (element.tagName.toLowerCase() === 'input') {
+                    // For input elements, set the value property instead of innerText
+                    element.value = newValue;
+                } else {
+                    // For other elements, use innerText
+                    element.innerText = newValue;
+                }
             }
         }
     }

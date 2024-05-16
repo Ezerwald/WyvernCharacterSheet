@@ -15,45 +15,44 @@ views = Blueprint('views', __name__)
 # Define routes and corresponding functions
 @views.route('/')
 def home():
+    """Render the home page."""
     return render_template("index.html")
 
 
 @views.route('/character_sheet')
 def character_sheet():
+    """Render the character sheet page."""
     return render_template("character_sheet.html")
 
 
 @views.route('/save_input', methods=['POST'])
 def save_input():
+    """Save input data from the character sheet."""
     try:
-        # saving
         data = request.json
         character_singleton.set_attribute(data['type'], data['value'])
 
-        # logging
+        # Log and respond with updated data
         show_character_info()
         print("Saved data:", data)
-
-        # response
         return jsonify(get_elements_update_data()), 200
 
     except Exception as e:
-        # Handle exceptions
+        # Handle exceptions and respond with an error
         print("Error:", e)
-        raise e
+        return jsonify({"error": str(e)}), 500
 
 
 @views.route('/get_character_data')
 def get_character_data():
+    """Retrieve character data for the character sheet."""
     try:
-        # logging
+        # Log and respond with character data
         print("Character loaded successfully")
         show_character_info()
-
-        # response
         return jsonify(get_elements_update_data()), 200
 
     except Exception as e:
-        # Handle exceptions
+        # Handle exceptions and respond with an error
         print("Error:", e)
-        raise e
+        return jsonify({"error": str(e)}), 500

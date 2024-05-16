@@ -295,6 +295,7 @@ section{
     .hit-dice-input,
     .death-saves-input {
         height: 70%;
+        text-align: center;
     }
 
 
