@@ -4,7 +4,7 @@ $(document).ready(function() {
     // Execute the update function to load character data when the page loads
 });
 
-$(document).on("input", ".ability-score-input", debounce(function(e) {
+$(document).on("input", "input, textarea", debounce(function(e) {
     // Send AJAX request to save input data
     saveInputData(e.target.id, e.target.value);
 }, 300)); // Delay of 300 milliseconds
@@ -59,15 +59,17 @@ function updateDivsWithValues(data) {
             const newValue = data[elementId];
             const element = document.getElementById(elementId);
             if (element) {
-                // Check if the element is an input
-                if (element.tagName.toLowerCase() === 'input') {
-                    // For input elements, set the value property instead of innerText
+                // Check if the element is an input or textarea
+                if (element.tagName.toLowerCase() === 'input' || element.tagName.toLowerCase() === 'textarea') {
+                    // For input and textarea elements, set the value property instead of innerText
                     element.value = newValue;
                 } else {
                     // For other elements, use innerText
-                    element.innerText = newValue;
+                    element.innerText = newValue
                 }
+                console.log(elementId, " assigned ", newValue);
             }
         }
     }
 }
+

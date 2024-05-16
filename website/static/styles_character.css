@@ -16,7 +16,7 @@ header{
     justify-content: space-between;
     background-color: saddlebrown;
     text-align: center;
-    height: 120px;
+    height: 110px;
     margin: 0;
     padding: 0;
 }
@@ -276,12 +276,10 @@ section{
     .block-speed{
         height: 100%;
     }
-
     .block-current-hit-points,
     .block-temporary-hit-points{
         height: 100%;
     }
-
     .block-hit-dice,
     .block-death-saves{
         height: 100%;
@@ -296,8 +294,9 @@ section{
     .death-saves-input {
         height: 70%;
         text-align: center;
+        font-weight: bold;
+        font-size: 150%;
     }
-
 
 .block-attack{
     flex-grow: 1.3;

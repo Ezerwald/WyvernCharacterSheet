@@ -32,7 +32,17 @@ MIN_DEXTERITY_BONUS_TO_AC = 10
 
 DEFAULT_SHIELD_BONUS_TO_AC = 2
 
-LIST_OF_ELEMENTS_TO_UPDATE = ["strength-score",
+LIST_OF_ELEMENTS_TO_UPDATE = ["character-name",
+                              "character-class",
+                              "character-race",
+                              "character-level",
+                              "character-background",
+                              "character-alignment",
+                              "character-experience",
+
+                              "notes",
+                                
+                              "strength-score",
                               "dexterity-score",
                               "constitution-score",
                               "intelligence-score",
@@ -45,6 +55,8 @@ LIST_OF_ELEMENTS_TO_UPDATE = ["strength-score",
                               "intelligence-modifier",
                               "wisdom-modifier",
                               "charisma-modifier",
+
+                              "prof-bonus",
 
                               "strength-saving-throw-bonus",
                               "dexterity-saving-throw-bonus",

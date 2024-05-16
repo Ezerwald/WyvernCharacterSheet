@@ -13,10 +13,8 @@ class Level:
 
     @value.setter
     def value(self, new_level: int):
+        new_level = int(new_level)
         if MIN_LEVEL <= new_level <= MAX_LEVEL:
             self.__level = new_level
-            # update prof bonus
-            # update hit points
-            # update hit dices amount
         else:
             raise ValueError("Invalid Level")

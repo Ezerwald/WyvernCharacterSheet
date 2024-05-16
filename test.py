@@ -39,11 +39,6 @@
 #     ""
 # )
 #
-# character = character_singleton.character
-#
 # character_singleton.create_character(character_data)
-#
-# #character_singleton.save_character()
-#
-# character_singleton.load_character(get_default_downloads_folder() / "character_saved_data.json")
-# show_character_info()
+# character = character_singleton.character
+# print("Prof bonus",character.prof_bonus.value)

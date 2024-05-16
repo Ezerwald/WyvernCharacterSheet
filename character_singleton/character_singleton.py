@@ -137,6 +137,18 @@ class CharacterSingleton:
 
     def update_id_to_object_list(self):
         self.__input_id_to_object = {
+            # biography
+            "character-name": (self.character.biography, 'name'),
+            "character-class": (self.character.current_game_class.value, 'name'),
+            "character-race": (self.character.race, 'name'),
+            "character-level": (self.character.level, 'value'),
+            "character-background": (self.character.biography, 'background'),
+            "character-alignment": (self.character.biography, 'alignment'),
+            "character-experience": (self.character.experience_points, 'value'),
+            # notes
+            "notes": (self.character.notes, 'notes'),
+            # proficiency bonus
+            "prof-bonus": (self.character.prof_bonus, 'value'),
             # abilities scores
             'strength-score': (self.character.abilities[AbilityType.STRENGTH], 'score'),
             'dexterity-score': (self.character.abilities[AbilityType.DEXTERITY], 'score'),
@@ -187,6 +199,9 @@ class CharacterSingleton:
         # Access the object and attribute using the key, then update the attribute value
         object_instance, attribute_name = self.__input_id_to_object[element_id]
         setattr(object_instance, attribute_name, attribute_value)
+
+        print(f"{attribute_name} was updated with value {attribute_value}")
+
         self.save_character("saved_characters/character_saved_data.json")
 
     def get_attribute(self, element_id: str) -> Any:

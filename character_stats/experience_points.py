@@ -13,7 +13,8 @@ class ExperiencePoints:
 
     @value.setter
     def value(self, experience_points: int):
-        if experience_points > 0:
+        experience_points = int(experience_points)
+        if experience_points >= 0:
             self.__experience_points = experience_points
         else:
             raise ValueError("Experience points cannot be negative.")

@@ -40,7 +40,7 @@
                 <div class="section-block character-level">
                     <div class="block-header"> Level </div>
                     <div class="block-body">
-                        <input type="text" id="character-level" class="character-level-input" placeholder="Enter level">
+                        <input type="number" id="character-level" class="character-level-input" placeholder="Enter level">
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <div class="section-block character-experience">
                     <div class="block-header">Experience</div>
                     <div class="block-body">
-                        <input type="text" id="character-experience" class="character-experience-input" placeholder="Enter experience">
+                        <input type="number" id="character-experience" class="character-experience-input" placeholder="Enter experience">
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
         <div class="section-block block-notes">
             <div class="block-header"> Notes </div>
             <div class="block-body">
-                <textarea placeholder="Place for your notes"></textarea>
+                <textarea id="notes" placeholder="Place for your notes"></textarea>
             </div>
         </div>
     </section>
@@ -148,7 +148,10 @@
 
     <section class="section-3">
         <div class="section-block block-prof-bonus">
-            <div class="block-prefix"> <div>Proficiency bonus: </div>  </div>
+            <div class="block-prefix">
+                <div>Proficiency bonus: </div>
+                <div class="prof-bonus"> _ </div>
+            </div>
         </div>
         <div class="section-block block-saving-throws">
             <div class="block-header"> Saving throws </div>
