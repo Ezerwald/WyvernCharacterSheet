@@ -5,233 +5,236 @@
     <link rel="stylesheet" href="../static/styles_character.css">
 </head>
 <body>
-    <header>
-        <section class="title-section">
-            <div class="section-block title">
-                <a href = "/">
-                    <h1> Wyvern </h1>
-                    <h2> Character Sheet </h2>
-                </a>
+<header>
+    <section class="title-section">
+        <div class="section-block title">
+            <a href = "/">
+                <h1> Wyvern </h1>
+                <h2> Character Sheet </h2>
+            </a>
+        </div>
+    </section>
+    <section class="name-section">
+        <div class="section-block">
+            <div class="block-header"> Name </div>
+            <div class="block-body">
+                <input type="text" id="character-name" class="character-name-input" placeholder="Enter character name">
             </div>
-        </section>
-        <section class="name-section">
-            <div class="section-block">
-                <div class="block-header"> Name </div>
-                <div class="block-body">
-                    <input type="text" id="characterName" class="character-name-input" placeholder="Enter character name">
+        </div>
+    </section>
+    <section class="general-info-section">
+        <div class="section-block">
+            <div class="row">
+                <div class="section-block character-class">
+                    <div class="block-header"> Class </div>
+                    <div class="block-body">
+                        <input type="text" id="character-class" class="character-class-input" placeholder="Enter class">
+                    </div>
+                </div>
+                <div class="section-block character-race">
+                    <div class="block-header"> Race </div>
+                    <div class="block-body">
+                        <input type="text" id="character-race" class="character-race-input" placeholder="Enter race">
+                    </div>
+                </div>
+                <div class="section-block character-level">
+                    <div class="block-header"> Level </div>
+                    <div class="block-body">
+                        <input type="text" id="character-level" class="character-level-input" placeholder="Enter level">
+                    </div>
                 </div>
             </div>
-        </section>
-        <section class="general-info-section">
-            <div class="section-block">
+            <div class="row">
+                <div class="section-block character-background">
+                    <div class="block-header">Background</div>
+                    <div class="block-body">
+                        <input type="text" id="character-background" class="character-background-input" placeholder="Enter background">
+                    </div>
+                </div>
+                <div class="section-block character-alignment">
+                    <div class="block-header">Alignment</div>
+                    <div class="block-body">
+                        <input type="text" id="character-alignment" class="character-alignment-input" placeholder="Enter alignment">
+                    </div>
+                </div>
+                <div class="section-block character-experience">
+                    <div class="block-header">Experience</div>
+                    <div class="block-body">
+                        <input type="text" id="character-experience" class="character-experience-input" placeholder="Enter experience">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#            <h2> Name Class Background <br> Race Alignment Experience</h2>#}
+    </section>
+    <section class="states-section">
+        <div class="section-block states">
+            <div class="block-header"> States </div>
+            <div class="block-body">
+                <textarea placeholder="Active states"></textarea>
+            </div>
+        </div>
+    </section>
+    <section class="options-section">
+        <div class="section-block options">
+            <div class="block-header"> Options </div>
+            <div class="block-body">
+
+            </div>
+        </div>
+    </section>
+</header>
+
+<main class="flex-container">
+    <section class="section-1">
+        <div class="section-block block-notes">
+            <div class="block-header"> Notes </div>
+            <div class="block-body">
+                <textarea placeholder="Place for your notes"></textarea>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-2">
+        <div class="section-block">
+            <div class="block-header"> Abilities </div>
+            <div class="block-body">
+                <div class="section-block ability-field">
+                    STR
+                    <div id="strength-modifier" class="ability-modifier">
+                        +3
+                    </div>
+                    <input type="number" id="strength-score" class="ability-score-input" value="16">
+                </div>
+                <div class="section-block ability-field">
+                    DEX
+                    <div id="dexterity-modifier" class="ability-modifier">
+                        +3
+                    </div>
+                    <input type="number" id="dexterity-score" class="ability-score-input" value="16">
+                </div>
+                <div class="section-block ability-field">
+                    CON
+                    <div id="constitution-modifier" class="ability-modifier">
+                        +3
+                    </div>
+                    <input type="number" id="constitution-score" class="ability-score-input" value="16">
+                </div>
+                <div class="section-block ability-field">
+                    WIS
+                    <div id="wisdom-modifier" class="ability-modifier">
+                        +3
+                    </div>
+                    <input type="number" id="wisdom-score" class="ability-score-input" value="16">
+                </div>
+                <div class="section-block ability-field">
+                    INT
+                    <div id="intelligence-modifier" class="ability-modifier">
+                        +3
+                    </div>
+                    <input type="number" id="intelligence-score" class="ability-score-input" value="16">
+                </div>
+                <div class="section-block ability-field">
+                    CHA
+                    <div id="charisma-modifier" class="ability-modifier">
+                        +3
+                    </div>
+                    <input type="number" id="charisma-score" class="ability-score-input" value="16">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-3">
+        <div class="section-block block-prof-bonus">
+            <div class="block-prefix"> <div>Proficiency bonus: </div>  </div>
+        </div>
+        <div class="section-block block-saving-throws">
+            <div class="block-header"> Saving throws </div>
+        </div>
+        <div class="section-block block-skills">
+            <div class="block-header"> Skills </div>
+        </div>
+    </section>
+    <section class="section-4">
+        <div class="section-block block-health">
+            <div class="block-body">
                 <div class="row">
-                    <div class="section-block character-class">
-                        <div class="block-header"> Class </div>
+                    <div class="section-block block-armor-class">
+                        <div class="block-header">Armor class</div>
                         <div class="block-body">
-                            <input type="text" id="characterClass" class="character-class-input" placeholder="Enter class">
+                            <input type="text" id="armor-class" class="armor-class-input" placeholder="Enter armor class">
                         </div>
                     </div>
-                    <div class="section-block character-race">
-                        <div class="block-header"> Race </div>
+                    <div class="section-block block-initiative">
+                        <div class="block-header">Initiative</div>
                         <div class="block-body">
-                            <input type="text" id="characterRace" class="character-race-input" placeholder="Enter race">
+                            <input type="text" id="initiative" class="initiative-input" placeholder="Enter initiative">
                         </div>
                     </div>
-                    <div class="section-block character-level">
-                        <div class="block-header"> Level </div>
+                    <div class="section-block block-speed">
+                        <div class="block-header">Speed</div>
                         <div class="block-body">
-                            <input type="text" id="characterLevel" class="character-level-input" placeholder="Enter level">
+                            <input type="text" id="speed" class="speed-input" placeholder="Enter speed">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="section-block character-background">
-                        <div class="block-header">Background</div>
+                    <div class="section-block block-current-hit-points">
+                        <div class="block-header">Current hit points</div>
                         <div class="block-body">
-                            <input type="text" id="characterBackground" class="character-background-input" placeholder="Enter background">
+                            <input type="text" id="current-hit-points" class="current-hit-points-input" placeholder="Enter current hit points">
                         </div>
                     </div>
-                    <div class="section-block character-alignment">
-                        <div class="block-header">Alignment</div>
+                    <div class="section-block block-temporary-hit-points">
+                        <div class="block-header">Temporary hit points</div>
                         <div class="block-body">
-                            <input type="text" id="characterAlignment" class="character-alignment-input" placeholder="Enter alignment">
+                            <input type="text" id="temporary-hit-points" class="temporary-hit-points-input" placeholder="Enter temporary hit points">
                         </div>
                     </div>
-                    <div class="section-block character-experience">
-                        <div class="block-header">Experience</div>
+                </div>
+                <div class="row">
+                    <div class="section-block block-hit-dice">
+                        <div class="block-header">Hit dice</div>
                         <div class="block-body">
-                            <input type="text" id="characterExperience" class="character-experience-input" placeholder="Enter experience">
+                            <input type="text" id="hit-dice" class="hit-dice-input" placeholder="Enter hit dice">
+                        </div>
+                    </div>
+                    <div class="section-block block-death-saves">
+                        <div class="block-header">Death saves</div>
+                        <div class="block-body">
+                            <input type="text" id="death-saves" class="death-saves-input" placeholder="Enter death saves">
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="section-block block-attack">
+            <div class="block-header">Attacks</div>
+        </div>
+        <div class="section-block block-passive-perception">
+            <div class="block-prefix"><div>Passive perception: </div></div>
+        </div>
+    </section>
+    <section class="section-5">
+        <div class="section-block block-inventory">
+            <div class="block-header"> Inventory </div>
+            <div class="block-body">
+                <textarea placeholder="Items in your inventory"></textarea>
+            </div>
+        </div>
+        <div class="section-block block-features">
+            <div class="block-header"> Features </div>
+            <div class="block-body">
+                <textarea placeholder="Your character's features"></textarea>
+            </div>
+        </div>
+    </section>
 
-{#            <h2> Name Class Background <br> Race Alignment Experience</h2>#}
-        </section>
-        <section class="states-section">
-            <div class="section-block states">
-                <div class="block-header"> States </div>
-                <div class="block-body">
-                    <textarea placeholder="Active states"></textarea>
-                </div>
-            </div>
-        </section>
-        <section class="options-section">
-            <div class="section-block options">
-                <div class="block-header"> Options </div>
-                <div class="block-body">
+</main>
 
-                </div>
-            </div>
-        </section>
-    </header>
-
-    <main class="flex-container">
-        <section class="section-1">
-            <div class="section-block block-notes">
-                <div class="block-header"> Notes </div>
-                <div class="block-body">
-                    <textarea placeholder="Place for your notes"></textarea>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-2">
-            <div class="section-block">
-                <div class="block-header"> Abilities </div>
-                <div class="block-body">
-                    <div class="section-block ability-field">
-                        STR
-                        <div class="ability-modifier">
-                            +3
-                        </div>
-                        <input type="number" id="strengthScore" class="ability-score-input" value = 16>
-                    </div>
-                    <div class="section-block ability-field">
-                        DEX
-                        <div class="ability-modifier">
-                            +3
-                        </div>
-                        <input type="number" id="dexterityScore" class="ability-score-input" value = 16>
-                    </div>
-                    <div class="section-block ability-field">
-                        CON
-                        <div class="ability-modifier">
-                            +3
-                        </div>
-                        <input type="number" id="constitutionScore" class="ability-score-input" value = 16>
-                    </div>
-                    <div class="section-block ability-field">
-                        WIS
-                        <div class="ability-modifier">
-                            +3
-                        </div>
-                        <input type="number" id="wisdomScore" class="ability-score-input" value = 16>
-                    </div>
-                    <div class="section-block ability-field">
-                        INT
-                        <div class="ability-modifier">
-                            +3
-                        </div>
-                        <input type="number" id="intelligenceScore" class="ability-score-input" value = 16>
-                    </div>
-                    <div class="section-block ability-field">
-                        CHA
-                        <div class="ability-modifier">
-                            +3
-                        </div>
-                        <input type="number" id="charismaScore" class="ability-score-input" value = 16>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-3">
-            <div class="section-block block-prof-bonus">
-                <div class="block-prefix"> <div>Proficiency bonus: </div>  </div>
-            </div>
-            <div class="section-block block-saving-throws">
-                <div class="block-header"> Saving throws </div>
-            </div>
-            <div class="section-block block-skills">
-                <div class="block-header"> Skills </div>
-            </div>
-        </section>
-        <section class="section-4">
-            <div class="section-block block-health">
-                <div class="block-body">
-                    <div class="row">
-                        <div class="section-block block-armor-class">
-                            <div class="block-header">Armor class</div>
-                            <div class="block-body">
-                                <input type="text" id="armorClass" class="armor-class-input" placeholder="Enter armor class">
-                            </div>
-                        </div>
-                        <div class="section-block block-initiative">
-                            <div class="block-header">Initiative</div>
-                            <div class="block-body">
-                                <input type="text" id="initiative" class="initiative-input" placeholder="Enter initiative">
-                            </div>
-                        </div>
-                        <div class="section-block block-speed">
-                            <div class="block-header">Speed</div>
-                            <div class="block-body">
-                                <input type="text" id="speed" class="speed-input" placeholder="Enter speed">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="section-block block-current-hit-points">
-                            <div class="block-header">Current hit points</div>
-                            <div class="block-body">
-                                <input type="text" id="currentHitPoints" class="current-hit-points-input" placeholder="Enter current hit points">
-                            </div>
-                        </div>
-                        <div class="section-block block-temporary-hit-points">
-                            <div class="block-header">Temporary hit points</div>
-                            <div class="block-body">
-                                <input type="text" id="temporaryHitPoints" class="temporary-hit-points-input" placeholder="Enter temporary hit points">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="section-block block-hit-dice">
-                            <div class="block-header">Hit dice</div>
-                            <div class="block-body">
-                                <input type="text" id="hitDice" class="hit-dice-input" placeholder="Enter hit dice">
-                            </div>
-                        </div>
-                        <div class="section-block block-death-saves">
-                            <div class="block-header">Death saves</div>
-                            <div class="block-body">
-                                <input type="text" id="deathSaves" class="death-saves-input" placeholder="Enter death saves">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section-block block-attack">
-                <div class="block-header">Attacks</div>
-            </div>
-            <div class="section-block block-passive-perception">
-                <div class="block-prefix"><div>Passive perception: </div></div>
-            </div>
-        </section>
-        <section class="section-5">
-            <div class="section-block block-inventory">
-                <div class="block-header"> Inventory </div>
-                <div class="block-body">
-                    <textarea placeholder="Items in your inventory"></textarea>
-                </div>
-            </div>
-            <div class="section-block block-features">
-                <div class="block-header"> Features </div>
-                <div class="block-body">
-                    <textarea placeholder="Your character's features"></textarea>
-                </div>
-            </div>
-        </section>
-
-    </main>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/character_sheet.js') }}"></script>
 </body>
 </html>

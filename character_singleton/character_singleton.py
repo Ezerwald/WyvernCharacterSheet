@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Any
 from character_stats import AbilityType
 from skills_types import SkillType
 from character.character_attribute_enum import CharacterAttribute
@@ -14,11 +14,16 @@ class CharacterSingleton:
 
     __instance = None
 
+    def __init__(self):
+        # Creates dictionary which assigns element_id to certain character attribute
+        self.__input_id_to_object: Dict[str, Tuple[Any, str]] = {}
+
     def __new__(cls, *args, **kwargs):
         """Create a new instance of the class if it doesn't exist."""
         if not cls.__instance:
             cls.__instance = super().__new__(cls)
             cls.__instance.__character = None
+
         return cls.__instance
 
     def save_character(self, filename: Path = None):
@@ -38,6 +43,7 @@ class CharacterSingleton:
         """Create a new instance of the Character object."""
         print("Created from data:", character_data)
         self.__instance.__character = Character(*character_data)
+        self.update_id_to_object_list()
 
     def load_character(self, filename: Path):
         """Load character data from a JSON file."""
@@ -52,7 +58,7 @@ class CharacterSingleton:
         except json.JSONDecodeError:
             print(f"Invalid JSON format in '{filename}'.")
 
-    def pack_character_data(self) -> Dict[str, any]:
+    def pack_character_data(self) -> Dict[str, Any]:
         """Pack character data into a dictionary."""
         character = self.__instance.__character
 
@@ -113,13 +119,13 @@ class CharacterSingleton:
         }
         return packed_data
 
-    def unpack_character_data(self, packed_data: Dict[str, any]) -> Tuple:
+    def unpack_character_data(self, packed_data: Dict[str, Any]) -> Tuple:
         """Unpack character data from a dictionary into a tuple of values."""
         unpacked_data: Tuple = tuple(packed_data.values())
         return unpacked_data
 
     @property
-    def character(self) -> Character:
+    def character(self) -> AbstractCharacter:
         """Get the character object."""
         return self.__instance.__character
 
@@ -127,3 +133,34 @@ class CharacterSingleton:
     def character(self, character: AbstractCharacter):
         """Set the character object."""
         self.__instance.__character = character
+        self.update_id_to_object_list()
+
+    def update_id_to_object_list(self):
+        self.__input_id_to_object = {
+            'strength-score': (self.character.abilities[AbilityType.STRENGTH], 'score'),
+            'dexterity-score': (self.character.abilities[AbilityType.DEXTERITY], 'score'),
+            'constitution-score': (self.character.abilities[AbilityType.CONSTITUTION], 'score'),
+            'intelligence-score': (self.character.abilities[AbilityType.INTELLIGENCE], 'score'),
+            'wisdom-score': (self.character.abilities[AbilityType.WISDOM], 'score'),
+            'charisma-score': (self.character.abilities[AbilityType.CHARISMA], 'score'),
+
+            'strength-modifier': (self.character.abilities[AbilityType.STRENGTH], 'modifier'),
+            'dexterity-modifier': (self.character.abilities[AbilityType.DEXTERITY], 'modifier'),
+            'constitution-modifier': (self.character.abilities[AbilityType.CONSTITUTION], 'modifier'),
+            'intelligence-modifier': (self.character.abilities[AbilityType.INTELLIGENCE], 'modifier'),
+            'wisdom-modifier': (self.character.abilities[AbilityType.WISDOM], 'modifier'),
+            'charisma-modifier': (self.character.abilities[AbilityType.CHARISMA], 'modifier'),
+
+            'speed': (self.character.speed, 'value'),
+            'acrobatics-proficiency': (self.character.skills[SkillType.ACROBATICS], 'proficiency')
+        }
+
+    def set_attribute(self, element_id: str, attribute_value: Any) -> None:
+        # Access the object and attribute using the key, then update the attribute value
+        object_instance, attribute_name = self.__input_id_to_object[element_id]
+        setattr(object_instance, attribute_name, attribute_value)
+
+    def get_attribute(self, element_id: str) -> Any:
+        # Access the object and attribute using the key, then return the attribute value
+        object_instance, attribute_name = self.__input_id_to_object[element_id]
+        return getattr(object_instance, attribute_name)

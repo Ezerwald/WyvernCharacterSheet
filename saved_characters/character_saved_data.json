@@ -1,0 +1,66 @@
+{
+    "name": "Aragorn",
+    "game_class_type": "Fighter",
+    "level": 5,
+    "background": "Noble",
+    "race": "Human",
+    "alignment": "Neutral Good",
+    "experience_points": 5000,
+    "abilities_scores": {
+        "STR": 18,
+        "DEX": 16,
+        "CON": 14,
+        "INT": 12,
+        "WIS": 10,
+        "CHA": 8
+    },
+    "saving_throws_proficiencies": {
+        "STR": true,
+        "DEX": true,
+        "CON": false,
+        "INT": false,
+        "WIS": false,
+        "CHA": false
+    },
+    "skills_proficiencies": {
+        "Acrobatics": true,
+        "Animal Handling": false,
+        "Arcana": false,
+        "Athletics": false,
+        "Deception": false,
+        "History": false,
+        "Insight": false,
+        "Intimidation": false,
+        "Investigation": false,
+        "Medicine": false,
+        "Nature": false,
+        "Perception": false,
+        "Performance": false,
+        "Persuasion": false,
+        "Religion": false,
+        "Sleight of Hand": false,
+        "Stealth": false,
+        "Survival": true
+    },
+    "shield": true,
+    "equipped_armor_name": "Plate",
+    "current_hit_points": 45,
+    "max_hit_points": 60,
+    "temporary_hit_points": 0,
+    "hit_dices_left": 2,
+    "successful_death_saves": 2,
+    "failed_death_saves": 1,
+    "attacks_data_list": [
+        [
+            "Longsword",
+            "STR",
+            true,
+            "1d10",
+            5,
+            2
+        ]
+    ],
+    "inventory": "Longsword, Backpack, Rations",
+    "features": "Favored Enemy: Orcs, Second Wind",
+    "notes": ""
+}

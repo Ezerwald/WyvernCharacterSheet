@@ -14,7 +14,7 @@ class Ability:
         return self.__score
 
     @score.setter
-    def score(self, new_score):
+    def score(self, new_score: int):
         if MIN_ABILITY_VALUE <= new_score <= MAX_ABILITY_VALUE:
             self.__score = new_score
         else:

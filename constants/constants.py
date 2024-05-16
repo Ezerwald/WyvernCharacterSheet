@@ -31,3 +31,11 @@ NO_ARMOR_AC = 10
 MIN_DEXTERITY_BONUS_TO_AC = 10
 
 DEFAULT_SHIELD_BONUS_TO_AC = 2
+
+LIST_OF_ELEMENTS_TO_UPDATE = ["strength-modifier",
+                              "dexterity-modifier",
+                              "constitution-modifier",
+                              "intelligence-modifier",
+                              "wisdom-modifier",
+                              "charisma-modifier",
+                              "initiative"]
