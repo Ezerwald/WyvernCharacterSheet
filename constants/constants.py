@@ -37,5 +37,5 @@ LIST_OF_ELEMENTS_TO_UPDATE = ["strength-modifier",
                               "constitution-modifier",
                               "intelligence-modifier",
                               "wisdom-modifier",
-                              "charisma-modifier",
-                              "initiative"]
+                              "charisma-modifier"
+                              ]

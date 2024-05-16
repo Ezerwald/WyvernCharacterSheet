@@ -151,6 +151,7 @@ class CharacterSingleton:
             'wisdom-modifier': (self.character.abilities[AbilityType.WISDOM], 'modifier'),
             'charisma-modifier': (self.character.abilities[AbilityType.CHARISMA], 'modifier'),
 
+            'initiative': (self.character.initiative, 'value'),
             'speed': (self.character.speed, 'value'),
             'acrobatics-proficiency': (self.character.skills[SkillType.ACROBATICS], 'proficiency')
         }
