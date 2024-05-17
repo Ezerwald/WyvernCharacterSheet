@@ -57,5 +57,3 @@ The application can be extended by incorporating additional customization option
 Libraries used: Flask
 
 ---
-
-This coursework paper provides a comprehensive analysis of the Wyvern Character Sheet application, highlighting its functionality, technical aspects, and design patterns. The integrated approach ensures robustness, flexibility, and scalability, laying a strong foundation for further development. If you have any further questions or require additional information, please feel free to reach out!
