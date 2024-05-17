@@ -29,12 +29,25 @@ The Wyvern Character Sheet fulfills various functional requirements:
 - **Automatic Calculations:** The program automates calculations for modifiers, skill bonuses, hit points, and other statistics, ensuring accuracy and efficiency.
 - **Persistence:** Character sheets can be saved and loaded, allowing users to resume their progress at any time.
 - **User-Friendly Interface:** The interface is designed to be intuitive and easy to navigate, enhancing the user experience.
+  
+### Object-Oriented Programming (OOP) Pillars:
+
+#### 1. Encapsulation:
+- Encapsulation is the bundling of data (attributes) and methods (behaviors) that operate on the data into a single unit, known as a class. It hides the internal state of an object from the outside world and only exposes a public interface for interacting with it.
+
+#### 2. Inheritance:
+- Inheritance is the mechanism by which a class can inherit properties and behavior from another class, known as the base or parent class. The class that inherits from the parent class is called a derived or child class. It promotes code reusability and establishes a hierarchical relationship between classes.
+
+#### 3. Polymorphism:
+- Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to represent multiple underlying data types, allowing methods to behave differently based on the object they are invoked on.
+
+#### 4. Abstraction:
+- Abstraction is the process of simplifying complex systems by focusing on essential aspects while hiding unnecessary details. It allows us to model real-world entities as abstract data types, capturing only the relevant characteristics and behaviors.
 
 ### Technical Aspects and Design Patterns Used
 
 The implementation leverages various technical aspects and design patterns to achieve functionality and maintainability:
 
-- **Decorators:** `@property` and `@staticmethod` decorators are utilized to enhance method functionality and maintain code readability.
 - **Composition Relation between Classes:** Composition is employed to establish relationships between classes, promoting modularity and code reuse.
 - **Enumerations:** Enumerations are used to define constants representing various types, enhancing code clarity and maintainability.
 - **Abstract Classes:** Abstract classes define common behavior and enforce structure among related classes, facilitating code organization and scalability.
@@ -42,6 +55,7 @@ The implementation leverages various technical aspects and design patterns to ac
   - **Strategy Pattern:** Encapsulates algorithms for calculating skill bonuses based on character attributes, allowing for flexible selection at runtime.
   - **Factory Pattern:** Creates instances of character-related objects, promoting loose coupling and extensibility.
   - **Singleton Pattern:** Ensures that there is only one instance of the `CharacterSingleton` class throughout the application, providing global accessibility and consistency of character data.
+  - **Decorator Pattern:** `@property` and `@staticmethod` decorators are utilized to enhance method functionality and maintain code readability.
 
 ## 3. Results and Summary
 
