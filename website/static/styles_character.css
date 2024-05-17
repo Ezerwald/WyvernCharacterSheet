@@ -82,6 +82,22 @@ a {
     color: saddlebrown;
 }
 
+button{
+    background: #ecd1af;
+    border-style: double;
+    border-color: #7a3608;
+    color: saddlebrown;
+    border-radius: 5px;
+    font-family: "Harlow Solid Italic", serif;
+    width: 80%;
+    margin: 1px;
+}
+
+button:hover{
+    font-weight: bold;
+    background: antiquewhite;
+}
+
 textarea{
     width: 100%;
     height: 100%;
