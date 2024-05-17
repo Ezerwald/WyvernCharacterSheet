@@ -12,6 +12,7 @@ The Wyvern Character Sheet is a web application designed to streamline the manag
 ### How to run the program?
 
 To run the program, execute the `main.py` script from the repository. This will start the web server. Users can then access the website using a web browser.
+Or you can just follow the link to reach the hosted website: http://193.107.109.29:50000/
 
 ### How to use the program?
 
