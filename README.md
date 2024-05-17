@@ -1,5 +1,7 @@
 # Coursework Paper: Wyvern Character Sheet
 
+![Wyvern Character Sheet Title](https://i.ibb.co/Y3hvYZz/Wyvern-Character-Sheet-Title.png)
+
 ## 1. Introduction
 
 ### What is Wyvern Character Sheet?
