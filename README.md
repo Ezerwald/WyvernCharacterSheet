@@ -45,13 +45,16 @@ The implementation leverages various technical aspects and design patterns to ac
 
 ## 3. Results and Summary
 
-### Results
+### Results:
+- The implementation of various design patterns such as Strategy, Factory, and Singleton has significantly enhanced the modularity and scalability of the Wyvern Character Sheet application.
+- Challenges were encountered during the integration of these patterns, particularly in ensuring seamless communication between different components of the application.
+- Despite the challenges, the application now boasts improved maintainability and extensibility, allowing for easier implementation of new features and functionalities in the future.
 
-The Wyvern Character Sheet delivers accurate character sheets with all relevant details and calculations, empowering users to manage their characters efficiently and focus on gameplay.
+### Conclusions:
+- The Wyvern Character Sheet has achieved its primary objective of providing a user-friendly and efficient tool for managing D&D character sheets.
+- The incorporation of design patterns has not only improved the technical robustness of the application but has also laid a solid foundation for future development and expansion.
+- Moving forward, the program has the potential to evolve further by incorporating additional features, enhancing user experience, and addressing any remaining challenges to ensure continued success and relevance in the gaming community.
 
-### Conclusions
-
-In conclusion, the Wyvern Character Sheet offers an efficient and user-friendly solution for managing D&D character sheets. By leveraging design patterns and technical aspects, the application ensures flexibility, maintainability, and extensibility.
 
 ### Future Extensions
 
