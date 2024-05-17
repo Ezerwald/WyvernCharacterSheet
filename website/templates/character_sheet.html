@@ -150,7 +150,7 @@
         <div class="section-block block-prof-bonus">
             <div class="block-prefix">
                 <div>Proficiency bonus: </div>
-                <div class="prof-bonus"> _ </div>
+                <div id="prof-bonus"> _ </div>
             </div>
         </div>
         <div class="section-block block-saving-throws">
@@ -309,10 +309,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="section-block block-current-hit-points">
-                        <div class="block-header">Current hit points</div>
+                    <div class="section-block block-hit-points">
+                        <div class="block-header">Hit points</div>
                         <div class="block-body">
-                            <input type="text" id="current-hit-points" class="current-hit-points-input" placeholder="Enter current hit points">
+                            <input type="text" id="current-hit-points" class="hit-points-input" placeholder="Enter current hit points">
+                            <h1> / </h1>
+                            <input type="text" id="max-hit-points" class="hit-points-input" placeholder="Enter max hit points">
                         </div>
                     </div>
                     <div class="section-block block-temporary-hit-points">
@@ -326,13 +328,24 @@
                     <div class="section-block block-hit-dice">
                         <div class="block-header">Hit dice</div>
                         <div class="block-body">
-                            <input type="text" id="hit-dice" class="hit-dice-input" placeholder="Enter hit dice">
+                            <div class="row">
+                                <input type="number" id="current-hit-dices-amount" class="hit-dice-input" placeholder="Enter current hit dice amount">
+                                <h1> / </h1>
+                                <h1 id="max-hit-dices-amount"></h1>
+                            </div>
                         </div>
                     </div>
                     <div class="section-block block-death-saves">
                         <div class="block-header">Death saves</div>
                         <div class="block-body">
-                            <input type="text" id="death-saves" class="death-saves-input" placeholder="Enter death saves">
+                            <div class="block-prefix">
+                                <div> Successful: </div>
+                                <input type="number" id="successful-death-saves" class="death-saves-input" placeholder=0>
+                            </div>
+                            <div class="block-prefix">
+                                <div> Successful: </div>
+                                <input type="number" id="failed-death-saves" class="death-saves-input" placeholder=0>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -354,20 +367,23 @@
             </div>
         </div>
         <div class="section-block block-passive-perception">
-            <div class="block-prefix"><div>Passive perception: </div></div>
+            <div class="block-prefix">
+                <div>Passive perception: </div>
+                <div id="passive-perception"> _ </div>
+            </div>
         </div>
     </section>
     <section class="section-5">
         <div class="section-block block-inventory">
             <div class="block-header"> Inventory </div>
             <div class="block-body">
-                <textarea placeholder="Items in your inventory"></textarea>
+                <textarea id="inventory" placeholder="Items in your inventory"></textarea>
             </div>
         </div>
         <div class="section-block block-features">
             <div class="block-header"> Features </div>
             <div class="block-body">
-                <textarea placeholder="Your character's features"></textarea>
+                <textarea id="features" placeholder="Your character's features"></textarea>
             </div>
         </div>
     </section>

@@ -4,17 +4,25 @@ $(document).ready(function() {
     // Execute the update function to load character data when the page loads
 });
 
-$(document).on("input", "input, textarea", debounce(function(e) {
-    // Send AJAX request to save input data
+$(document).on("input", "input[type='text'], input[type='number'], textarea", debounce(function(e) {
+    // Send AJAX request to save input data of text and number
     saveInputData(e.target.id, e.target.value);
 }, 300)); // Delay of 300 milliseconds
+
+$(document).on("change", "input[type='checkbox']", function() {
+    // Get checkbox ID and checked state
+    const checkboxId = this.id;
+    const isChecked = this.checked;
+    // Send AJAX request to save checkbox state
+    saveInputData(checkboxId, isChecked);
+});
 
 function loadCharacterData() {
     $.ajax({
         url: "/get_character_data",
         method: "GET",
         success: function(characterData) {
-            updateDivsWithValues(characterData);
+            updateElementsWithData(characterData);
         },
         error: function(xhr, status, error) {
             console.error("Error loading character data:", error);
@@ -30,14 +38,13 @@ function saveInputData(id, value) {
         contentType: "application/json",
         data: JSON.stringify({ value: value, type: id }),
         success: function(elementsToUpdateDict) {
-            updateDivsWithValues(elementsToUpdateDict);
+            updateElementsWithData(elementsToUpdateDict);
         },
         error: function(xhr, status, error) {
             console.error("Error saving input data:", error);
         }
     });
 }
-
 
 // Debounce function to delay execution of the input event handler
 function debounce(func, delay) {
@@ -52,20 +59,25 @@ function debounce(func, delay) {
     };
 }
 
-// Update the divs with the specified IDs
-function updateDivsWithValues(data) {
+// Update the elements with the specified IDs
+function updateElementsWithData(data) {
     for (const elementId in data) {
         if (Object.hasOwnProperty.call(data, elementId)) {
             const newValue = data[elementId];
             const element = document.getElementById(elementId);
+            console.log(elementId, " = ", newValue);
             if (element) {
                 // Check if the element is an input or textarea
-                if (element.tagName.toLowerCase() === 'input' || element.tagName.toLowerCase() === 'textarea') {
+                if (element.type === 'text' || element.type === 'number' || element.tagName.toLowerCase() === 'textarea') {
                     // For input and textarea elements, set the value property instead of innerText
                     element.value = newValue;
-                } else {
+                }
+                else if (element.type === 'checkbox') {
+                    element.checked = newValue;
+                }
+                else {
                     // For other elements, use innerText
-                    element.innerText = newValue
+                    element.innerText = newValue;
                 }
                 console.log(elementId, " assigned ", newValue);
             }

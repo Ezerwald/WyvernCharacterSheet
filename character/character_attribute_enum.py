@@ -18,7 +18,7 @@ class CharacterAttribute(Enum):
     CURRENT_HIT_POINTS = 'current_hit_points'  # Current hit points of the character
     MAX_HIT_POINTS = 'max_hit_points'  # Maximum hit points of the character
     TEMPORARY_HIT_POINTS = 'temporary_hit_points'  # Temporary hit points of the character
-    HIT_DICES_LEFT = 'hit_dices_left'  # Number of hit dice remaining for the character
+    CURRENT_HIT_DICES_AMOUNT = 'current_hit_dices_amount'  # Number of hit dice remaining for the character
     SUCCESSFUL_DEATH_SAVES = 'successful_death_saves'  # Number of successful death saves
     FAILED_DEATH_SAVES = 'failed_death_saves'  # Number of failed death saves
     ATTACKS_LIST = 'attacks_data_list'  # List of attacks available to the character

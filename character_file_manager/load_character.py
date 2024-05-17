@@ -40,7 +40,7 @@ if character_dict:
         'current_hit_points': character_dict['current_hit_points'],
         'max_hit_points': character_dict['max_hit_points'],
         'temporary_hit_points': character_dict['temporary_hit_points'],
-        'hit_dices_left': character_dict['hit_dices_left'],
+        'current_hit_dices_amount': character_dict['current_hit_dices_amount'],
         'successful_death_saves': character_dict['successful_death_saves'],
         'failed_death_saves': character_dict['failed_death_saves'],
         'attacks': deserialize(character_dict['attacks']),

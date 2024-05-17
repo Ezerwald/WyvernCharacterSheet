@@ -11,7 +11,7 @@ from initiative import Initiative
 from armor import EquippedArmor, basic_armor_collection
 from armor_class import ArmorClass
 from health import DeathSaves, HitPoints, HitDicesPool, TemporaryHitPoints
-from game_classes import CurrentGameClass, basic_game_classes_collection, GameClassType
+from game_classes import CurrentGameClass, basic_game_classes_collection
 from race import basic_races_collection, Race
 from attacks import AttacksList, Attack
 from character_features import CharacterFeatures
@@ -76,8 +76,7 @@ class Character(AbstractCharacter):
 
     def __initialize_game_class(self, game_class_name: str):
         """Initialize the character's game class."""
-        self.__current_game_class = CurrentGameClass(self, basic_game_classes_collection.
-                                                     get_game_class_by_name(game_class_name))
+        self.__current_game_class = CurrentGameClass(self, game_class_name)
 
     def __initialize_level(self, level: int):
         """Initialize the character's level."""

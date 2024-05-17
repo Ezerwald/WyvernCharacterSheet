@@ -9,7 +9,7 @@ class SavingThrow:
         self.__character = character
 
     @property
-    def value(self):
+    def value(self) -> int:
         """Gets saving throw value."""
         value = self.__character.abilities[self.__ability_type].modifier
         if self.__proficiency:
@@ -17,7 +17,7 @@ class SavingThrow:
         return value
 
     @property
-    def proficiency(self):
+    def proficiency(self) -> bool:
         return self.__proficiency
 
     @proficiency.setter

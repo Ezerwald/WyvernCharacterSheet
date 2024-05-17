@@ -7,11 +7,11 @@ class Speed:
         self.__speed = character.race.speed
 
     @property
-    def speed(self):
+    def value(self):
         """Get movement speed value"""
         return self.__speed
 
-    @speed.setter
-    def speed(self, speed):
+    @value.setter
+    def value(self, speed):
         """Set movement speed value"""
         self.__speed = speed

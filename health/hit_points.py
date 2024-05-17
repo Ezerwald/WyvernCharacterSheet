@@ -1,4 +1,5 @@
 from abstract_character import AbstractCharacter
+from character_stats import AbilityType
 
 
 class HitPoints:
@@ -13,7 +14,8 @@ class HitPoints:
         return self.__current_hit_points
 
     @current_hit_points.setter
-    def current_hit_points(self, value):
+    def current_hit_points(self, value: int):
+        value = int(value)
         """Set current hit points."""
         if value is None:
             raise ValueError("Current hit points cannot be None.")
@@ -27,19 +29,22 @@ class HitPoints:
         return self.__max_hit_points
 
     @max_hit_points.setter
-    def max_hit_points(self, value):
+    def max_hit_points(self, value: int):
+        value = int(value)
         """Set max hit points."""
         if value is None:
             raise ValueError("Max hit points cannot be None.")
-        if value < 0:
+        elif value < 0:
             raise ValueError("Max hit points cannot be negative.")
-        self.__max_hit_points = value
-        if self.__current_hit_points > value:
-            self.__current_hit_points = value
+        elif value == 0:
+            self.__max_hit_points = self.calc_max_hit_points()
+        else:
+            self.__max_hit_points = value
 
     def calc_max_hit_points(self):
         """Calculate max hit points depending on current level and class."""
-        hit_dice = self.__character.current_game_class.value.hit_dice
+        hit_dice = self.__character.current_game_class.value.hit_dice_type
         level = self.__character.level.value
-        hit_points = hit_dice + (level - 1) * (hit_dice // 2 + hit_dice % 2)
+        hit_points = (hit_dice + (level - 1) * (hit_dice // 2 + hit_dice % 2) +
+                      level * self.__character.abilities[AbilityType.CONSTITUTION].modifier)
         return hit_points

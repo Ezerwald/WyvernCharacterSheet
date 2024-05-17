@@ -5,11 +5,11 @@ from skills_types import SkillType
 
 
 class GameClass:
-    def __init__(self, game_class_type: GameClassType, name: str, hit_dice: int, saving_throws: List[AbilityType],
+    def __init__(self, game_class_type: GameClassType, name: str, hit_dice_type: int, saving_throws: List[AbilityType],
                  proficiencies: str, amount_of_skills: int, skills_to_choose: List[SkillType]):
         self.__game_class_type: GameClassType = game_class_type
         self.__name: str = name
-        self.__hit_dice: int = hit_dice
+        self.__hit_dice_type: int = hit_dice_type
         self.__saving_throws: List[AbilityType] = saving_throws
         self.__proficiencies: str = proficiencies
         self.__amount_of_skills: int = amount_of_skills
@@ -26,9 +26,9 @@ class GameClass:
         return self.__name
 
     @property
-    def hit_dice(self) -> int:
+    def hit_dice_type(self) -> int:
         """Get hit dice of class"""
-        return self.__hit_dice
+        return self.__hit_dice_type
 
     @property
     def saving_throws(self) -> List[AbilityType]:
@@ -52,7 +52,7 @@ class GameClass:
 
     def __str__(self) -> str:
         """String representation of the GameClass instance"""
-        return f"Game Class: {self.__name}, Type: {self.__game_class_type}, Hit Dice: {self.__hit_dice}, " \
+        return f"Game Class: {self.__name}, Type: {self.__game_class_type}, Hit Dice: {self.__hit_dice_type}, " \
                f"Saving Throws: {', '.join(str(ability) for ability in self.__saving_throws)}, " \
                f"Proficiencies: {self.__proficiencies}, Amount of Skills: {self.__amount_of_skills}, " \
                f"Skills to Choose: {', '.join(str(skill) for skill in self.__skills_to_choose)}"

@@ -78,7 +78,7 @@ class CharacterSingleton:
         current_hit_points = character.hit_points.current_hit_points
         max_hit_points = character.hit_points.max_hit_points
         temporary_hit_points = character.temporary_hit_points.value
-        hit_dices_left = character.hit_dices_pool.hit_dices_left
+        hit_dices_left = character.hit_dices_pool.current_hit_dices_amount
         successful_death_saves = character.death_saves.successful_saves
         failed_death_saves = character.death_saves.failed_saves
         attacks_list = [(attack.name,
@@ -109,7 +109,7 @@ class CharacterSingleton:
             CharacterAttribute.CURRENT_HIT_POINTS.value: current_hit_points,
             CharacterAttribute.MAX_HIT_POINTS.value: max_hit_points,
             CharacterAttribute.TEMPORARY_HIT_POINTS.value: temporary_hit_points,
-            CharacterAttribute.HIT_DICES_LEFT.value: hit_dices_left,
+            CharacterAttribute.CURRENT_HIT_DICES_AMOUNT.value: hit_dices_left,
             CharacterAttribute.SUCCESSFUL_DEATH_SAVES.value: successful_death_saves,
             CharacterAttribute.FAILED_DEATH_SAVES.value: failed_death_saves,
             CharacterAttribute.ATTACKS_LIST.value: attacks_list,
@@ -139,7 +139,7 @@ class CharacterSingleton:
         self.__input_id_to_object = {
             # biography
             "character-name": (self.character.biography, 'name'),
-            "character-class": (self.character.current_game_class.value, 'name'),
+            "character-class": (self.character.current_game_class, 'name'),
             "character-race": (self.character.race, 'name'),
             "character-level": (self.character.level, 'value'),
             "character-background": (self.character.biography, 'background'),
@@ -147,8 +147,6 @@ class CharacterSingleton:
             "character-experience": (self.character.experience_points, 'value'),
             # notes
             "notes": (self.character.notes, 'notes'),
-            # proficiency bonus
-            "prof-bonus": (self.character.prof_bonus, 'value'),
             # abilities scores
             'strength-score': (self.character.abilities[AbilityType.STRENGTH], 'score'),
             'dexterity-score': (self.character.abilities[AbilityType.DEXTERITY], 'score'),
@@ -163,17 +161,41 @@ class CharacterSingleton:
             'intelligence-modifier': (self.character.abilities[AbilityType.INTELLIGENCE], 'modifier'),
             'wisdom-modifier': (self.character.abilities[AbilityType.WISDOM], 'modifier'),
             'charisma-modifier': (self.character.abilities[AbilityType.CHARISMA], 'modifier'),
-            # saving throws
+            # proficiency bonus
+            'prof-bonus': (self.character.prof_bonus, 'value'),
+            # saving throws proficiencies
+            'strength-saving-throw-prof': (self.character.saving_throws[AbilityType.STRENGTH], 'proficiency'),
+            'dexterity-saving-throw-prof': (self.character.saving_throws[AbilityType.DEXTERITY], 'proficiency'),
+            'constitution-saving-throw-prof': (self.character.saving_throws[AbilityType.CONSTITUTION], 'proficiency'),
+            'intelligence-saving-throw-prof': (self.character.saving_throws[AbilityType.INTELLIGENCE], 'proficiency'),
+            'wisdom-saving-throw-prof': (self.character.saving_throws[AbilityType.WISDOM], 'proficiency'),
+            'charisma-saving-throw-prof': (self.character.saving_throws[AbilityType.CHARISMA], 'proficiency'),
+            # saving throws bonuses
             'strength-saving-throw-bonus': (self.character.saving_throws[AbilityType.STRENGTH], 'value'),
             'dexterity-saving-throw-bonus': (self.character.saving_throws[AbilityType.DEXTERITY], 'value'),
             'constitution-saving-throw-bonus': (self.character.saving_throws[AbilityType.CONSTITUTION], 'value'),
             'intelligence-saving-throw-bonus': (self.character.saving_throws[AbilityType.INTELLIGENCE], 'value'),
             'wisdom-saving-throw-bonus': (self.character.saving_throws[AbilityType.WISDOM], 'value'),
             'charisma-saving-throw-bonus': (self.character.saving_throws[AbilityType.CHARISMA], 'value'),
-            # initiative
-            'initiative': (self.character.initiative, 'value'),
             # skills proficiencies
-            'acrobatics-proficiency': (self.character.skills[SkillType.ACROBATICS], 'proficiency'),
+            'acrobatics-skill-prof': (self.character.skills[SkillType.ACROBATICS], 'proficiency'),
+            'animal-handling-skill-prof': (self.character.skills[SkillType.ANIMAL_HANDLING], 'proficiency'),
+            'arcana-skill-prof': (self.character.skills[SkillType.ARCANA], 'proficiency'),
+            'athletics-skill-prof': (self.character.skills[SkillType.ATHLETICS], 'proficiency'),
+            'deception-skill-prof': (self.character.skills[SkillType.DECEPTION], 'proficiency'),
+            'history-skill-prof': (self.character.skills[SkillType.HISTORY], 'proficiency'),
+            'insight-skill-prof': (self.character.skills[SkillType.INSIGHT], 'proficiency'),
+            'intimidation-skill-prof': (self.character.skills[SkillType.INTIMIDATION], 'proficiency'),
+            'investigation-skill-prof': (self.character.skills[SkillType.INVESTIGATION], 'proficiency'),
+            'medicine-skill-prof': (self.character.skills[SkillType.MEDICINE], 'proficiency'),
+            'nature-skill-prof': (self.character.skills[SkillType.NATURE], 'proficiency'),
+            'perception-skill-prof': (self.character.skills[SkillType.PERCEPTION], 'proficiency'),
+            'performance-skill-prof': (self.character.skills[SkillType.PERFORMANCE], 'proficiency'),
+            'persuasion-skill-prof': (self.character.skills[SkillType.PERSUASION], 'proficiency'),
+            'religion-skill-prof': (self.character.skills[SkillType.RELIGION], 'proficiency'),
+            'sleight-of-hand-skill-prof': (self.character.skills[SkillType.SLEIGHT_OF_HAND], 'proficiency'),
+            'stealth-skill-prof': (self.character.skills[SkillType.STEALTH], 'proficiency'),
+            'survival-skill-prof': (self.character.skills[SkillType.SURVIVAL], 'proficiency'),
             # skills bonuses
             'acrobatics-skill-bonus': (self.character.skills[SkillType.ACROBATICS], 'value'),
             'animal-handling-skill-bonus': (self.character.skills[SkillType.ANIMAL_HANDLING], 'value'),
@@ -192,10 +214,32 @@ class CharacterSingleton:
             'religion-skill-bonus': (self.character.skills[SkillType.RELIGION], 'value'),
             'sleight-of-hand-skill-bonus': (self.character.skills[SkillType.SLEIGHT_OF_HAND], 'value'),
             'stealth-skill-bonus': (self.character.skills[SkillType.STEALTH], 'value'),
-            'survival-skill-bonus': (self.character.skills[SkillType.SURVIVAL], 'value')
+            'survival-skill-bonus': (self.character.skills[SkillType.SURVIVAL], 'value'),
+            # health
+            "armor-class": (self.character.armor_class, 'value'),
+            "initiative": (self.character.initiative, 'value'),
+            "speed": (self.character.speed, 'value'),
+            "current-hit-points": (self.character.hit_points, 'current_hit_points'),
+            "max-hit-points": (self.character.hit_points, 'max_hit_points'),
+            "temporary-hit-points": (self.character.temporary_hit_points, 'value'),
+            "hit-dice-type": (self.character.hit_dices_pool, 'hit_dice_type'),
+            "current-hit-dices-amount": (self.character.hit_dices_pool, 'current_hit_dices_amount'),
+            "max-hit-dices-amount": (self.character.hit_dices_pool, 'max_hit_dices_amount'),
+            "successful-death-saves": (self.character.death_saves, 'successful_saves'),
+            "failed-death-saves": (self.character.death_saves, 'failed_saves'),
+            # passive perception
+            "passive-perception": (self.character.passive_perception, 'value'),
+            # inventory
+            "inventory": (self.character.inventory, 'items'),
+            # features
+            "features": (self.character.features, 'all_features')
         }
 
     def set_attribute(self, element_id: str, attribute_value: Any) -> None:
+        if attribute_value == 'on':
+            attribute_value = True
+        elif attribute_value == 'off':
+            attribute_value = False
         # Access the object and attribute using the key, then update the attribute value
         object_instance, attribute_name = self.__input_id_to_object[element_id]
         setattr(object_instance, attribute_name, attribute_value)

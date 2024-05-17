@@ -99,6 +99,7 @@ input[type="number"] {
     border: none;
     background-color: white;
     border-radius: 5px;
+    width: 30%;
     text-align: center;
     font-family: "Times New Roman";
 }
@@ -195,6 +196,8 @@ section{
 .row{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     flex-grow: 1;
     width: 100%;
 }
@@ -270,13 +273,17 @@ section{
 
 /* ---------Section 4 blocks--------- */
 .block-health{
+    flex-grow: 0.6;
 }
+    .block-health .block-body{
+        height: 105%;
+    }
     .block-armor-class,
     .block-initiative,
     .block-speed{
         height: 100%;
     }
-    .block-current-hit-points,
+    .block-hit-points,
     .block-temporary-hit-points{
         height: 100%;
     }
@@ -284,15 +291,43 @@ section{
     .block-death-saves{
         height: 100%;
     }
+        .block-death-saves .block-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 80%;
+        }
+
+        .block-death-saves .block-body .block-prefix{
+            justify-content: center;
+        }
+
+        .death-saves-input{
+            max-width: 10%;
+        }
+
+    .block-hit-points .block-body{
+        display: flex;
+        flex-direction: row;
+        height: 80%;
+    }
+    .block-hit-dice .block-body{
+        height: 80%;
+    }
 
     .armor-class-input,
     .initiative-input,
     .speed-input,
-    .current-hit-points-input,
+    .hit-points-input,
     .temporary-hit-points-input,
-    .hit-dice-input,
     .death-saves-input {
         height: 70%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 150%;
+    }
+    .hit-dice-input{
+        height: 40%;
         text-align: center;
         font-weight: bold;
         font-size: 150%;
@@ -325,7 +360,7 @@ section{
 
 .block-passive-perception{
     flex-grow: 0.1;
-    height: 5%;
+    height: 3%;
     flex-direction: row;
     align-content: center;
 }

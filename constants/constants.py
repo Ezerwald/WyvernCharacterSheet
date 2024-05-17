@@ -41,14 +41,14 @@ LIST_OF_ELEMENTS_TO_UPDATE = ["character-name",
                               "character-experience",
 
                               "notes",
-                                
+
                               "strength-score",
                               "dexterity-score",
                               "constitution-score",
                               "intelligence-score",
                               "wisdom-score",
                               "charisma-score",
-                                
+
                               "strength-modifier",
                               "dexterity-modifier",
                               "constitution-modifier",
@@ -58,6 +58,13 @@ LIST_OF_ELEMENTS_TO_UPDATE = ["character-name",
 
                               "prof-bonus",
 
+                              "strength-saving-throw-prof",
+                              "dexterity-saving-throw-prof",
+                              "constitution-saving-throw-prof",
+                              "intelligence-saving-throw-prof",
+                              "wisdom-saving-throw-prof",
+                              "charisma-saving-throw-prof",
+
                               "strength-saving-throw-bonus",
                               "dexterity-saving-throw-bonus",
                               "constitution-saving-throw-bonus",
@@ -65,7 +72,24 @@ LIST_OF_ELEMENTS_TO_UPDATE = ["character-name",
                               "wisdom-saving-throw-bonus",
                               "charisma-saving-throw-bonus",
 
-                              "initiative",
+                              "acrobatics-skill-prof",
+                              "animal-handling-skill-prof",
+                              "arcana-skill-prof",
+                              "athletics-skill-prof",
+                              "deception-skill-prof",
+                              "history-skill-prof",
+                              "insight-skill-prof",
+                              "intimidation-skill-prof",
+                              "investigation-skill-prof",
+                              "medicine-skill-prof",
+                              "nature-skill-prof",
+                              "perception-skill-prof",
+                              "performance-skill-prof",
+                              "persuasion-skill-prof",
+                              "religion-skill-prof",
+                              "sleight-of-hand-skill-prof",
+                              "stealth-skill-prof",
+                              "survival-skill-prof",
 
                               "acrobatics-skill-bonus",
                               "animal-handling-skill-bonus",
@@ -84,7 +108,23 @@ LIST_OF_ELEMENTS_TO_UPDATE = ["character-name",
                               "religion-skill-bonus",
                               "sleight-of-hand-skill-bonus",
                               "stealth-skill-bonus",
-                              "survival-skill-bonus"
+                              "survival-skill-bonus",
+
+                              "armor-class",
+                              "initiative",
+                              "speed",
+                              "current-hit-points",
+                              "max-hit-points",
+                              "temporary-hit-points",
+                              "hit-dice-type",
+                              "current-hit-dices-amount",
+                              "max-hit-dices-amount",
+                              "successful-death-saves",
+                              "failed-death-saves",
+
+                              "passive-perception",
+                              "inventory",
+                              "features"
                               ]
 
 ELEMENTS_UPDATE_DEPENDENCY_DICT = {}

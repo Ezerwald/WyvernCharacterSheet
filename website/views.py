@@ -30,7 +30,6 @@ def save_input():
     """Save input data from the character sheet."""
     try:
         data = request.json
-        print(data)
         character_singleton.set_attribute(data['type'], data['value'])
 
         # Log and respond with updated data
@@ -48,8 +47,6 @@ def get_character_data():
     """Retrieve character data for the character sheet."""
     try:
         # Log and respond with character data
-        print("Character loaded successfully")
-        show_character_info()
         return jsonify(get_elements_update_data()), 200
 
     except Exception as e:

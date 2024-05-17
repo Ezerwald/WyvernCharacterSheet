@@ -5,6 +5,9 @@ from constants.constants import MAX_MODIFIER_VALUE
 
 basic_armor_collection = ArmorCollection()
 
+# No Armor
+basic_armor_collection.add_armor(Armor("None", ArmorType.LIGHT, 8, MAX_MODIFIER_VALUE, False))
+
 # Light Armor
 basic_armor_collection.add_armor(Armor("Padded", ArmorType.LIGHT, 11, MAX_MODIFIER_VALUE, True))
 basic_armor_collection.add_armor(Armor("Leather", ArmorType.LIGHT, 11, MAX_MODIFIER_VALUE, False))

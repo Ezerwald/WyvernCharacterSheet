@@ -1,7 +1,7 @@
 {
     "name": "Aragorn",
     "game_class_type": "Fighter",
-    "level": 1,
+    "level": 5,
     "background": "Noble",
     "race": "Human",
     "alignment": "Neutral Good",
@@ -11,26 +11,26 @@
         "DEX": 14,
         "CON": 16,
         "INT": 10,
-        "WIS": 12,
+        "WIS": 14,
         "CHA": 10
     },
     "saving_throws_proficiencies": {
-        "STR": true,
-        "DEX": true,
-        "CON": false,
+        "STR": false,
+        "DEX": false,
+        "CON": true,
         "INT": false,
         "WIS": false,
-        "CHA": false
+        "CHA": true
     },
     "skills_proficiencies": {
-        "Acrobatics": true,
+        "Acrobatics": false,
         "Animal Handling": false,
-        "Arcana": false,
-        "Athletics": false,
+        "Arcana": true,
+        "Athletics": true,
         "Deception": false,
-        "History": false,
+        "History": true,
         "Insight": false,
-        "Intimidation": false,
+        "Intimidation": true,
         "Investigation": false,
         "Medicine": false,
         "Nature": false,
@@ -42,14 +42,14 @@
         "Stealth": false,
         "Survival": true
     },
-    "shield": true,
-    "equipped_armor_name": "Plate",
-    "current_hit_points": 45,
-    "max_hit_points": 60,
-    "temporary_hit_points": 0,
-    "hit_dices_left": 2,
-    "successful_death_saves": 2,
-    "failed_death_saves": 1,
+    "shield": false,
+    "equipped_armor_name": "None",
+    "current_hit_points": 26,
+    "max_hit_points": 45,
+    "temporary_hit_points": "10",
+    "current_hit_dices_amount": 5,
+    "successful_death_saves": "0",
+    "failed_death_saves": "0",
     "attacks_data_list": [
         [
             "Longsword",
@@ -60,7 +60,7 @@
             2
         ]
     ],
-    "inventory": "Longsword, Backpack, Rations",
+    "inventory": "Longsword, Backpack, 10 x Rations",
     "features": "Favored Enemy: Orcs, Second Wind",
     "notes": "**Traits:**\nStoic and determined, Aragorn maintains a calm and composed demeanor even in dire situations, inspiring confidence in his companions and stopping at nothing to see his goals through.\n\n**Ideals:**\nAragorn values freedom for all beings and believes in sacrificing personal desires for the greater good, making difficult choices to ensure the well-being of others.\n\n**Fears:**\nHe is haunted by the fear of failure in his quest to protect Middle-earth and the pain of losing loved ones, driving him to fight tirelessly against the darkness.\n\n**Bonds:**\nAragorn shares a strong bond with the Fellowship of the Ring, forged through hardship, and his love for Arwen guides him in fulfilling his destiny as king."
 }

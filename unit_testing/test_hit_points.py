@@ -10,7 +10,7 @@ class TestHitPoints(unittest.TestCase):
     def setUp(self):
         self.mock_character = MagicMock(spec=AbstractCharacter)
         self.mock_character.current_game_class = MagicMock(spec=GameClass)
-        self.mock_character.current_game_class.value.hit_dice = 8
+        self.mock_character.current_game_class.value.hit_dice_type = 8
         self.mock_character.level = MagicMock(spec=Level)
         self.mock_character.level.value = 5
 
