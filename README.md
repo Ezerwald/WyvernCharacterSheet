@@ -52,7 +52,7 @@ In conclusion, the Wyvern Character Sheet offers an efficient and user-friendly 
 
 The application can be extended by incorporating additional customization options for character details, implementing new features such as inventory management or combat tracking, and enhancing the user interface for improved usability and aesthetics.
 
-## 4. Optional: Resources, references list
+## 4. Resources, references list
 
 Libraries used: Flask
 
