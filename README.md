@@ -18,8 +18,6 @@ Or you can just follow the link to reach the hosted website: http://193.107.109.
 
 Upon accessing the website, users can create, save, and edit character sheets. They can input various details such as character name, race, level, notes, and features. The program automatically calculates modifiers, skill bonuses, and other relevant statistics based on the input, simplifying the character management process.
 
-[![Wyvern Character Sheet Page](https://i.ibb.co/XpdL3XL/2024-05-17-043607798.png)](https://ibb.co/K7QhL6h)
-
 ## 2. Body/Analysis
 
 ### Functional Requirements Coverage
