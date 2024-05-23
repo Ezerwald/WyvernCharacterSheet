@@ -12,18 +12,31 @@ class ArmorClass:
         """
         self.__character = character
         self.__armor_class_calculator = ArmorClassCalculator(
-            ArmorClassCalculationStrategyFactory.choose_armor_class_calculation_strategy(
-                self.__character.current_game_class.value, self.__character.equipped_armor.armor,
-                self.__character.shield
-            )
+            ArmorClassCalculationStrategyFactory.choose_armor_class_calculation_strategy(self.__character)
         )
+        self.__armor_class_value = self.__armor_class_calculator.calculate_armor_class(self.__character)
 
     @property
     def value(self):
-        """Calculate and return the armor class value for the __character."""
-        value = self.__armor_class_calculator.calculate_armor_class(
-            self.__character.shield,
-            self.__character.equipped_armor.armor,
-            self.__character.abilities
+        """Calculate and return the armor class value for the character."""
+        return self.__armor_class_value
+
+    @value.setter
+    def value(self, value):
+        value = int(value)
+        """Set the armor class value for the character."""
+        if value is None:
+            raise ValueError("AC cannot be None.")
+        elif value < 0:
+            raise ValueError("AC cannot be negative.")
+        elif value == 0:
+            self.__armor_class_value = self.calc_armor_class()
+        else:
+            self.__armor_class_value = value
+
+    def calc_armor_class(self) -> int:
+        self.__armor_class_calculator = ArmorClassCalculator(
+            ArmorClassCalculationStrategyFactory.choose_armor_class_calculation_strategy(self.__character)
         )
+        value = self.__armor_class_calculator.calculate_armor_class(self.__character)
         return value

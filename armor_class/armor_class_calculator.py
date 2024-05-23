@@ -15,6 +15,6 @@ class ArmorClassCalculator:
         """Set a new strategy for calculating armor class."""
         self.__strategy = strategy
 
-    def calculate_armor_class(self, shield: Shield, armor: Armor, abilities: dict[AbilityType: Ability]) -> int:
+    def calculate_armor_class(self, character) -> int:
         """Calculate armor class based on the current strategy."""
-        return self.__strategy.calculate(shield, armor, abilities)
+        return self.__strategy.calculate(character)

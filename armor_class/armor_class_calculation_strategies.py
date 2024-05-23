@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+
+from abstract_character import AbstractCharacter
 from character_stats import AbilityType
 from constants.constants import NO_ARMOR_AC
 from armor import Armor, calculate_dexterity_bonus
@@ -9,16 +11,18 @@ class ArmorClassCalculationStrategy(ABC):
     """Abstract base class for armor class calculation strategies."""
 
     @abstractmethod
-    def calculate(self, shield: Shield, armor: Armor, abilities: dict) -> int:
+    def calculate(self, character: AbstractCharacter) -> int:
         """Calculate and return the armor class value."""
 
 
 class DefaultArmorClassCalculationStrategy(ArmorClassCalculationStrategy):
     """Default armor class calculation strategy."""
 
-    def calculate(self, shield: Shield, armor: Armor, abilities: dict) -> int:
+    def calculate(self, character: AbstractCharacter) -> int:
         """Calculate and return the armor class value."""
-        dexterity_modifier = abilities[AbilityType.DEXTERITY].modifier
+        shield = character.shield
+        armor = character.equipped_armor.armor
+        dexterity_modifier = character.abilities[AbilityType.DEXTERITY].modifier
         if armor is None:
             armor_class_value = NO_ARMOR_AC + dexterity_modifier
         else:
@@ -30,8 +34,10 @@ class DefaultArmorClassCalculationStrategy(ArmorClassCalculationStrategy):
 class BarbarianArmorClassCalculationStrategy(ArmorClassCalculationStrategy):
     """Barbarian-specific armor class calculation strategy."""
 
-    def calculate(self, shield: Shield, armor: Armor, abilities: dict) -> int:
+    def calculate(self, character: AbstractCharacter) -> int:
         """Calculate and return the armor class value."""
+        shield = character.shield
+        abilities = character.abilities
         armor_class_value = NO_ARMOR_AC + abilities[AbilityType.CONSTITUTION].modifier + abilities[
             AbilityType.DEXTERITY].modifier + shield.bonus_to_ac
         return armor_class_value
@@ -40,8 +46,9 @@ class BarbarianArmorClassCalculationStrategy(ArmorClassCalculationStrategy):
 class MonkArmorClassCalculationStrategy(ArmorClassCalculationStrategy):
     """Monk-specific armor class calculation strategy."""
 
-    def calculate(self, shield: Shield, armor: Armor, abilities: dict) -> int:
+    def calculate(self, character: AbstractCharacter) -> int:
         """Calculate and return the armor class value."""
+        abilities = character.abilities
         armor_class_value = NO_ARMOR_AC + abilities[AbilityType.DEXTERITY].modifier + abilities[
             AbilityType.WISDOM].modifier
         return armor_class_value

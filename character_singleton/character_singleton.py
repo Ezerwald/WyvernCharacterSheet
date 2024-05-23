@@ -246,7 +246,7 @@ class CharacterSingleton:
 
         print(f"{attribute_name} was updated with value {attribute_value}")
 
-        self.save_character("saved_characters/character_saved_data.json")
+        self.save_character('saved_characters/character_saved_data.json')
 
     def get_attribute(self, element_id: str) -> Any:
         # Access the object and attribute using the key, then return the attribute value
