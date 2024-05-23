@@ -26,11 +26,11 @@ class GameClassCollection:
         for game_class in self.__game_class_collection:
             if game_class.name == name:
                 return game_class
-        return None
+        raise ValueError(f"Game class with name '{name}' does not exist in the collection.")
 
-    def get_all_game_classes(self) -> List[tuple[str, GameClassType]]:
+    def get_all_game_classes(self) -> List[str]:
         """Get names and types of all game classes in the collection."""
-        return [(game_class.name, game_class.type) for game_class in self.__game_class_collection]
+        return [game_class.name for game_class in self.__game_class_collection]
 
     def remove_game_class(self, game_class_type: GameClassType) -> None:
         """Remove game class from the collection by its type."""

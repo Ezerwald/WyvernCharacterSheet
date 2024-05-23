@@ -11,7 +11,7 @@ class CurrentGameClass:
     @property
     def value(self) -> GameClass:
         """Get the current character game class"""
-        return basic_game_classes_collection.get_game_class_by_name(self.__game_class_name)
+        return self.get_game_class_from_collection()
 
     @property
     def name(self) -> str:
@@ -21,4 +21,8 @@ class CurrentGameClass:
     @name.setter
     def name(self, value: str):
         """Set the current character game class"""
-        self.__game_class_name = value
+        if value in basic_game_classes_collection.get_all_game_classes():
+            self.__game_class_name = value
+
+    def get_game_class_from_collection(self) -> GameClass:
+        return basic_game_classes_collection.get_game_class_by_name(self.__game_class_name)
