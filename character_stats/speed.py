@@ -4,7 +4,7 @@ from abstract_character import AbstractCharacter
 class Speed:
     def __init__(self, character: AbstractCharacter):
         self.__character = character
-        self.__speed = character.race.speed
+        self.__speed = character.race.value.speed
 
     @property
     def value(self):

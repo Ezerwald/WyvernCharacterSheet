@@ -66,7 +66,7 @@ class CharacterSingleton:
         game_class_type = character.current_game_class.value.name
         level = character.level.value
         background = character.biography.background
-        race = character.race.name
+        race = character.race.value.name
         alignment = character.biography.alignment
         experience_points = character.experience_points.value
         abilities_scores = {ability.value: character.abilities[ability].score for ability in AbilityType}

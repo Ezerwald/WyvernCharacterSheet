@@ -30,10 +30,12 @@ class RaceCollection:
             raise ValueError(f"No race '{race_name}' found in the collection.")
         del self.__races[race_name]
 
-    def get_race(self, race_name: str) -> Optional[Race]:
+    def get_race_by_name(self, race_name: str) -> Optional[Race]:
         """Get a race from the collection by its name."""
         return self.__races.get(race_name)
 
-    def get_all_races(self) -> Dict[str, Race]:
+    def get_all_races(self) -> List[str]:
         """Get all races in the collection."""
-        return self.__races.copy()
+        return list(self.__races.keys())
+
+

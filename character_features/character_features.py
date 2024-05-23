@@ -6,8 +6,8 @@ class CharacterFeatures:
         """Initializes CharacterFeatures object."""
         self._character: AbstractCharacter = character
         self._all_features = features or (
-            f"   {self._character.race.name} race features:\n"
-            f"{self._character.race.features}\n"
+            f"   {self._character.race.value.name} race features:\n"
+            f"{self._character.race.value.features}\n"
             f"   {self._character.current_game_class.value.name} class features:\n"
             f"{self._character.current_game_class.value.proficiencies}"
         )

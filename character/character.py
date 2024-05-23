@@ -11,8 +11,8 @@ from initiative import Initiative
 from armor import EquippedArmor, basic_armor_collection
 from armor_class import ArmorClass
 from health import DeathSaves, HitPoints, HitDicesPool, TemporaryHitPoints
-from game_classes import CurrentGameClass, basic_game_classes_collection
-from race import basic_races_collection, Race
+from game_classes import CurrentGameClass
+from race import CurrentRace, Race
 from attacks import AttacksList, Attack
 from character_features import CharacterFeatures
 from inventory import Inventory
@@ -84,7 +84,7 @@ class Character(AbstractCharacter):
 
     def __initialize_race(self, race: str):
         """Initialize the character's race."""
-        self.__race = basic_races_collection.get_race(race)
+        self.__race = CurrentRace(self, race)
 
     def __initialize_experience(self, experience_points: int):
         """Initialize the character's experience points."""

@@ -11,7 +11,7 @@ class CurrentRace:
     @property
     def value(self) -> Race:
         """Get the current character race"""
-        return basic_races_collection.get_race_by_name(self.__race_name)
+        return self.get_race_from_collection()
 
     @property
     def name(self) -> str:
@@ -21,4 +21,8 @@ class CurrentRace:
     @name.setter
     def name(self, value: str):
         """Set the current character race"""
-        self.__race_name = value
+        if value in basic_races_collection.get_all_races():
+            self.__race_name = value
+
+    def get_race_from_collection(self) -> Race:
+        return basic_races_collection.get_race_by_name(self.__race_name)
