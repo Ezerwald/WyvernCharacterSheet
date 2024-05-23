@@ -61,6 +61,6 @@
         ]
     ],
     "inventory": "",
-    "features": "   Human race features:\nLanguages: Common, one additional language\nAbility Score Increase: Your ability scores each increase by 1.\n   Fighter class features:\nArmor: All armor, shields\nWeapons: Simple weapons, martial weapons",
+    "features": "* Human race features:\nLanguages: Common, one additional language\nAbility Score Increase: Your ability scores each increase by 1.\n\n* Fighter class features:\nArmor: All armor, shields\nWeapons: Simple weapons, martial weapons\n\n",
     "notes": ""
 }
