@@ -4,9 +4,13 @@ $(document).ready(function() {
     // Execute the update function to load character data when the page loads
 });
 
-$(document).on("input", "input[type='text'], input[type='number'], textarea", debounce(function(e) {
+$(document).on("keydown blur", "input[type='text'], input[type='number'], textarea", debounce(function(e) {
+    //check weather input was finished by pressing "Enter"
+    if (e.type === 'keydown' && e.key !== 'Enter') {
+        return;
+    }
     // Send AJAX request to save input data of text and number
-    saveInputData(e.target.id, e.target.value);
+    saveCharacterData(e.target.id, e.target.value);
 }, 300)); // Delay of 300 milliseconds
 
 $(document).on("change", "input[type='checkbox']", function() {
@@ -14,7 +18,7 @@ $(document).on("change", "input[type='checkbox']", function() {
     const checkboxId = this.id;
     const isChecked = this.checked;
     // Send AJAX request to save checkbox state
-    saveInputData(checkboxId, isChecked);
+    saveCharacterData(checkboxId, isChecked);
 });
 
 function loadCharacterData() {
@@ -30,7 +34,7 @@ function loadCharacterData() {
     });
 }
 
-function saveInputData(id, value) {
+function saveCharacterData(id, value) {
     // Save input data to the backend
     $.ajax({
         url: "/save_input",

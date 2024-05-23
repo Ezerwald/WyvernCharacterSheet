@@ -384,10 +384,12 @@ section{
 /* ---------Section 5 blocks--------- */
 .block-inventory{
     height: 50%;
+    min-height: 30vh;
 }
 
 .block-features{
     height: 50%;
+    min-height: 30vh;
 }
 
 
