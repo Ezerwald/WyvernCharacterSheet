@@ -22,7 +22,6 @@ Upon accessing the website, users can create, save, and edit character sheets. T
 ## 2. Body/Analysis
 
 ### Functional Requirements Coverage
-The project was built using Flask, and the connection between the front-end and back-end is implemented with Ajax.
 The Wyvern Character Sheet fulfills various functional requirements:
 
 - **Creation and Management of Character Sheets:** Users can create, save, and edit character sheets with customizable details.
@@ -45,6 +44,7 @@ The project includes effective usage of OOP Pillars:
 - simplifies complex systems by focusing on essential aspects while hiding unnecessary details. It allows us to model real-world entities as abstract data types, capturing only the relevant characteristics and behaviors.
 
 ### Technical Aspects and Design Patterns Used
+The project was built using Flask, and the connection between the front-end and back-end is implemented with Ajax.
 
 The implementation leverages various technical aspects and design patterns to achieve functionality and maintainability:
 
