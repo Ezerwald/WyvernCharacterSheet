@@ -22,7 +22,7 @@ Upon accessing the website, users can create, save, and edit character sheets. T
 ## 2. Body/Analysis
 
 ### Functional Requirements Coverage
-
+The project was built using Flask, and the connection between the front-end and back-end is implemented with Ajax.
 The Wyvern Character Sheet fulfills various functional requirements:
 
 - **Creation and Management of Character Sheets:** Users can create, save, and edit character sheets with customizable details.
@@ -32,16 +32,16 @@ The Wyvern Character Sheet fulfills various functional requirements:
   
 ### Object-Oriented Programming (OOP) Pillars:
 The project includes effective usage of OOP Pillars:
-#### 1. Encapsulation:
+#### Encapsulation:
 - bundling of data (attributes) and methods (behaviors) that operate on the data into a single unit, known as a class. It hides the internal state of an object from the outside world and only exposes a public interface for interacting with it.
 
-#### 2. Inheritance:
+#### Inheritance:
 - mechanism by which a class can inherit properties and behavior from another class, known as the base or parent class. The class that inherits from the parent class is called a derived or child class. It promotes code reusability and establishes a hierarchical relationship between classes.
 
-#### 3. Polymorphism:
+#### Polymorphism:
 - allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to represent multiple underlying data types, allowing methods to behave differently based on the object they are invoked on.
 
-#### 4. Abstraction:
+#### Abstraction:
 - simplifies complex systems by focusing on essential aspects while hiding unnecessary details. It allows us to model real-world entities as abstract data types, capturing only the relevant characteristics and behaviors.
 
 ### Technical Aspects and Design Patterns Used
