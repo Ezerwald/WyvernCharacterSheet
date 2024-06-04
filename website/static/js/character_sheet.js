@@ -1,5 +1,3 @@
-
-
 // Event listeners attached to parent class
 $(document).ready(function() {
     loadCharacterData();
@@ -24,6 +22,7 @@ $(document).on("change", "input[type='checkbox']", function() {
 });
 
 function loadCharacterData() {
+    // Load character data from backend
     $.ajax({
         url: "/get_character_data",
         method: "GET",
@@ -90,4 +89,11 @@ function updateElementsWithData(data) {
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const button = document.getElementById('save-character-button');
+    button.addEventListener('click', () => {
+        window.location.href = '/download-character';
+    });
+});
 

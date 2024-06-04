@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, send_file
 from character_singleton import CharacterSingleton
+from constants import DEFAULT_SAVE_PATH
 from utils.get_elements_update_data import get_elements_update_data
 
 # Initialize character singleton and load character data
@@ -49,3 +50,12 @@ def get_character_data():
     except Exception as e:
         # Handle exceptions and respond with an error
         raise e
+
+
+@views.route('/download-character', methods=['GET'])
+def download_character():
+    client_ip = request.remote_addr
+    print(f"Client IP: {client_ip}")  # Log the client's IP address
+
+    # Send the file to the client
+    return send_file(DEFAULT_SAVE_PATH, as_attachment=True, download_name="saved_character.json")

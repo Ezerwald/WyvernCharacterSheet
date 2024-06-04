@@ -1,6 +1,6 @@
 from pathlib import Path
 
-DEFAULT_SAVE_PATH = Path("saved_characters/character_saved_data.json")
+DEFAULT_SAVE_PATH = Path("../saved_characters/character_saved_data.json")
 
 PROFICIENCY_BONUS = {1: 2,
                      2: 2,
