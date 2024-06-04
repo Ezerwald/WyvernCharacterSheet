@@ -6,7 +6,7 @@ from skills_types import SkillType
 from character.character_attribute_enum import CharacterAttribute
 from character.character import Character
 from abstract_character import AbstractCharacter
-from utils import get_default_downloads_folder
+from constants import DEFAULT_SAVE_PATH
 
 
 class CharacterSingleton:
@@ -27,17 +27,16 @@ class CharacterSingleton:
         return cls.__instance
 
     def save_character(self, filename: Path = None):
-        """Save the character data to a JSON file. If not provided, the default downloads folder is used."""
+        """Save the character data to a JSON file. If not provided, the default save location is used."""
         if filename is None:
-            filename = get_default_downloads_folder() / "character_saved_data.json"
+            filename = DEFAULT_SAVE_PATH
+        filename.parent.mkdir(parents=True, exist_ok=True)
         try:
             with open(filename, 'w') as file:
                 json.dump(self.pack_character_data(), file, indent=4)
                 print(f"Saved {filename}")
         except FileNotFoundError as e:
             print(f"Error saving character data: {e}")
-        # except Exception as e:
-        #     print(f"Error saving character data: {e}")
 
     def create_character(self, character_data: tuple):
         """Create a new instance of the Character object."""

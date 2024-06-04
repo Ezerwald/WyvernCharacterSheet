@@ -1,3 +1,5 @@
+
+
 // Event listeners attached to parent class
 $(document).ready(function() {
     loadCharacterData();
