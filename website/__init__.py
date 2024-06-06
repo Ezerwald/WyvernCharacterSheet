@@ -1,11 +1,12 @@
-from flask import Flask
+from flask import Flask, session
+
+from .config import SECRET_KEY
+from .views import views
 
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'its_very_secret_key'
-
-    from .views import views
+    app.config['SECRET_KEY'] = SECRET_KEY
 
     app.register_blueprint(views, url_prefix='/')
 

@@ -90,10 +90,26 @@ function updateElementsWithData(data) {
     }
 }
 
+// Buttons event listeners
 document.addEventListener('DOMContentLoaded', (event) => {
-    const button = document.getElementById('save-character-button');
-    button.addEventListener('click', () => {
-        window.location.href = '/download-character';
-    });
+    // Save character button
+    const saveButton = document.getElementById('save-character-button');
+    if (saveButton) {
+        saveButton.addEventListener('click', () => {
+            window.location.href = '/download-character';
+        });
+    }
+
+    //Upload character button
+    const uploadButton = document.getElementById('upload-character-button');
+    if (uploadButton) {
+        uploadButton.addEventListener('click', () => {
+            window.location.href = '/upload-character';
+        });
+    }
 });
 
+window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    fetch('/end_session', { method: 'POST' });
+});

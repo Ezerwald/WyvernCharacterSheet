@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import os
 from utils.get_elements_update_data import get_elements_update_data
 from character_singleton import CharacterSingleton
+from main import app
 
 # Initialize character singleton and load character data
 character_singleton = CharacterSingleton()
@@ -20,7 +21,7 @@ os.makedirs(USERS_DATA_DIR, exist_ok=True)
 
 
 # Initializing session data
-@views.before_request
+@app.before_request
 def initialize_session():
     session.permanent = False  # This ensures the session is only valid until the browser is closed
     ensure_user_id()  # Generate a unique user_id
@@ -88,7 +89,7 @@ def download_character():
     return 'No file to download', 400
 
 
-@views.route('/end_session', methods=['POST'])
+@app.route('/end_session')
 def end_session():
     """Ends the current session and deletes temporary files."""
     if 'user_dir' in session:
@@ -99,7 +100,7 @@ def end_session():
         if os.path.exists(user_dir):
             shutil.rmtree(user_dir)
     session.clear()
-    return 'Session ended and files deleted', 200
+    return 'Session ended and files deleted'
 
 
 # Home page

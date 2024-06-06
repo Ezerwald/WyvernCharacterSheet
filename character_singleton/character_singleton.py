@@ -1,12 +1,14 @@
 import json
 from pathlib import Path
 from typing import Dict, Tuple, Any
+
+from flask import session
+
 from character_stats import AbilityType
 from skills_types import SkillType
 from character.character_attribute_enum import CharacterAttribute
 from character.character import Character
 from abstract_character import AbstractCharacter
-from constants import DEFAULT_SAVE_PATH
 
 
 class CharacterSingleton:
@@ -29,7 +31,7 @@ class CharacterSingleton:
     def save_character(self, filename: Path = None):
         """Save the character data to a JSON file. If not provided, the default save location is used."""
         if filename is None:
-            filename = DEFAULT_SAVE_PATH
+            filename = session['file_path']
         filename.parent.mkdir(parents=True, exist_ok=True)
         try:
             with open(filename, 'w') as file:
@@ -245,7 +247,7 @@ class CharacterSingleton:
 
         print(f"{attribute_name} was updated with value {attribute_value}")
 
-        self.save_character('saved_characters/character_saved_data.json')
+        self.save_character()
 
     def get_attribute(self, element_id: str) -> Any:
         # Access the object and attribute using the key, then return the attribute value
