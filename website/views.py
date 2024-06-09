@@ -22,7 +22,7 @@ os.makedirs(USERS_DATA_DIR, exist_ok=True)
 # Initializing session data
 @views.before_request
 def initialize_session():
-    session.permanent = False  # This ensures the session is only valid until the browser is closed
+    session.permanent = False  # This ensures the session is only valid until the tab is closed
     ensure_user_id()  # Generate a unique user_id
     ensure_user_dir()  # Create temporary user dir
 
@@ -42,7 +42,7 @@ def ensure_user_dir():
 
 
 # Managing session data
-@views.route('/upload', methods=['GET', 'POST'])
+@views.route('/upload-character', methods=['GET', 'POST'])
 def upload_character():
     if request.method == 'POST':
         # Ensure file is uploaded
@@ -88,7 +88,7 @@ def download_character():
     return 'No file to download', 400
 
 
-@views.route('/end_session', methods=['POST'])
+@views.route('/end-session', methods=['POST'])
 def end_session():
     """Ends the current session and deletes temporary files."""
     if 'user_dir' in session:
@@ -112,13 +112,13 @@ def index():
     return render_template("index.html")
 
 
-@views.route('/character_sheet')
+@views.route('/character-sheet')
 def character_sheet():
     """Render the character sheet page."""
     return render_template("character_sheet.html")
 
 
-@views.route('/save_input', methods=['POST'])
+@views.route('/save-input', methods=['POST'])
 def save_input():
     """Save input data from the character sheet."""
     try:
@@ -135,7 +135,7 @@ def save_input():
         raise e
 
 
-@views.route('/get_character_data')
+@views.route('/get-character-data')
 def get_character_data():
     """Retrieve character data for the character sheet."""
     try:

@@ -24,7 +24,7 @@ $(document).on("change", "input[type='checkbox']", function() {
 function loadCharacterData() {
     // Load character data from backend
     $.ajax({
-        url: "/get_character_data",
+        url: "/get-character-data",
         method: "GET",
         success: function(characterData) {
             updateElementsWithData(characterData);
@@ -38,7 +38,7 @@ function loadCharacterData() {
 function saveCharacterData(id, value) {
     // Save input data to the backend
     $.ajax({
-        url: "/save_input",
+        url: "/save-input",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify({ value: value, type: id }),
@@ -111,5 +111,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 window.addEventListener('beforeunload', function (e) {
     e.preventDefault();
-    fetch('/end_session', { method: 'POST' });
+    fetch('/end-session', { method: 'POST' });
 });
