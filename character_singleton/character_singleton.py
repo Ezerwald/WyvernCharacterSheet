@@ -28,6 +28,21 @@ class CharacterSingleton:
 
         return cls.__instance
 
+    @property
+    def character(self) -> AbstractCharacter:
+        """Get the character object."""
+        return self.__instance.__character
+
+    @character.setter
+    def character(self, character: AbstractCharacter):
+        """Set the character object."""
+        self.__instance.__character = character
+        self.update_id_to_object_list()
+
+    @property
+    def input_id_to_object(self) -> Dict[str, Tuple[Any, str]]:
+        return self.__input_id_to_object
+
     def save_character(self, filename: Path = None):
         """Save the character data to a JSON file. If not provided, the default save location is used."""
         if filename is None:
@@ -39,6 +54,7 @@ class CharacterSingleton:
                 print(f"Saved {filename}")
         except FileNotFoundError as e:
             print(f"Error saving character data: {e}")
+            raise e
 
     def create_character(self, character_data: tuple):
         """Create a new instance of the Character object."""
@@ -54,10 +70,12 @@ class CharacterSingleton:
                 unpacked_character_data = self.unpack_character_data(character_data)
                 self.create_character(unpacked_character_data)
                 print(f"Loaded {filename}")
-        except FileNotFoundError:
+        except FileNotFoundError as e:
             print(f"File '{filename}' not found.")
-        except json.JSONDecodeError:
+            raise e
+        except json.JSONDecodeError as e:
             print(f"Invalid JSON format in '{filename}'.")
+            raise e
 
     def pack_character_data(self) -> Dict[str, Any]:
         """Pack character data into a dictionary."""
@@ -124,17 +142,6 @@ class CharacterSingleton:
         """Unpack character data from a dictionary into a tuple of values."""
         unpacked_data: Tuple = tuple(packed_data.values())
         return unpacked_data
-
-    @property
-    def character(self) -> AbstractCharacter:
-        """Get the character object."""
-        return self.__instance.__character
-
-    @character.setter
-    def character(self, character: AbstractCharacter):
-        """Set the character object."""
-        self.__instance.__character = character
-        self.update_id_to_object_list()
 
     def update_id_to_object_list(self):
         self.__input_id_to_object = {
