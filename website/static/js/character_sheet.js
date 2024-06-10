@@ -10,7 +10,7 @@ $(document).on("keydown blur", "input[type='text'], input[type='number'], textar
         return;
     }
     // Send AJAX request to save input data of text and number
-    saveCharacterData(e.target.id, e.target.value);
+    updateCharacterData(e.target.id, e.target.value);
 }, 300)); // Delay of 300 milliseconds
 
 $(document).on("change", "input[type='checkbox']", function() {
@@ -18,7 +18,7 @@ $(document).on("change", "input[type='checkbox']", function() {
     const checkboxId = this.id;
     const isChecked = this.checked;
     // Send AJAX request to save checkbox state
-    saveCharacterData(checkboxId, isChecked);
+    updateCharacterData(checkboxId, isChecked);
 });
 
 function loadCharacterData() {
@@ -35,20 +35,26 @@ function loadCharacterData() {
     });
 }
 
-function saveCharacterData(id, value) {
+function updateCharacterData(id, value) {
     // Save input data to the backend
     $.ajax({
         url: "/save-input",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify({ value: value, type: id }),
-        success: function(elementsToUpdateDict) {
-            updateElementsWithData(elementsToUpdateDict);
+        success: function(responseData) {
+            updateElementsWithData(responseData["elementsToUpdate"]);
+            saveToLocalStorage("character", responseData["packedCharacterData"]);
         },
         error: function(xhr, status, error) {
             console.error("Error saving input data:", error);
         }
     });
+}
+
+function saveToLocalStorage(id, data) {
+    // Save data to browser's local storage
+    localStorage.setItem(id, JSON.stringify(data));
 }
 
 // Debounce function to delay execution of the input event handler

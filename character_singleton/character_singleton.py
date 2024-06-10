@@ -2,13 +2,13 @@ import json
 from pathlib import Path
 from typing import Dict, Tuple, Any
 
-from flask import session
-
 from character_stats import AbilityType
 from skills_types import SkillType
 from character.character_attribute_enum import CharacterAttribute
 from character.character import Character
 from abstract_character import AbstractCharacter
+
+STORAGE_FOLDER = Path("saved_characters/character_saved_data.json")
 
 
 class CharacterSingleton:
@@ -39,20 +39,15 @@ class CharacterSingleton:
         self.__instance.__character = character
         self.update_id_to_object_list()
 
-    @property
-    def input_id_to_object(self) -> Dict[str, Tuple[Any, str]]:
-        return self.__input_id_to_object
-
     def save_character(self, filename: Path = None):
         """Save the character data to a JSON file. If not provided, the default save location is used."""
         if filename is None:
-            filename = session['file_path']
-        filename.parent.mkdir(parents=True, exist_ok=True)
+            filename = STORAGE_FOLDER
         try:
-            with open(filename, 'w') as file:
+            with filename.open('w') as file:
                 json.dump(self.pack_character_data(), file, indent=4)
                 print(f"Saved {filename}")
-        except FileNotFoundError as e:
+        except IOError as e:
             print(f"Error saving character data: {e}")
             raise e
 
@@ -66,8 +61,10 @@ class CharacterSingleton:
         """Load character data from a JSON file."""
         try:
             with open(filename, 'r') as file:
+                # Retrieve data from file
                 character_data = json.load(file)
                 unpacked_character_data = self.unpack_character_data(character_data)
+                # Create data from retrieved data
                 self.create_character(unpacked_character_data)
                 print(f"Loaded {filename}")
         except FileNotFoundError as e:
@@ -142,6 +139,10 @@ class CharacterSingleton:
         """Unpack character data from a dictionary into a tuple of values."""
         unpacked_data: Tuple = tuple(packed_data.values())
         return unpacked_data
+
+    def get_input_id_to_object(self) -> Dict[str, Tuple[Any, str]]:
+        self.update_id_to_object_list()
+        return self.__input_id_to_object
 
     def update_id_to_object_list(self):
         self.__input_id_to_object = {
@@ -252,9 +253,9 @@ class CharacterSingleton:
         object_instance, attribute_name = self.__input_id_to_object[element_id]
         setattr(object_instance, attribute_name, attribute_value)
 
-        print(f"{attribute_name} was updated with value {attribute_value}")
+        print(f'"{attribute_name}" was updated with value {attribute_value}')
 
-        self.save_character()
+        # self.save_character()
 
     def get_attribute(self, element_id: str) -> Any:
         # Access the object and attribute using the key, then return the attribute value
