@@ -1,156 +1,194 @@
-import json
-from pathlib import Path
-from typing import Dict, Tuple, Any
+@views.route('/upload-character', methods=['GET', 'POST'])
+def upload_character():
+    """
+    Handle character upload.
 
-from character_stats import AbilityType
-from skills_types import SkillType
-from character.character_attribute_enum import CharacterAttribute
-from character.character import Character
-from abstract_character import AbstractCharacter
+    Returns:
+        GET: Rendered template for character upload.
+        POST: Redirects to index if successful, otherwise returns error messages.
+    """
+
+    if request.method == 'POST':
+        # Ensure file is uploaded
+        file = request.files.get('file')
+        if not file:
+            return 'No file part', 400
+        if file.filename == '':
+            return 'No selected file', 400
+        if not allowed_character_file(file.filename, {json}):
+            return 'Invalid file type', 400
+
+        # Saving uploaded file to user dir
+        file.save(STORAGE_FOLDER)
+
+        print("character was uploaded")
+        return redirect(url_for('views.character_sheet'))
+    return render_template('upload_character.html')
 
 
-class CharacterSingleton:
-    """A class to manage a single instance of a Character object."""
+@views.route('/download-character', methods=['GET'])
+def download_character():
+    """Download character data to user's local storage."""
+    # Log the client's IP address
+    client_ip = request.remote_addr
+    print(f"Client IP: {client_ip}")
 
-    __instance = None
+    file_path = STORAGE_FOLDER
+    print(f"File path: {file_path}")
+    if os.path.exists(file_path):
+        # Send the file to the client with a custom download name
+        return send_file(file_path, as_attachment=True, download_name="character.json")
+    return 'No file to download', 400
 
-    def __init__(self):
-        # Creates dictionary which assigns element_id to certain character attribute
-        self.__input_id_to_object: Dict[str, Tuple[Any, str]] = {}
+// Buttons event listeners
+    // Save character button
+    const saveButton = document.getElementById('save-character-button');
+    if (saveButton) {
+        saveButton.addEventListener('click', () => {
+            window.location.href = '/download-character';
+        });
+    }
 
-    def __new__(cls, *args, **kwargs):
-        """Create a new instance of the class if it doesn't exist."""
-        if not cls.__instance:
-            cls.__instance = super().__new__(cls)
-            cls.__instance.__character = None
+    //Upload character button
+    const uploadButton = document.getElementById('upload-character-button');
+    if (uploadButton) {
+        uploadButton.addEventListener('click', () => {
+            window.location.href = '/upload-character';
+        });
+    }
 
-        return cls.__instance
 
-    @property
-    def character(self) -> AbstractCharacter:
-        """Get the character object."""
-        return self.__instance.__character
 
-    @character.setter
-    def character(self, character: AbstractCharacter):
-        """Set the character object."""
-        self.__instance.__character = character
-        self.update_id_to_object_list()
 
-    def save_character_to_path(self, path: Path = None):
-        """Save the character data to a JSON file to specific directory"""
-        try:
-            with path.open('w') as file:
-                json.dump(self.pack_character_data(), file, indent=4)
-                print(f"Saved {path}")
-        except IOError as e:
-            print(f"Error saving character data: {e}")
-            raise e
 
-    def create_character(self, character_data: Dict[str, Any]):
-        """Create a new instance of the Character object."""
-        print("Created from data:", character_data)
-        self.__instance.__character = Character(character_data)
-        self.update_id_to_object_list()
 
-    def load_character_from_path(self, path: Path):
-        """Load character data from specific directory."""
-        try:
-            with open(path, 'r') as file:
-                # Retrieve data from file
-                character_data = json.load(file)
-                unpacked_character_data = self.unpack_character_data(character_data)
-                # Create data from retrieved data
-                self.create_character(unpacked_character_data)
-                print(f"Loaded from path: {path}")
-        except FileNotFoundError as e:
-            print(f"File '{path}' not found.")
-            raise e
-        except json.JSONDecodeError as e:
-            print(f"Invalid JSON format in '{path}'.")
-            raise e
 
-    def load_character_from_json(self, data: dict):
-        """Load character data from a JSON file"""
-        # Use the provided dictionary directly
-        character_data = data
-        unpacked_character_data = self.unpack_character_data(character_data)
-        # Create character from retrieved data
-        self.create_character(unpacked_character_data)
-        print(f"Loaded character from storage data: {data}")
 
-    def pack_character_data(self) -> Dict[str, Any]:
-        """Pack all character's data into a dictionary."""
-        character = self.__instance.__character
 
-        name = character.biography.name
-        game_class_type = character.current_game_class.value.name
-        level = character.level.value
-        background = character.biography.background
-        race = character.race.value.name
-        alignment = character.biography.alignment
-        experience_points = character.experience_points.value
-        abilities_scores = {ability.value: character.abilities[ability].score for ability in AbilityType}
-        saving_throws_proficiencies = {ability.value: character.saving_throws[ability].proficiency for ability in
-                                       AbilityType}
-        skills_proficiencies = {skill.value: character.skills[skill].proficiency for skill in SkillType}
-        shield = character.shield.equipped
-        equipped_armor = character.equipped_armor.armor.name
-        current_hit_points = character.hit_points.current_hit_points
-        max_hit_points = character.hit_points.max_hit_points
-        temporary_hit_points = character.temporary_hit_points.value
-        hit_dices_left = character.hit_dices_pool.current_hit_dices_amount
-        successful_death_saves = character.death_saves.successful_saves
-        failed_death_saves = character.death_saves.failed_saves
-        attacks_list = [(attack.name,
-                         attack.main_ability.value,
-                         attack.proficiency,
-                         attack.basic_damage,
-                         attack.extra_attack_bonus,
-                         attack.extra_damage_bonus)
-                        for attack in character.attacks_list.get_all_attacks()]
-        inventory = character.inventory.items
-        features = character.features.all_features
-        notes = character.notes.notes
 
-        # Create the dictionary with the defined variables
-        packed_data = {
-            CharacterAttribute.NAME.value: name,
-            CharacterAttribute.GAME_CLASS_TYPE.value: game_class_type,
-            CharacterAttribute.LEVEL.value: level,
-            CharacterAttribute.BACKGROUND.value: background,
-            CharacterAttribute.RACE.value: race,
-            CharacterAttribute.ALIGNMENT.value: alignment,
-            CharacterAttribute.EXPERIENCE_POINTS.value: experience_points,
-            CharacterAttribute.ABILITIES_SCORES.value: abilities_scores,
-            CharacterAttribute.SAVING_THROWS_PROFICIENCIES.value: saving_throws_proficiencies,
-            CharacterAttribute.SKILLS_PROFICIENCIES.value: skills_proficiencies,
-            CharacterAttribute.SHIELD.value: shield,
-            CharacterAttribute.EQUIPPED_ARMOR.value: equipped_armor,
-            CharacterAttribute.CURRENT_HIT_POINTS.value: current_hit_points,
-            CharacterAttribute.MAX_HIT_POINTS.value: max_hit_points,
-            CharacterAttribute.TEMPORARY_HIT_POINTS.value: temporary_hit_points,
-            CharacterAttribute.CURRENT_HIT_DICES_AMOUNT.value: hit_dices_left,
-            CharacterAttribute.SUCCESSFUL_DEATH_SAVES.value: successful_death_saves,
-            CharacterAttribute.FAILED_DEATH_SAVES.value: failed_death_saves,
-            CharacterAttribute.ATTACKS_LIST.value: attacks_list,
-            CharacterAttribute.INVENTORY.value: inventory,
-            CharacterAttribute.FEATURES.value: features,
-            CharacterAttribute.NOTES.value: notes
+
+
+$(document).ready(function() {
+    loadCharacterData();
+
+    $(document).on("keydown blur", "input[type='text'], input[type='number'], textarea", debounce(function(e) {
+        if (e.type === 'keydown' && e.key !== 'Enter') {
+            return;
         }
-        return packed_data
+        updateCharacterData(e.target.id, e.target.value);
+    }, 300));
 
-    def unpack_character_data(self, packed_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Unpack character data from a dictionary into a tuple of values."""
-        unpacked_data: Dict[str, Any] = packed_data
-        return unpacked_data
+    $(document).on("change", "input[type='checkbox']", function() {
+        const checkboxId = this.id;
+        const isChecked = this.checked;
+        updateCharacterData(checkboxId, isChecked);
+    });
 
-    def get_input_id_to_object(self) -> Dict[str, Tuple[Any, str]]:
-        """Return updated character's input id to object dictionary."""
-        self.update_id_to_object_list()
-        return self.__input_id_to_object
+    // Buttons event listeners
+    const saveButton = document.getElementById('save-character-button');
+    if (saveButton) {
+        saveButton.addEventListener('click', () => {
+            pass;
+        });
+    }
 
-    def update_id_to_object_list(self) -> None:
+    const uploadButton = document.getElementById('upload-character-button');
+    if (uploadButton) {
+        uploadButton.addEventListener('click', () => {
+            pass;
+        });
+    }
+});
+
+function updateCharacterData(id, value) {
+    $.ajax({
+        url: "/save-input",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ value: value, type: id }),
+        success: function(responseData) {
+            updateElementsWithData(responseData["elementsToUpdate"]);
+            saveToLocalStorage("character", responseData["packedCharacterData"]);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error saving input data:", error);
+        }
+    });
+}
+
+function loadCharacterData() {
+    const characterData = getFromLocalStorage("character");
+    $.ajax({
+        url: "/load-character-from-storage",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ characterData: characterData }),
+        success: function(responseData) {
+            updateElementsWithData(responseData["elementsToUpdate"]);
+            saveToLocalStorage("character", responseData["packedCharacterData"]);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error loading character data:", error);
+        }
+    });
+}
+
+function getFromLocalStorage(key) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+}
+
+function saveToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function debounce(func, delay) {
+    let timeoutId;
+    return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function() {
+            func.apply(context, args);
+        }, delay);
+    };
+}
+
+function updateElementsWithData(data) {
+    for (const elementId in data) {
+        if (Object.hasOwnProperty.call(data, elementId)) {
+            const newValue = data[elementId];
+            const element = document.getElementById(elementId);
+            console.log(elementId, " = ", newValue);
+            if (element) {
+                if (element.type === 'text' || element.type === 'number' || element.tagName.toLowerCase() === 'textarea') {
+                    element.value = newValue;
+                } else if (element.type === 'checkbox') {
+                    element.checked = newValue;
+                } else {
+                    element.innerText = newValue;
+                }
+                console.log(elementId, " assigned ", newValue);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ def update_id_to_object_list(self) -> None:
         """Update data in dictionary of character's attributes bounded to their corresponding input id."""
         self.__input_id_to_object = {
             **self.update_biography_mapping(),
@@ -276,7 +314,7 @@ class CharacterSingleton:
         }
 
     def update_battle_stats_mapping(self) -> Dict[str, Tuple[Any, str]]:
-        return {
+        return{
             'armor-class': (self.character.armor_class, 'value'),
             'initiative': (self.character.initiative, 'value'),
             'speed': (self.character.speed, 'value'),
@@ -308,21 +346,3 @@ class CharacterSingleton:
         return {
             'features': (self.character.features, 'all_features')
         }
-
-
-    # Managing attributes
-    def set_attribute(self, element_id: str, attribute_value: Any) -> None:
-        if attribute_value == 'on':
-            attribute_value = True
-        elif attribute_value == 'off':
-            attribute_value = False
-        # Access the object and attribute using the key, then update the attribute value
-        object_instance, attribute_name = self.__input_id_to_object[element_id]
-        setattr(object_instance, attribute_name, attribute_value)
-
-        print(f'"{attribute_name}" was updated with value {attribute_value}')
-
-    def get_attribute(self, element_id: str) -> Any:
-        # Access the object and attribute using the key, then return the attribute value
-        object_instance, attribute_name = self.__input_id_to_object[element_id]
-        return getattr(object_instance, attribute_name)

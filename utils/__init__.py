@@ -4,4 +4,4 @@ from .abilities_names import abilities_names
 from .ability_score_increase import ability_score_increase
 from .get_default_downloads_folder import get_default_downloads_folder
 from .process_character_data import process_attacks_data
-from .allowed_file import allowed_file
+from .allowed_file import allowed_character_file

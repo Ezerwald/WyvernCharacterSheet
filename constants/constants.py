@@ -31,4 +31,4 @@ NO_ARMOR_AC = 10
 MIN_DEXTERITY_BONUS_TO_AC = 10
 
 DEFAULT_SHIELD_BONUS_TO_AC = 2
-USERS_DATA_DIR = "users_data"
+DEFAULT_CHARACTER_PATH = "saved_characters/default_character.json"

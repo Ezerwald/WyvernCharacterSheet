@@ -1,60 +1,17 @@
-from pathlib import Path
-
-from flask import Blueprint, render_template, request, jsonify, send_file, redirect, url_for
 import os
+import json
 
-from utils import allowed_file
+from pathlib import Path
+from flask import Blueprint, render_template, request, jsonify, send_file, redirect, url_for
+from constants import DEFAULT_CHARACTER_PATH
+from utils import allowed_character_file
 from utils.get_elements_update_data import get_elements_update_data
 from character_singleton import CharacterSingleton
 
-# Create a Blueprint for views
-views = Blueprint('views', __name__)
 character_singleton = CharacterSingleton()
 
-STORAGE_FOLDER = Path("saved_characters/character_saved_data.json")
-
-
-@views.route('/upload-character', methods=['GET', 'POST'])
-def upload_character():
-    """
-    Handle character upload.
-
-    Returns:
-        GET: Rendered template for character upload.
-        POST: Redirects to index if successful, otherwise returns error messages.
-    """
-
-    if request.method == 'POST':
-        # Ensure file is uploaded
-        file = request.files.get('file')
-        if not file:
-            return 'No file part', 400
-        if file.filename == '':
-            return 'No selected file', 400
-        if not allowed_file(file.filename, {'json'}):
-            return 'Invalid file type', 400
-
-        # Saving uploaded file to user dir
-        file.save(STORAGE_FOLDER)
-
-        print("character was uploaded")
-        return redirect(url_for('views.character_sheet'))
-    return render_template('upload_character.html')
-
-
-@views.route('/download-character', methods=['GET'])
-def download_character():
-    """Download character data to user's local storage."""
-    # Log the client's IP address
-    client_ip = request.remote_addr
-    print(f"Client IP: {client_ip}")
-
-    file_path = STORAGE_FOLDER
-    print(f"File path: {file_path}")
-    if os.path.exists(file_path):
-        # Send the file to the client with a custom download name
-        return send_file(file_path, as_attachment=True, download_name="character.json")
-    return 'No file to download', 400
+# Create a Blueprint for views
+views = Blueprint('views', __name__)
 
 
 # Home page
@@ -79,14 +36,7 @@ def save_input():
 
         # Log and respond with updated data in JSON format
         print("Saved data:", data)
-
-        # Create a dictionary with two JSON objects
-        response_data = {
-            "elementsToUpdate": get_elements_update_data(),
-            "packedCharacterData": character_singleton.pack_character_data()
-        }
-
-        return jsonify(response_data), 200
+        return generate_response_data()
 
     except Exception as e:
         print("Error saving input:", e)
@@ -101,5 +51,44 @@ def get_character_data():
         return jsonify(get_elements_update_data()), 200
 
     except Exception as e:
-        print("Error retrieving character data:", e)
+        print("Error retrieving character data")
         raise e
+
+
+@views.route('/load-character-from-storage', methods=['POST'])
+def load_character_from_storage():
+    """Load character data from browser's local storage."""
+    data = request.json.get('characterData')
+    try:
+        if data is None:
+            raise ValueError("No character data in storage, loading default character data.")
+
+        # Debugging: Print the type and content of the data
+        print("Data type:", type(data))
+        print("Data content:", data)
+
+        character_singleton.load_character_from_json(data)
+    except Exception as e:
+        print(f"Error loading character from storage: {e}. Loading default character.")
+        load_default_character()
+    finally:
+        return generate_response_data()
+
+
+def load_default_character():
+    """Load default character data from a predefined path."""
+    try:
+        character_singleton.load_character_from_path(DEFAULT_CHARACTER_PATH)
+        print("Loaded default character")
+    except Exception as e:
+        print("Failed to load default character", e)
+        raise e
+
+
+def generate_response_data():
+    """Generate response data after loading character"""
+    response_data = {
+        "elementsToUpdate": get_elements_update_data(),
+        "packedCharacterData": character_singleton.pack_character_data()
+    }
+    return jsonify(response_data), 200

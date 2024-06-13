@@ -1,4 +1,4 @@
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Any
 from abstract_character import AbstractCharacter
 from character_notes import Notes
 from shield import Shield
@@ -23,32 +23,34 @@ from utils import process_attacks_data
 class Character(AbstractCharacter):
     """Represents a character in the game."""
 
-    def __init__(self, character_name: str,
-                 game_class_name: str,
-                 level: int,
-                 background: str,
-                 race: str,
-                 alignment: str,
-                 experience_points: int,
-                 abilities_scores: Dict[str, int],
-                 saving_throws_proficiencies: Dict[str, bool],
-                 skills_proficiencies: Dict[str, bool],
-                 shield: bool,
-                 equipped_armor_name: str,
-                 current_hit_points: int,
-                 max_hit_points: int,
-                 temporary_hit_points: int,
-                 hit_dices_left: int,
-                 successful_death_saves: int,
-                 failed_death_saves: int,
-                 attacks_data_list: List[Tuple[str, str, bool, str, int, int]],
-                 inventory: str,
-                 features: str,
-                 notes: str):
+    def __init__(self, character_data: Dict[str, Any]):
+        """Retrieve attributes from character_data."""
+        name: str = character_data['name']
+        game_class_type: str = character_data['game_class_type']
+        level: int = character_data['level']
+        background: str = character_data['background']
+        race: str = character_data['race']
+        alignment: str = character_data['alignment']
+        experience_points: int = character_data['experience_points']
+        abilities_scores: Dict[str, int] = character_data['abilities_scores']
+        saving_throws_proficiencies: Dict[str, bool] = character_data['saving_throws_proficiencies']
+        skills_proficiencies: Dict[str, bool] = character_data['skills_proficiencies']
+        shield: bool = character_data['shield']
+        equipped_armor_name: str = character_data['equipped_armor_name']
+        current_hit_points: int = character_data['current_hit_points']
+        max_hit_points: int = character_data['max_hit_points']
+        temporary_hit_points: int = character_data['temporary_hit_points']
+        current_hit_dices_amount: int = character_data['current_hit_dices_amount']
+        successful_death_saves: int = character_data['successful_death_saves']
+        failed_death_saves: int = character_data['failed_death_saves']
+        attacks_data_list: List[Tuple[str, str, bool, str, int, int]] = character_data['attacks_data_list']
+        inventory: str = character_data['inventory']
+        features: str = character_data['features']
+        notes: str = character_data['notes']
         """Initialize a Character instance."""
         super().__init__()
-        self.__initialize_biography(character_name, background, alignment)
-        self.__initialize_game_class(game_class_name)
+        self.__initialize_biography(name, background, alignment)
+        self.__initialize_game_class(game_class_type)
         self.__initialize_level(level)
         self.__initialize_race(race)
         self.__initialize_experience(experience_points)
@@ -59,7 +61,7 @@ class Character(AbstractCharacter):
         self.__initialize_equipped_armor(equipped_armor_name)
         self.__initialize_hit_points(current_hit_points, max_hit_points)
         self.__initialize_temporary_hit_points(temporary_hit_points)
-        self.__initialize_hit_dices(hit_dices_left)
+        self.__initialize_hit_dices(current_hit_dices_amount)
         self.__initialize_death_saves(successful_death_saves, failed_death_saves)
         self.__initialize_attacks(attacks_data_list)
         self.__initialize_inventory(inventory)

@@ -20,5 +20,5 @@ def create_app():
 # Initialize character singleton and load character data
 def load_default_character():
     character_singleton = CharacterSingleton()
-    character_singleton.load_character(Path('saved_characters/default_character.json'))
+    character_singleton.load_character_from_path(Path('saved_characters/default_character.json'))
     print("Default character loaded")
