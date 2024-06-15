@@ -106,3 +106,7 @@ def download_character():
 
     # Send the file to the client
     return send_file(byte_io, mimetype='application/json', as_attachment=True, download_name='character_data.json')
+
+@views.route('/upload-character')
+def upload_character():
+    return render_template("/upload_character.html")

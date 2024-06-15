@@ -19,6 +19,33 @@ $(document).ready(function() {
         const isChecked = this.checked;
         updateCharacterData(checkboxId, isChecked);
     });
+    $('#upload-character-button').on('click', function() {
+        var fileInput = $('#fileInput')[0];
+        var file = fileInput.files[0]; // Get the selected file
+
+        if (file) {
+            var formData = new FormData();
+            formData.append('file', file); // Append the file to the FormData object
+
+            $.ajax({
+                url: '/success', // Server script to process the upload
+                type: 'POST',
+                data: formData,
+                contentType: false, // Prevent jQuery from setting Content-Type
+                processData: false, // Prevent jQuery from processing the data
+                success: function(response) {
+                    // Handle the response from the server
+                    console.log('File uploaded successfully', response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Handle any errors that occurred during the upload
+                    console.error('File upload failed', textStatus, errorThrown);
+                }
+            });
+        } else {
+            alert('Please select a file to upload.');
+        }
+    });
 });
 
 // Function to save input data to the backend

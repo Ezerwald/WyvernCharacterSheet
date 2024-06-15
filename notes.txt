@@ -346,3 +346,9 @@ function updateElementsWithData(data) {
         return {
             'features': (self.character.features, 'all_features')
         }
+
+
+<form method="POST" action="/upload-character" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".json"> <!-- Add accept attribute to specify allowed file types -->
+        <button type="submit">Upload File</button>
+    </form>
