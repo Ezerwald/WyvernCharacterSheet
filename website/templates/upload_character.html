@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="../static/styles_upload.css">
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" value="Upload">
+    <h2>Upload a File</h2>
+    <form id="upload-form">
+        <input type="file" id="file-input" name="file" accept=".json"/>
+        <input type="submit" id="submit-button" value="Upload">
     </form>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/upload_character.js') }}"></script>
 </body>
 </html>
+
+
+
