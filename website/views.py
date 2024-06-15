@@ -1,10 +1,10 @@
-import os
+import io
 import json
 
-from pathlib import Path
-from flask import Blueprint, render_template, request, jsonify, send_file, redirect, url_for
+from flask import Blueprint, render_template, request, jsonify, send_file, redirect, flash
+from werkzeug.utils import secure_filename
+
 from constants import DEFAULT_CHARACTER_PATH
-from utils import allowed_character_file
 from utils.get_elements_update_data import get_elements_update_data
 from character_singleton import CharacterSingleton
 
@@ -92,3 +92,17 @@ def generate_response_data():
         "packedCharacterData": character_singleton.pack_character_data()
     }
     return jsonify(response_data), 200
+
+
+@views.route('/download-character')
+def download_character():
+    character_data = character_singleton.pack_character_data()
+    character_json = json.dumps(character_data, indent=4)
+
+    # Create a BytesIO stream and write the JSON data to it
+    byte_io = io.BytesIO()
+    byte_io.write(character_json.encode('utf-8'))
+    byte_io.seek(0)
+
+    # Send the file to the client
+    return send_file(byte_io, mimetype='application/json', as_attachment=True, download_name='character_data.json')

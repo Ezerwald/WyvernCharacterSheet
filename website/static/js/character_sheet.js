@@ -4,7 +4,7 @@ $(document).ready(function() {
     loadCharacterData();
 
     // Event listener for input elements (text, number, textarea)
-    $(document).on("keydown blur", "input[type='text'], input[type='number'], textarea", debounce(function(e) {
+    $(document).on("keydown blur", "input[type='text'], input[type='number'], textarea", debounce(function (e) {
         // Only update character data on blur or when Enter is pressed
         if (e.type === 'keydown' && e.key !== 'Enter') {
             return;
@@ -13,29 +13,12 @@ $(document).ready(function() {
     }, 300));
 
     // Event listener for checkbox elements
-    $(document).on("change", "input[type='checkbox']", function() {
+    $(document).on("change", "input[type='checkbox']", function () {
         // Update character data when the checkbox state changes
         const checkboxId = this.id;
         const isChecked = this.checked;
         updateCharacterData(checkboxId, isChecked);
     });
-
-    // Buttons event listeners
-    const saveButton = document.getElementById('save-character-button');
-    if (saveButton) {
-        // Event listener for the save button
-        saveButton.addEventListener('click', () => {
-            // Add functionality for saving character data here
-        });
-    }
-
-    const uploadButton = document.getElementById('upload-character-button');
-    if (uploadButton) {
-        // Event listener for the upload button
-        uploadButton.addEventListener('click', () => {
-            // Add functionality for uploading character data here
-        });
-    }
 });
 
 // Function to save input data to the backend
