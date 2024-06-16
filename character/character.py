@@ -49,6 +49,7 @@ class Character(AbstractCharacter):
         attacks_data_list: List[Tuple[str, str, bool, str, int, int]] = character_data['attacks_data_list']
         inventory: str = character_data['inventory']
         features: str = character_data['features']
+        speed: str = character_data['speed']
         notes: str = character_data['notes']
         states: str = character_data['states']
 
@@ -72,6 +73,7 @@ class Character(AbstractCharacter):
         self.__initialize_attacks(attacks_data_list)
         self.__initialize_inventory(inventory)
         self.__initialize_features(features)
+        self.__initialize_speed(speed)
         self.__initialize_notes(notes)
         self.__initialize_states(states)
 
@@ -152,6 +154,9 @@ class Character(AbstractCharacter):
         """Initialize the character's features"""
         self.__features = CharacterFeatures(self, features)
 
+    def __initialize_speed(self, speed: int):
+        self.__speed = Speed(self, speed)
+
     def __initialize_notes(self, notes: str):
         """Initialize the player's notes"""
         self.__notes = Notes(self, notes)
@@ -165,7 +170,6 @@ class Character(AbstractCharacter):
         self.__prof_bonus = ProfBonus(self)
         self.__initiative = Initiative(self)
         self.__passive_perception = PassivePerception(self)
-        self.__speed = Speed(self)
 
     @property
     def biography(self):

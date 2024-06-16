@@ -43,7 +43,7 @@ elf_subraces = [
     ("Wood Elf", {AbilityType.WISDOM: 1},
      "Wisdom score increases by 1\nFleet of Foot: Base walking speed increases to 35 feet.\n"
      "Mask of the Wild: You can attempt to hide even when you are only lightly "
-     "obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."),
+     "obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.", 35),
     ("Drow", {AbilityType.CHARISMA: 1},
      "Charisma score increases by 1\nSuperior Darkvision: 120 feet\n"
      "Sunlight Sensitivity: You have disadvantage on attack rolls and Wisdom (Perception) "

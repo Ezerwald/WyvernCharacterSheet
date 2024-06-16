@@ -63,6 +63,7 @@
     ],
     "inventory": "",
     "features": " ",
+    "speed": 0,
     "notes": "",
     "states": ""
 }

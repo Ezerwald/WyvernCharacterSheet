@@ -17,10 +17,7 @@ class Biography:
     @name.setter
     def name(self, name: str):
         """Set the character's name."""
-        if name.strip():  # Ensure the name is not empty
-            self.__name = name.strip()
-        else:
-            raise ValueError("Name cannot be empty.")
+        self.__name = name.strip()
 
     @property
     def background(self) -> str:

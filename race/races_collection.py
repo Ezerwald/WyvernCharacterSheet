@@ -15,12 +15,20 @@ class RaceCollection:
         self.__races[race_name] = race
 
     def add_race_with_subraces(self, ability_bonuses: Dict[AbilityType, int], speed: int, features: str,
-                               subraces: List[Tuple[str, Dict[AbilityType, int], str]]) -> None:
+                               subraces: List[Tuple[str, Dict[AbilityType, int], str, Optional[int]]]) -> None:
         """Add a race with its subraces to the collection."""
-        for subrace_name, subrace_ability_bonuses, subrace_features in subraces:
+        for subrace_data in subraces:
+            # Unpack each tuple into variables
+            subrace_name = subrace_data[0]
+            subrace_ability_bonuses = subrace_data[1]
+            subrace_features = subrace_data[2]
+            if len(subrace_data) == 4 and subrace_data is not None:  # Check if custom subrace speed is provided
+                speed = subrace_data[3]
+            # Merge text elements
             combined_ability_bonuses = dict(ability_bonuses)
             combined_ability_bonuses.update(subrace_ability_bonuses)
             combined_features = features + subrace_features
+            # Create new subrace
             subrace = Race(subrace_name, combined_ability_bonuses, speed, combined_features)
             self.add_race(subrace)
 

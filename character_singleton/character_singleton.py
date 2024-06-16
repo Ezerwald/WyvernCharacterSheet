@@ -35,7 +35,6 @@ class CharacterSingleton:
     def character(self, character: AbstractCharacter):
         """Set the character object."""
         self.__instance.__character = character
-        self.update_id_to_object_list()
 
     def save_character_to_path(self, path: Path = None):
         """Save the character data to a JSON file to specific directory"""
@@ -51,7 +50,6 @@ class CharacterSingleton:
         """Create a new instance of the Character object."""
         print("Created from data:", character_data)
         self.__instance.__character = Character(character_data)
-        self.update_id_to_object_list()
 
     def load_character_from_path(self, path: Path):
         """Load character data from specific directory."""
@@ -113,6 +111,7 @@ class CharacterSingleton:
                         for attack in character.attacks_list.get_all_attacks()]
         inventory = character.inventory.items
         features = character.features.all_features
+        speed = character.speed.value
         notes = character.notes.notes
         states = character.states.states
 
@@ -140,6 +139,7 @@ class CharacterSingleton:
             CharacterAttribute.ATTACKS_LIST.value: attacks_list,
             CharacterAttribute.INVENTORY.value: inventory,
             CharacterAttribute.FEATURES.value: features,
+            CharacterAttribute.SPEED.value: speed,
             CharacterAttribute.NOTES.value: notes,
             CharacterAttribute.STATES.value: states
         }
@@ -150,11 +150,6 @@ class CharacterSingleton:
         Return dictionary of character's attributes bounded to their corresponding input id.
         Is used to display all character data on frontend
         """
-        self.update_id_to_object_list()
-        return self.__input_id_to_object
-
-    def update_id_to_object_list(self) -> None:
-        """Update data in dictionary of character's attributes bounded to their corresponding input id."""
         self.__input_id_to_object = {
             **self.update_biography_mapping(),
             **self.update_notes_mapping(),
@@ -172,6 +167,7 @@ class CharacterSingleton:
             **self.update_features_mapping(),
             **self.update_states_mapping()
         }
+        return self.__input_id_to_object
 
     # Separate mapping for update_id_to_object_list()
     def update_biography_mapping(self) -> Dict[str, Tuple[Any, str]]:

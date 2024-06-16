@@ -25,5 +25,6 @@ class CharacterAttribute(Enum):
     ATTACKS_LIST = 'attacks_data_list'  # List of attacks available to the character
     INVENTORY = 'inventory'  # Inventory carried by the character
     FEATURES = 'features'  # Features possessed by the character
+    SPEED = 'speed'  # Custom speed of character
     NOTES = 'notes'  # Notes of character
     STATES = 'states'  # States applied to character
