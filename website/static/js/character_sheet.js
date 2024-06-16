@@ -19,32 +19,11 @@ $(document).ready(function() {
         const isChecked = this.checked;
         updateCharacterData(checkboxId, isChecked);
     });
-    $('#upload-character-button').on('click', function() {
-        var fileInput = $('#fileInput')[0];
-        var file = fileInput.files[0]; // Get the selected file
-
-        if (file) {
-            var formData = new FormData();
-            formData.append('file', file); // Append the file to the FormData object
-
-            $.ajax({
-                url: '/success', // Server script to process the upload
-                type: 'POST',
-                data: formData,
-                contentType: false, // Prevent jQuery from setting Content-Type
-                processData: false, // Prevent jQuery from processing the data
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log('File uploaded successfully', response);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    // Handle any errors that occurred during the upload
-                    console.error('File upload failed', textStatus, errorThrown);
-                }
-            });
-        } else {
-            alert('Please select a file to upload.');
-        }
+    $(document).on("change", "select", function() {
+        // Update character data when the select option changes
+        const selectId = this.id;
+        const selectedValue = $(this).val();  // Get the selected value of the select element
+        updateCharacterData(selectId, selectedValue);
     });
 });
 
@@ -109,14 +88,18 @@ function updateElementsWithData(data) {
             const element = document.getElementById(elementId);
             console.log(elementId, " = ", newValue);
             if (element) {
-                // Update element value based on its type
+                // Update element value based on its type or tagName
                 if (element.type === 'text' || element.type === 'number' || element.tagName.toLowerCase() === 'textarea') {
                     element.value = newValue;
-                }
-                else if (element.type === 'checkbox') {
+                } else if (element.type === 'checkbox') {
                     element.checked = newValue;
-                }
-                else {
+                } else if (element.tagName.toLowerCase() === 'select') {
+                    // Find the option with the matching value and set it as selected
+                    const option = element.querySelector(`option[value="${newValue}"]`);
+                    if (option) {
+                        option.selected = true;
+                    }
+                } else {
                     element.innerText = newValue;
                 }
                 console.log(elementId, " assigned ", newValue);

@@ -134,6 +134,16 @@ input[type="text"]{
     border: none;
 }
 
+select{
+    width: 100%;
+    font-family: "Book Antiqua", serif;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
 /* ---------Flex-container sections---------*/
 
 .flex-container{
