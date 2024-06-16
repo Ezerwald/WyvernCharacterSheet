@@ -1,0 +1,10 @@
+0. Write attribute class
+1. Add attribute to character_attribute_enum
+2. Add attribute to abstract_character
+3. Add attribute to character:
+    - Add attribute: character_data('attribute')
+    - Add attribute initializer
+    - Add attribute property
+4. Add attribute to character_singleton.pack_character_data
+5. Add attribute to character_singleton.update_id_to_object_list:
+    - Write separate attribute mapping

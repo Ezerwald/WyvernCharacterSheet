@@ -1,6 +1,8 @@
+from sre_parse import State
 from typing import Dict, List, Tuple, Any
 from abstract_character import AbstractCharacter
 from character_notes import Notes
+from character_states import CharacterStates
 from shield import Shield
 from character_stats import (
     Ability, Level, ProfBonus, AbilityType, Speed, Biography, ExperiencePoints, PassivePerception
@@ -13,7 +15,7 @@ from armor_class import ArmorClass
 from health import DeathSaves, HitPoints, HitDicesPool, TemporaryHitPoints
 from game_classes import CurrentGameClass
 from race import CurrentRace, Race
-from attacks import AttacksList, Attack
+from attacks import AttacksList
 from character_features import CharacterFeatures
 from inventory import Inventory
 from saving_throws import SavingThrow
@@ -37,6 +39,7 @@ class Character(AbstractCharacter):
         skills_proficiencies: Dict[str, bool] = character_data['skills_proficiencies']
         shield: bool = character_data['shield']
         equipped_armor_name: str = character_data['equipped_armor_name']
+        armor_class: int = character_data['armor_class']
         current_hit_points: int = character_data['current_hit_points']
         max_hit_points: int = character_data['max_hit_points']
         temporary_hit_points: int = character_data['temporary_hit_points']
@@ -47,6 +50,8 @@ class Character(AbstractCharacter):
         inventory: str = character_data['inventory']
         features: str = character_data['features']
         notes: str = character_data['notes']
+        states: str = character_data['states']
+
         """Initialize a Character instance."""
         super().__init__()
         self.__initialize_biography(name, background, alignment)
@@ -59,6 +64,7 @@ class Character(AbstractCharacter):
         self.__initialize_skills(skills_proficiencies)
         self.__initialize_shield(shield)
         self.__initialize_equipped_armor(equipped_armor_name)
+        self.__initialize_armor_class(armor_class)
         self.__initialize_hit_points(current_hit_points, max_hit_points)
         self.__initialize_temporary_hit_points(temporary_hit_points)
         self.__initialize_hit_dices(current_hit_dices_amount)
@@ -67,6 +73,7 @@ class Character(AbstractCharacter):
         self.__initialize_inventory(inventory)
         self.__initialize_features(features)
         self.__initialize_notes(notes)
+        self.__initialize_states(states)
 
         self.__initialize_derived_attributes()
 
@@ -114,6 +121,9 @@ class Character(AbstractCharacter):
         """Initialize the character's equipped armor."""
         self.__equipped_armor = EquippedArmor(self, basic_armor_collection.get_armor_by_name(equipped_armor_name))
 
+    def __initialize_armor_class(self, armor_class):
+        self.__armor_class = ArmorClass(self, armor_class)
+
     def __initialize_hit_points(self, current_hit_points: int, max_hit_points: int):
         """Initialize the character's hit points."""
         self.__hit_points = HitPoints(self, current_hit_points, max_hit_points)
@@ -146,10 +156,13 @@ class Character(AbstractCharacter):
         """Initialize the player's notes"""
         self.__notes = Notes(self, notes)
 
+    def __initialize_states(self, states: str):
+        """Initialize the character's character_states"""
+        self.__states = CharacterStates(self, states)
+
     def __initialize_derived_attributes(self):
         """Calculate and initialize derived attributes."""
         self.__prof_bonus = ProfBonus(self)
-        self.__armor_class = ArmorClass(self)
         self.__initiative = Initiative(self)
         self.__passive_perception = PassivePerception(self)
         self.__speed = Speed(self)
@@ -230,7 +243,7 @@ class Character(AbstractCharacter):
         return self.__temporary_hit_points
 
     @property
-    def race(self) -> Race:
+    def race(self) -> CurrentRace:
         """Get the race of the character."""
         return self.__race
 
@@ -268,3 +281,8 @@ class Character(AbstractCharacter):
     def notes(self) -> Notes:
         """Get the notes of the character."""
         return self.__notes
+
+    @property
+    def states(self) -> CharacterStates:
+        """Get the character_states applied to character"""
+        return self.__states

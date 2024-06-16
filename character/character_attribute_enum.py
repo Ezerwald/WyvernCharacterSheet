@@ -15,6 +15,7 @@ class CharacterAttribute(Enum):
     SKILLS_PROFICIENCIES = 'skills_proficiencies'  # Proficient skills of the character
     SHIELD = 'shield'  # Whether the character has a shield equipped
     EQUIPPED_ARMOR = 'equipped_armor_name'  # Armor equipped by the character
+    ARMOR_CLASS = 'armor_class'  # Armor class value of the character
     CURRENT_HIT_POINTS = 'current_hit_points'  # Current hit points of the character
     MAX_HIT_POINTS = 'max_hit_points'  # Maximum hit points of the character
     TEMPORARY_HIT_POINTS = 'temporary_hit_points'  # Temporary hit points of the character
@@ -25,3 +26,4 @@ class CharacterAttribute(Enum):
     INVENTORY = 'inventory'  # Inventory carried by the character
     FEATURES = 'features'  # Features possessed by the character
     NOTES = 'notes'  # Notes of character
+    STATES = 'states'  # States applied to character

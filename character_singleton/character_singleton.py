@@ -59,9 +59,8 @@ class CharacterSingleton:
             with open(path, 'r') as file:
                 # Retrieve data from file
                 character_data = json.load(file)
-                unpacked_character_data = self.unpack_character_data(character_data)
                 # Create data from retrieved data
-                self.create_character(unpacked_character_data)
+                self.create_character(character_data)
                 print(f"Loaded from path: {path}")
         except FileNotFoundError as e:
             print(f"File '{path}' not found.")
@@ -74,13 +73,15 @@ class CharacterSingleton:
         """Load character data from a JSON file"""
         # Use the provided dictionary directly
         character_data = data
-        unpacked_character_data = self.unpack_character_data(character_data)
         # Create character from retrieved data
-        self.create_character(unpacked_character_data)
+        self.create_character(character_data)
         print(f"Loaded character from storage data: {data}")
 
     def pack_character_data(self) -> Dict[str, Any]:
-        """Pack all character's data into a dictionary."""
+        """
+        Pack all character's data into a dictionary.
+        Write here data that can be inputted by user on website
+        """
         character = self.__instance.__character
 
         name = character.biography.name
@@ -96,6 +97,7 @@ class CharacterSingleton:
         skills_proficiencies = {skill.value: character.skills[skill].proficiency for skill in SkillType}
         shield = character.shield.equipped
         equipped_armor = character.equipped_armor.armor.name
+        armor_class = character.armor_class.value
         current_hit_points = character.hit_points.current_hit_points
         max_hit_points = character.hit_points.max_hit_points
         temporary_hit_points = character.temporary_hit_points.value
@@ -112,6 +114,7 @@ class CharacterSingleton:
         inventory = character.inventory.items
         features = character.features.all_features
         notes = character.notes.notes
+        states = character.states.states
 
         # Create the dictionary with the defined variables
         packed_data = {
@@ -127,6 +130,7 @@ class CharacterSingleton:
             CharacterAttribute.SKILLS_PROFICIENCIES.value: skills_proficiencies,
             CharacterAttribute.SHIELD.value: shield,
             CharacterAttribute.EQUIPPED_ARMOR.value: equipped_armor,
+            CharacterAttribute.ARMOR_CLASS.value: armor_class,
             CharacterAttribute.CURRENT_HIT_POINTS.value: current_hit_points,
             CharacterAttribute.MAX_HIT_POINTS.value: max_hit_points,
             CharacterAttribute.TEMPORARY_HIT_POINTS.value: temporary_hit_points,
@@ -136,17 +140,16 @@ class CharacterSingleton:
             CharacterAttribute.ATTACKS_LIST.value: attacks_list,
             CharacterAttribute.INVENTORY.value: inventory,
             CharacterAttribute.FEATURES.value: features,
-            CharacterAttribute.NOTES.value: notes
+            CharacterAttribute.NOTES.value: notes,
+            CharacterAttribute.STATES.value: states
         }
         return packed_data
 
-    def unpack_character_data(self, packed_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Unpack character data from a dictionary into a tuple of values."""
-        unpacked_data: Dict[str, Any] = packed_data
-        return unpacked_data
-
-    def get_input_id_to_object(self) -> Dict[str, Tuple[Any, str]]:
-        """Return updated character's input id to object dictionary."""
+    def get_id_to_object_list(self) -> Dict[str, Tuple[Any, str]]:
+        """
+        Return dictionary of character's attributes bounded to their corresponding input id.
+        Is used to display all character data on frontend
+        """
         self.update_id_to_object_list()
         return self.__input_id_to_object
 
@@ -167,6 +170,7 @@ class CharacterSingleton:
             **self.update_passive_perception_mapping(),
             **self.update_inventory_mapping(),
             **self.update_features_mapping(),
+            **self.update_states_mapping()
         }
 
     # Separate mapping for update_id_to_object_list()
@@ -309,6 +313,10 @@ class CharacterSingleton:
             'features': (self.character.features, 'all_features')
         }
 
+    def update_states_mapping(self) -> Dict[str, Tuple[Any, str]]:
+        return {
+            'states': (self.character.states, 'states'),
+        }
 
     # Managing attributes
     def set_attribute(self, element_id: str, attribute_value: Any) -> None:
@@ -320,7 +328,7 @@ class CharacterSingleton:
         object_instance, attribute_name = self.__input_id_to_object[element_id]
         setattr(object_instance, attribute_name, attribute_value)
 
-        print(f'"{attribute_name}" was updated with value {attribute_value}')
+        print(f'"{element_id}" was updated with value {attribute_value}')
 
     def get_attribute(self, element_id: str) -> Any:
         # Access the object and attribute using the key, then return the attribute value

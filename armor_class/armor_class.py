@@ -6,7 +6,7 @@ from abstract_character import AbstractCharacter
 class ArmorClass:
     """Represents the armor class of a __character."""
 
-    def __init__(self, character: AbstractCharacter):
+    def __init__(self, character: AbstractCharacter, armor_class_value: int):
         """
         Initialize an ArmorClass instance.
         """
@@ -14,7 +14,8 @@ class ArmorClass:
         self.__armor_class_calculator = ArmorClassCalculator(
             ArmorClassCalculationStrategyFactory.choose_armor_class_calculation_strategy(self.__character)
         )
-        self.__armor_class_value = self.__armor_class_calculator.calculate_armor_class(self.__character)
+        self.__armor_class_value = (armor_class_value
+                                    or self.__armor_class_calculator.calculate_armor_class(self.__character))
 
     @property
     def value(self):

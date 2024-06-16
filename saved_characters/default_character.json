@@ -44,6 +44,7 @@
     },
     "shield": false,
     "equipped_armor_name": "None",
+    "armor_class": 0,
     "current_hit_points": 9,
     "max_hit_points": 9,
     "temporary_hit_points": "0",
@@ -51,14 +52,17 @@
     "successful_death_saves": "0",
     "failed_death_saves": "0",
     "attacks_data_list": [
-        ["Longsword",
+        [
+            "Longsword",
             "STR",
             true,
             "1d10",
             5,
-            2]
+            2
+        ]
     ],
     "inventory": "",
-    "features":" ",
-    "notes": ""
+    "features": " ",
+    "notes": "",
+    "states": ""
 }

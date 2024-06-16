@@ -29,6 +29,7 @@ class AbstractCharacter(ABC):
         self.__experience_points = None
         self.__inventory = None
         self.__notes = None
+        self.__states = None
 
     @abstractmethod
     def biography(self):
@@ -143,4 +144,9 @@ class AbstractCharacter(ABC):
     @abstractmethod
     def notes(self):
         """Get the notes."""
+        pass
+
+    @abstractmethod
+    def states(self):
+        """Get the character_states."""
         pass
