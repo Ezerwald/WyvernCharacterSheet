@@ -26,6 +26,8 @@ class HitPoints:
     @property
     def max_hit_points(self):
         """Get max hit points."""
+        if self.__max_hit_points == 0:
+            return self.calc_max_hit_points()
         return self.__max_hit_points
 
     @max_hit_points.setter
@@ -36,8 +38,6 @@ class HitPoints:
             raise ValueError("Max hit points cannot be None.")
         elif value < 0:
             raise ValueError("Max hit points cannot be negative.")
-        elif value == 0:
-            self.__max_hit_points = self.calc_max_hit_points()
         else:
             self.__max_hit_points = value
 

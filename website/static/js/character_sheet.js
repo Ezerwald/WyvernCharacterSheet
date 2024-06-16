@@ -4,12 +4,9 @@ $(document).ready(function() {
     loadCharacterData();
 
     // Event listener for input elements (text, number, textarea)
-    $(document).on("keydown blur", "input[type='text'], input[type='number'], textarea", debounce(function (e) {
+    $(document).on("blur", "input[type='text'], input[type='number'], textarea", debounce(function (e) {
         // Only update character data on blur or when Enter is pressed
-        if (e.type === 'keydown' && e.key !== 'Enter') {
-            return;
-        }
-        updateCharacterData(e.target.id, e.target.value);
+        updateCharacterData(e.target.id, e.target.value)
     }, 300));
 
     // Event listener for checkbox elements

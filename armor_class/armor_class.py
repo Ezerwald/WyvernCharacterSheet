@@ -20,6 +20,10 @@ class ArmorClass:
     @property
     def value(self):
         """Calculate and return the armor class value for the character."""
+        if self.__armor_class_value == 0:
+            print("Armor class returned as defualt calculted")
+            return self.calc_armor_class()
+        print("Armor class returned as:", self.__armor_class_value)
         return self.__armor_class_value
 
     @value.setter
@@ -30,10 +34,9 @@ class ArmorClass:
             raise ValueError("AC cannot be None.")
         elif value < 0:
             raise ValueError("AC cannot be negative.")
-        elif value == 0:
-            self.__armor_class_value = self.calc_armor_class()
         else:
             self.__armor_class_value = value
+            print("Armor Class is setted to: ", value)
 
     def calc_armor_class(self) -> int:
         self.__armor_class_calculator = ArmorClassCalculator(
