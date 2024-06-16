@@ -1,5 +1,5 @@
 {
-    "name": "Name",
+    "name": "",
     "game_class_type": "Fighter",
     "level": 1,
     "background": "",
@@ -40,7 +40,7 @@
         "Religion": false,
         "Sleight of Hand": false,
         "Stealth": false,
-        "Survival": true
+        "Survival": false
     },
     "shield": false,
     "equipped_armor_name": "None",
@@ -59,6 +59,6 @@
             2]
     ],
     "inventory": "",
-    "features":"",
+    "features":" ",
     "notes": ""
 }

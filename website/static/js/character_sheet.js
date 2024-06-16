@@ -59,7 +59,7 @@ function updateCharacterData(id, value) {
             // Update elements with the processed character data
             updateElementsWithData(responseData["elementsToUpdate"]);
             // Save character data to local storage
-            saveToLocalStorage("character", responseData["packedCharacterData"]);
+            saveToLocalStorage("character", JSON.stringify(responseData["packedCharacterData"]));
         },
         error: function(xhr, status, error) {
             console.error("Error saving input data:", error);
@@ -80,24 +80,12 @@ function loadCharacterData() {
             // Update elements with the processed character data
             updateElementsWithData(responseData["elementsToUpdate"]);
             // Save character data to local storage
-            saveToLocalStorage("character", responseData["packedCharacterData"]);
+            saveToLocalStorage("character", JSON.stringify(responseData["packedCharacterData"]));
         },
         error: function(xhr, status, error) {
             console.error("Error loading character data:", error);
         }
     });
-}
-
-// Function to retrieve data from local storage
-function getFromLocalStorage(key) {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : null;
-}
-
-// Function to save data to local storage
-function saveToLocalStorage(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-    console.log("Saved to local storage data:", JSON.stringify(data));
 }
 
 // Debounce function to delay execution of the input event handler

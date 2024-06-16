@@ -15,10 +15,13 @@
     </header>
     <section>
         <ul>
-            <li><a><button> Create character </button></a></li>
-            <li><a><button> Upload character </button></a></li>
+            <li><a><button id="create-character-button"> Create character </button></a></li>
+            <li><a href="/upload-character"><button> Upload character </button></a></li>
             <li><a href = "/character-sheet"><button> Current character </button></a></li>
         </ul>
     </section>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/local_storage.js') }}"></script>
 </body>
 </html>

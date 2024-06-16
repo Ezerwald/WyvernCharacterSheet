@@ -34,9 +34,3 @@ $(document).ready(function() {
         }
     });
 });
-
-// Function to save data to local storage
-function saveToLocalStorage(key, data) {
-    localStorage.setItem(key, data);
-    console.log("Saved to local storage data:", JSON.stringify(data));
-}

@@ -80,9 +80,9 @@
             <div class="section-block options">
                 <div class="block-header"> Options </div>
                 <div class="block-body">
-                    <button id="download-character-button"> <a href="/download-character">Save Character</a></button>
-                    <button id="upload-character-button"> <a href="/upload-character">Upload Character</a> </button>
-                    <button id="help-button"> Help </button>
+                    <a href="/download-character"> <button id="download-character-button"> Save Character</button></a>
+                    <a href="/upload-character"> <button id="upload-character-button">Upload Character</button></a>
+                    <a> <button id="help-button"> Help </button></a>
                 </div>
             </div>
         </section>
@@ -390,7 +390,9 @@
             </div>
         </section>
     </main>
+
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/character_sheet.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/local_storage.js') }}"></script>
 </body>
 </html>
