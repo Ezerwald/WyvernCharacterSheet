@@ -1,10 +1,9 @@
 import io
 import json
 
-from flask import Blueprint, render_template, request, jsonify, send_file, redirect, flash
-from werkzeug.utils import secure_filename
-
-from constants import DEFAULT_CHARACTER_PATH
+from flask import Blueprint, render_template, request, jsonify, send_file
+from constants import DEFAULT_CHARACTER_PATH, DEFAULT_FILE_NAME
+from utils import sanitize_filename
 from utils.get_elements_update_data import get_elements_update_data
 from character_singleton import CharacterSingleton
 
@@ -104,8 +103,13 @@ def download_character():
     byte_io.write(character_json.encode('utf-8'))
     byte_io.seek(0)
 
+    # Generating download name
+    character_name = character_singleton.character.biography.name or 'MyCharacter'
+    sanitized_name = sanitize_filename(character_name)
+    download_name = f"{sanitized_name}.json"
+
     # Send the file to the client
-    return send_file(byte_io, mimetype='application/json', as_attachment=True, download_name='character_data.json')
+    return send_file(byte_io, mimetype='application/json', as_attachment=True, download_name=download_name)
 
 
 @views.route('/upload-character')

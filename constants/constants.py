@@ -32,3 +32,4 @@ MIN_DEXTERITY_BONUS_TO_AC = 10
 
 DEFAULT_SHIELD_BONUS_TO_AC = 2
 DEFAULT_CHARACTER_PATH = "saved_characters/default_character.json"
+DEFAULT_FILE_NAME = "MyCharacter"
