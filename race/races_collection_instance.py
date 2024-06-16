@@ -72,6 +72,28 @@ halfling_subraces = [
 ]
 basic_races_collection.add_race_with_subraces(halfling_ability_bonuses, 25, halfling_features, halfling_subraces)
 
+# Gnome
+gnome_ability_bonuses = {AbilityType.INTELLIGENCE: 2}
+gnome_features = ("Languages: Common, Gnomish\n"
+                  "Darkvision: Accustomed to life underground, you have superior vision in dark and dim conditions. "
+                  "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it "
+                  "were dim light. You can’t discern color in darkness, only shades of gray.\n"
+                  "Gnome Cunning: You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+                  "Ability Score Increase: Your Intelligence score increases by 2 and ")
+
+gnome_subraces = [
+    ("Forest Gnome", {AbilityType.DEXTERITY: 1},
+     "Your Dexterity score increases by 1.\nNatural Illusionist: You know the minor illusion cantrip. "
+     "Intelligence is your spellcasting ability for it.\n"
+     "Speak with Small Beasts: Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts."),
+    ("Rock Gnome", {AbilityType.CONSTITUTION: 1},
+     "Your Constitution score increases by 1.\n"
+     "Artificer's Lore: Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply.\n"
+     "Tinker: You have proficiency with artisan’s tools (tinker’s tools). "
+     "Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp).")
+]
+basic_races_collection.add_race_with_subraces(gnome_ability_bonuses, 25, gnome_features, gnome_subraces)
+
 # Dragonborn
 dragonborn_ability_bonuses = {AbilityType.STRENGTH: 2, AbilityType.CHARISMA: 1}
 dragonborn_features = ("Languages: Common, Draconic\n"
@@ -98,9 +120,18 @@ half_orc_features = ("Languages: Common, Orcish\n"
                      "Savage Attacks: When you score a critical hit with a melee weapon attack, "
                      "you can roll one of the weapon's damage dice one additional time and "
                      "add it to the extra damage of the critical hit.\n"
-                     "Ability Score Increase: Your Strength score increases by 2, and your Constitution score "
-                     "increases by 1.")
+                     "Ability Score Increase: Your Strength score increases by 2, and your Constitution score increases by 1.")
 basic_races_collection.add_race(Race("Half-Orc", half_orc_ability_bonuses, 30, half_orc_features))
 
-# Half-elf
-half_elf_ability_bonuses = {AbilityType.CHARISMA: 2}
+# Half-Elf
+half_elf_ability_bonuses = {AbilityType.CHARISMA: 2}  # Note: Half-Elves get +1 to two other abilities of your choice
+half_elf_features = (
+    "Languages: Common, Elvish, one extra language of your choice\n"
+    "Darkvision: Thanks to your elf blood, you have superior vision in dark and dim conditions. "
+    "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. "
+    "You can’t discern color in darkness, only shades of gray.\n"
+    "Fey Ancestry: You have advantage on saving throws against being charmed, and magic can’t put you to sleep.\n"
+    "Skill Versatility: You gain proficiency in two skills of your choice.\n"
+    "Ability Score Increase: Your Charisma score increases by 2, and two other abilities of your choice increase by 1.\n"
+)
+basic_races_collection.add_race(Race("Half-Elf", half_elf_ability_bonuses, 30, half_elf_features))
