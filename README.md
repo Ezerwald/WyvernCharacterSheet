@@ -12,12 +12,17 @@ The Wyvern Character Sheet is a web application designed to streamline the manag
 ### How to run the program?
 
 To run the program, execute the `main.py` script from the repository. This will start the web server. Users can then access the website using a web browser.
+(Later the website will be hosted on server and i will pin link here for free access and usage)
 
 ### How to use the program?
 
 Upon accessing the website, users can create, save, and edit character sheets. They can input various details such as character name, race, level, notes, and features. The program automatically calculates modifiers, skill bonuses, and other relevant statistics based on the input, simplifying the character management process.
 
 [![Wyvern Character Sheet Page](https://i.ibb.co/XpdL3XL/2024-05-17-043607798.png)](https://ibb.co/K7QhL6h)
+
+Video Review
+
+[![Watch the video](https://img.youtube.com/vi/jnw9LjEVXyI/hqdefault.jpg)](https://youtu.be/jnw9LjEVXyI?list=PLX3Xir0Xxxzydf0PvMXZhnTPPWYwl0L8q)
 
 ## 2. Body/Analysis
 
