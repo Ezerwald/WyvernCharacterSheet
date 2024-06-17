@@ -17,15 +17,15 @@ class TestHitPoints(unittest.TestCase):
         self.hit_points = HitPoints(self.mock_character)
 
     def test_initialization(self):
-        self.assertEqual(self.hit_points.current_hit_points, self.hit_points.max_hit_points)
+        self.assertEqual(self.hit_points.current_hit_points, self.hit_points.custom_max_hit_points)
 
     def test_set_current_hit_points(self):
         self.hit_points.current_hit_points = 20
         self.assertEqual(self.hit_points.current_hit_points, 20)
 
     def test_set_max_hit_points(self):
-        self.hit_points.max_hit_points = 50
-        self.assertEqual(self.hit_points.max_hit_points, 50)
+        self.hit_points.custom_max_hit_points = 50
+        self.assertEqual(self.hit_points.custom_max_hit_points, 50)
 
     def test_current_hit_points_cannot_be_negative(self):
         with self.assertRaises(ValueError):
@@ -33,10 +33,10 @@ class TestHitPoints(unittest.TestCase):
 
     def test_max_hit_points_cannot_be_negative(self):
         with self.assertRaises(ValueError):
-            self.hit_points.max_hit_points = -10
+            self.hit_points.custom_max_hit_points = -10
 
     def test_max_hit_points_adjustment(self):
-        self.hit_points.max_hit_points = 20
+        self.hit_points.custom_max_hit_points = 20
         self.assertEqual(self.hit_points.current_hit_points, 20)
 
 

@@ -39,9 +39,9 @@ class Character(AbstractCharacter):
         skills_proficiencies: Dict[str, bool] = character_data['skills_proficiencies']
         shield: bool = character_data['shield']
         equipped_armor_name: str = character_data['equipped_armor_name']
-        armor_class: int = character_data['armor_class']
+        custom_armor_class: int = character_data['custom_armor_class']
         current_hit_points: int = character_data['current_hit_points']
-        max_hit_points: int = character_data['max_hit_points']
+        custom_max_hit_points: int = character_data['custom_max_hit_points']
         temporary_hit_points: int = character_data['temporary_hit_points']
         current_hit_dices_amount: int = character_data['current_hit_dices_amount']
         successful_death_saves: int = character_data['successful_death_saves']
@@ -65,8 +65,8 @@ class Character(AbstractCharacter):
         self.__initialize_skills(skills_proficiencies)
         self.__initialize_shield(shield)
         self.__initialize_equipped_armor(equipped_armor_name)
-        self.__initialize_armor_class(armor_class)
-        self.__initialize_hit_points(current_hit_points, max_hit_points)
+        self.__initialize_armor_class(custom_armor_class)
+        self.__initialize_hit_points(current_hit_points, custom_max_hit_points)
         self.__initialize_temporary_hit_points(temporary_hit_points)
         self.__initialize_hit_dices(current_hit_dices_amount)
         self.__initialize_death_saves(successful_death_saves, failed_death_saves)

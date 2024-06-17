@@ -6,7 +6,7 @@ from abstract_character import AbstractCharacter
 class ArmorClass:
     """Represents the armor class of a __character."""
 
-    def __init__(self, character: AbstractCharacter, armor_class_value: int):
+    def __init__(self, character: AbstractCharacter, custom_armor_class: int):
         """
         Initialize an ArmorClass instance.
         """
@@ -14,29 +14,30 @@ class ArmorClass:
         self.__armor_class_calculator = ArmorClassCalculator(
             ArmorClassCalculationStrategyFactory.choose_armor_class_calculation_strategy(self.__character)
         )
-        self.__armor_class_value = (armor_class_value
-                                    or self.__armor_class_calculator.calculate_armor_class(self.__character))
+        self.__custom_armor_class = custom_armor_class
 
     @property
-    def value(self):
+    def armor_class(self):
         """Calculate and return the armor class value for the character."""
-        if self.__armor_class_value == 0:
-            print("Armor class returned as defualt calculted")
+        if self.__custom_armor_class == 0:
             return self.calc_armor_class()
-        print("Armor class returned as:", self.__armor_class_value)
-        return self.__armor_class_value
+        return self.__custom_armor_class
 
-    @value.setter
-    def value(self, value):
-        value = int(value)
+    @armor_class.setter
+    def armor_class(self, value):
         """Set the armor class value for the character."""
+        value = int(value)
         if value is None:
             raise ValueError("AC cannot be None.")
         elif value < 0:
             raise ValueError("AC cannot be negative.")
         else:
-            self.__armor_class_value = value
-            print("Armor Class is setted to: ", value)
+            self.__custom_armor_class = value
+
+    @property
+    def custom_armor_class(self):
+        """Get custom armor class value for the character."""
+        return self.__custom_armor_class
 
     def calc_armor_class(self) -> int:
         self.__armor_class_calculator = ArmorClassCalculator(

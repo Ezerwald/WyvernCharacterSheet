@@ -1,8 +1,5 @@
-from pathlib import Path
+from flask import Flask
 
-from flask import Flask, session
-
-from character_singleton import CharacterSingleton
 from .config import SECRET_KEY
 from .views import views
 

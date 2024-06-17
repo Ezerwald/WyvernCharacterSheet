@@ -46,7 +46,7 @@
     "equipped_armor_name": "None",
     "armor_class": 0,
     "current_hit_points": 9,
-    "max_hit_points": 9,
+    "custom_max_hit_points": 9,
     "temporary_hit_points": "0",
     "current_hit_dices_amount": 1,
     "successful_death_saves": "0",

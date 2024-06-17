@@ -15,9 +15,9 @@ class CharacterAttribute(Enum):
     SKILLS_PROFICIENCIES = 'skills_proficiencies'  # Proficient skills of the character
     SHIELD = 'shield'  # Whether the character has a shield equipped
     EQUIPPED_ARMOR = 'equipped_armor_name'  # Armor equipped by the character
-    ARMOR_CLASS = 'armor_class'  # Armor class value of the character
+    CUSTOM_ARMOR_CLASS = 'custom_armor_class'  # Armor class value of the character
     CURRENT_HIT_POINTS = 'current_hit_points'  # Current hit points of the character
-    MAX_HIT_POINTS = 'max_hit_points'  # Maximum hit points of the character
+    CUSTOM_MAX_HIT_POINTS = 'custom_max_hit_points'  # Custom maximum hit points of the character
     TEMPORARY_HIT_POINTS = 'temporary_hit_points'  # Temporary hit points of the character
     CURRENT_HIT_DICES_AMOUNT = 'current_hit_dices_amount'  # Number of hit dice remaining for the character
     SUCCESSFUL_DEATH_SAVES = 'successful_death_saves'  # Number of successful death saves

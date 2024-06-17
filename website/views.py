@@ -104,7 +104,7 @@ def download_character():
     byte_io.seek(0)
 
     # Generating download name
-    character_name = character_singleton.character.biography.name or 'MyCharacter'
+    character_name = character_singleton.character.biography.name or DEFAULT_FILE_NAME
     sanitized_name = sanitize_filename(character_name)
     download_name = f"{sanitized_name}.json"
 

@@ -3,10 +3,10 @@ from character_stats import AbilityType
 
 
 class HitPoints:
-    def __init__(self, character: AbstractCharacter, current_hit_points: int = None, max_hit_points: int = None):
+    def __init__(self, character: AbstractCharacter, current_hit_points: int = None, custom_max_hit_points: int = None):
         self.__character = character
-        self.__max_hit_points: int = max_hit_points or self.calc_max_hit_points()
-        self.__current_hit_points: int = current_hit_points or self.__max_hit_points
+        self.__custom_max_hit_points: int = custom_max_hit_points
+        self.__current_hit_points: int = current_hit_points
 
     @property
     def current_hit_points(self):
@@ -15,31 +15,36 @@ class HitPoints:
 
     @current_hit_points.setter
     def current_hit_points(self, value: int):
-        value = int(value)
         """Set current hit points."""
+        value = int(value)
         if value is None:
             raise ValueError("Current hit points cannot be None.")
         if value < 0:
             raise ValueError("Current hit points cannot be negative.")
-        self.__current_hit_points = min(value, self.__max_hit_points)
+        self.__current_hit_points = min(value, self.__custom_max_hit_points)
 
     @property
     def max_hit_points(self):
-        """Get max hit points."""
-        if self.__max_hit_points == 0:
+        """Get max hit points"""
+        if self.__custom_max_hit_points == 0:
             return self.calc_max_hit_points()
-        return self.__max_hit_points
+        return self.__custom_max_hit_points
 
     @max_hit_points.setter
     def max_hit_points(self, value: int):
-        value = int(value)
         """Set max hit points."""
+        value = int(value)
         if value is None:
             raise ValueError("Max hit points cannot be None.")
         elif value < 0:
             raise ValueError("Max hit points cannot be negative.")
         else:
-            self.__max_hit_points = value
+            self.__custom_max_hit_points = value
+
+    @property
+    def custom_max_hit_points(self):
+        """Get custom max hit points."""
+        return self.__custom_max_hit_points
 
     def calc_max_hit_points(self):
         """Calculate max hit points depending on current level and class."""

@@ -15,7 +15,7 @@ class CharacterSingleton:
     __instance = None
 
     def __init__(self):
-        # Creates dictionary which assigns element_id to certain character attribute
+        """Initializes dictionary which assigns element_id to certain character attribute"""
         self.__input_id_to_object: Dict[str, Tuple[Any, str]] = {}
 
     def __new__(cls, *args, **kwargs):
@@ -95,9 +95,9 @@ class CharacterSingleton:
         skills_proficiencies = {skill.value: character.skills[skill].proficiency for skill in SkillType}
         shield = character.shield.equipped
         equipped_armor = character.equipped_armor.armor.name
-        armor_class = character.armor_class.value
+        custom_armor_class = character.armor_class.custom_armor_class
         current_hit_points = character.hit_points.current_hit_points
-        max_hit_points = character.hit_points.max_hit_points
+        custom_max_hit_points = character.hit_points.custom_max_hit_points
         temporary_hit_points = character.temporary_hit_points.value
         hit_dices_left = character.hit_dices_pool.current_hit_dices_amount
         successful_death_saves = character.death_saves.successful_saves
@@ -129,9 +129,9 @@ class CharacterSingleton:
             CharacterAttribute.SKILLS_PROFICIENCIES.value: skills_proficiencies,
             CharacterAttribute.SHIELD.value: shield,
             CharacterAttribute.EQUIPPED_ARMOR.value: equipped_armor,
-            CharacterAttribute.ARMOR_CLASS.value: armor_class,
+            CharacterAttribute.CUSTOM_ARMOR_CLASS.value: custom_armor_class,
             CharacterAttribute.CURRENT_HIT_POINTS.value: current_hit_points,
-            CharacterAttribute.MAX_HIT_POINTS.value: max_hit_points,
+            CharacterAttribute.CUSTOM_MAX_HIT_POINTS.value: custom_max_hit_points,
             CharacterAttribute.TEMPORARY_HIT_POINTS.value: temporary_hit_points,
             CharacterAttribute.CURRENT_HIT_DICES_AMOUNT.value: hit_dices_left,
             CharacterAttribute.SUCCESSFUL_DEATH_SAVES.value: successful_death_saves,
@@ -277,7 +277,7 @@ class CharacterSingleton:
 
     def update_battle_stats_mapping(self) -> Dict[str, Tuple[Any, str]]:
         return {
-            'armor-class': (self.character.armor_class, 'value'),
+            'armor-class': (self.character.armor_class, 'armor_class'),
             'initiative': (self.character.initiative, 'value'),
             'speed': (self.character.speed, 'value'),
         }
