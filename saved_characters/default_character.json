@@ -44,7 +44,7 @@
     },
     "shield": false,
     "equipped_armor_name": "None",
-    "armor_class": 0,
+    "custom_armor_class": 0,
     "current_hit_points": 9,
     "custom_max_hit_points": 9,
     "temporary_hit_points": "0",
