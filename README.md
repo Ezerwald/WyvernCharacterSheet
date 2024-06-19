@@ -9,10 +9,12 @@
 
 The Wyvern Character Sheet is a web application designed to streamline the management of character sheets for players of the Dungeons and Dragons (D&D) tabletop role-playing game. It offers functionalities for creating, saving, and editing character sheets, automating calculations for modifiers, skill bonuses, hit points, and more.
 
-### How to run the program?
+### How to start?
 
-To run the program, execute the `main.py` script from the repository. This will start the web server. Users can then access the website using a web browser.
-(Later the website will be hosted on server and i will pin link here for free access and usage)
+You can just go to the hosted website Wyvern Character Sheet: https://wyvern.swanchick.me/
+
+Or you can run the program locally, for this execute the `main.py` script from the repository. This will start the web server. Users can then access the website using a web browser.
+
 
 ### How to use the program?
 
